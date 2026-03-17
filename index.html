@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Desaru Seafood Corner</title>
 
 <style>
+*{
+  box-sizing:border-box;
+}
+
 body{
-  font-family: Arial, sans-serif;
-  background:#f5f5f5;
-  padding:20px;
   margin:0;
+  font-family:Arial, sans-serif;
+  background:#f5f5f5;
+  color:#222;
+}
+
+.container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:20px;
 }
 
 .header{
@@ -18,51 +29,59 @@ body{
 }
 
 .header img{
-  width:150px;
-  max-width:70%;
+  width:180px;
+  max-width:75%;
 }
 
-h2{
-  margin-top:35px;
-  margin-bottom:15px;
+.top-note{
+  text-align:center;
+  color:#666;
+  font-size:14px;
+  margin-bottom:20px;
+}
+
+.category-title{
+  margin-top:38px;
+  margin-bottom:16px;
   border-left:6px solid #ff3300;
   padding-left:12px;
-  color:#222;
+  font-size:24px;
+  font-weight:bold;
 }
 
-h2 small{
+.category-title small{
   display:block;
   color:#777;
   font-size:14px;
-  margin-top:3px;
+  margin-top:4px;
+  font-weight:normal;
 }
 
-.menu{
-  display:flex;
-  flex-wrap:wrap;
-  gap:15px;
-  margin-bottom:10px;
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:16px;
 }
 
 .item{
-  background:white;
-  border-radius:10px;
-  padding:10px;
-  width:180px;
-  box-shadow:0 2px 5px rgba(0,0,0,0.2);
-  text-align:center;
+  background:#fff;
+  border-radius:14px;
+  padding:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.12);
 }
 
 .item img{
   width:100%;
-  height:120px;
+  height:150px;
   object-fit:cover;
-  border-radius:8px;
+  border-radius:10px;
+  background:#eee;
 }
 
 .item h3{
-  margin:10px 0 5px;
+  margin:12px 0 6px;
   font-size:18px;
+  line-height:1.3;
 }
 
 .item h3 small{
@@ -70,789 +89,579 @@ h2 small{
   color:#777;
   font-size:14px;
   margin-top:4px;
+  font-weight:normal;
+}
+
+.price{
+  margin:8px 0 10px;
+  color:#ff3300;
+  font-weight:bold;
+  min-height:20px;
+}
+
+.price-note{
+  font-size:12px;
+  color:#777;
+  margin-top:-4px;
+  margin-bottom:10px;
+}
+
+.btn-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
 }
 
 button{
-  background:#009933;
-  color:white;
   border:none;
+  border-radius:8px;
   padding:8px 12px;
-  border-radius:5px;
   cursor:pointer;
+  font-weight:bold;
 }
 
-button:hover{
-  opacity:0.9;
+.btn-add{
+  background:#009933;
+  color:#fff;
+}
+
+.btn-size{
+  background:#ff3300;
+  color:#fff;
+}
+
+.btn-ask{
+  background:#222;
+  color:#fff;
 }
 
 .cart{
+  position:sticky;
+  bottom:0;
   margin-top:30px;
-  background:white;
-  padding:15px;
-  border-radius:10px;
-  box-shadow:0 2px 5px rgba(0,0,0,0.15);
+  background:#fff;
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 -2px 14px rgba(0,0,0,0.12);
 }
 
-.cart input{
-  padding:8px;
-  width:220px;
-  max-width:100%;
+.cart h2{
+  margin:0 0 10px;
+  font-size:24px;
+}
+
+.cart h2 small{
+  display:block;
+  color:#777;
+  font-size:14px;
+  margin-top:4px;
+  font-weight:normal;
+}
+
+#cart{
+  padding-left:20px;
+  margin-top:10px;
+  margin-bottom:14px;
+}
+
+#cart li{
+  margin-bottom:8px;
+  line-height:1.5;
+}
+
+.total{
+  font-size:18px;
+  font-weight:bold;
+  margin:14px 0;
+}
+
+input, textarea{
+  width:100%;
+  padding:10px 12px;
   border:1px solid #ccc;
-  border-radius:5px;
+  border-radius:8px;
+  margin-bottom:10px;
+  font-size:14px;
+}
+
+.cart-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.primary-btn{
+  background:#009933;
+  color:#fff;
+}
+
+.secondary-btn{
+  background:#ddd;
+  color:#222;
+}
+
+.notice{
+  margin-top:10px;
+  color:#666;
+  font-size:13px;
+}
+
+@media (max-width:768px){
+  .container{
+    padding:15px;
+  }
+
+  .header img{
+    width:150px;
+  }
+
+  .category-title{
+    font-size:20px;
+  }
+
+  .item img{
+    height:140px;
+  }
 }
 </style>
 </head>
-
 <body>
 
-<div class="header">
-  <img src="logo.png" alt="Desaru Seafood Corner">
-</div>
-
-<h2>Signature Dishes<br><small>招牌菜</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Golden Pumpkin Lobster">
-    <h3>Golden Pumpkin Lobster<br><small>金瓜龙虾</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Golden Pumpkin Lobster',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Chilli Crab">
-    <h3>Chilli Crab<br><small>辣子蟹</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Chilli Crab',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Goose Palm Abalone">
-    <h3>Goose Palm Abalone<br><small>掌上明珠</small></h3>
-    <p>RM468</p>
-    <button onclick="addItem('Goose Palm Abalone',468)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Lobster With Superior Stock">
-    <h3>Lobster With Superior Stock<br><small>上汤龙虾</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Lobster With Superior Stock',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Salt Baked Chicken">
-    <h3>Salt Baked Chicken<br><small>盐焗鸡</small></h3>
-    <p>RM68</p>
-    <button onclick="addItem('Salt Baked Chicken',68)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Lava And Red Pomegranate Fish">
-    <h3>Lava And Red Pomegranate Fish<br><small>火焰石榴鱼</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Lava And Red Pomegranate Fish',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Curry Fish Head">
-    <h3>Curry Fish Head<br><small>咖喱鱼头</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Curry Fish Head',0)">Add</button>
-  </div>
-</div>
-
-<h2>Lobster<br><small>龙虾</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Steamed Lobster">
-    <h3>Steamed Lobster (Egg / Garlic)<br><small>清蒸龙虾（蛋蒜/蒜蓉）</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Steamed Lobster',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Desaru Corner Style Lobster">
-    <h3>Desaru Corner Style Lobster<br><small>金沙龙虾</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Desaru Corner Style Lobster',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Typhoon Lobster">
-    <h3>Typhoon Lobster<br><small>避风塘龙虾</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Typhoon Lobster',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Golden Pumpkin Lobster">
-    <h3>Golden Pumpkin Lobster<br><small>金瓜龙虾</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Golden Pumpkin Lobster',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Western Style Lobster">
-    <h3>Western Style Lobster<br><small>西式奶油龙虾</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Western Style Lobster',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Salted Egg Lobster">
-    <h3>Salted Egg Lobster<br><small>黄金咸蛋龙虾</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Salted Egg Lobster',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Cheese Lobster">
-    <h3>Cheese Lobster<br><small>芝士烤龙虾</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Cheese Lobster',0)">Add</button>
-  </div>
-</div>
-
-<h2>Crab<br><small>螃蟹</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Chilli Crab">
-    <h3>Chilli Crab<br><small>辣子蟹</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Chilli Crab',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Volcanic Crab">
-    <h3>Volcanic Crab<br><small>招牌火山蟹</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Volcanic Crab',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Black Pepper Crab">
-    <h3>Black Pepper Crab<br><small>黑胡椒蟹</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Black Pepper Crab',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Salted Egg Crab">
-    <h3>Salted Egg Crab<br><small>黄金咸蛋蟹</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Salted Egg Crab',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Steamed Crab">
-    <h3>Steamed Crab (Egg)<br><small>清蒸蟹（蛋）</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Steamed Crab',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Curry Leaf Crab">
-    <h3>Curry Leaf Crab<br><small>干香蟹</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Curry Leaf Crab',0)">Add</button>
-  </div>
-</div>
-
-<h2>Fish / Fish Head<br><small>鱼 / 鱼头</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Hongkong Steam">
-    <h3>Hongkong Steam<br><small>港蒸</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Hongkong Steam',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Nyonya Steam">
-    <h3>Nyonya Steam<br><small>娘惹蒸</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Nyonya Steam',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Teo Chew Steam">
-    <h3>Teo Chew Steam<br><small>潮州蒸</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Teo Chew Steam',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Banana Leaf Sour And Spicy">
-    <h3>Banana Leaf Sour And Spicy<br><small>香蕉叶炸</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Banana Leaf Sour And Spicy',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Dry Fried Fish">
-    <h3>Dry Fried<br><small>油炸</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Dry Fried Fish',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Lava And Red Pomegranate">
-    <h3>Lava And Red Pomegranate<br><small>火焰石榴</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Lava And Red Pomegranate',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Sweet And Sour Fish">
-    <h3>Sweet And Sour<br><small>酸甜</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Sweet And Sour Fish',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Curry Fish Head">
-    <h3>Curry Fish Head<br><small>咖喱鱼头</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Curry Fish Head',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Bitter Gourd Fish Head">
-    <h3>Bitter Gourd Fish Head<br><small>苦瓜鼓汁鱼头</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Bitter Gourd Fish Head',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Curry Leaf Fish Head">
-    <h3>Curry Leaf Fish Head<br><small>干香炒鱼头</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Curry Leaf Fish Head',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Claypot Fish Head">
-    <h3>Claypot Fish Head<br><small>砂锅鱼头</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Claypot Fish Head',0)">Add</button>
-  </div>
-</div>
-
-<h2>Seafood Specialties<br><small>海味</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Braised Shark's Fin Soup With Crab Meat">
-    <h3>Braised Shark's Fin Soup With Crab Meat<br><small>蟹肉鱼翅</small></h3>
-    <p>S RM82 / M RM116 / L RM150 / Per Portion RM30</p>
-    <button onclick="addItem('Braised Shark\\'s Fin Soup With Crab Meat',82)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Seafood Pot">
-    <h3>Seafood Pot<br><small>海味锅</small></h3>
-    <p>S RM88 / M RM118 / L RM168</p>
-    <button onclick="addItem('Seafood Pot',88)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Goose Palm Abalone">
-    <h3>Goose Palm Abalone<br><small>掌上明珠</small></h3>
-    <p>RM468</p>
-    <button onclick="addItem('Goose Palm Abalone',468)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Braised Mushroom With Sea Cucumber">
-    <h3>Braised Mushroom With Sea Cucumber<br><small>冬菇海参</small></h3>
-    <p>S RM60 / L RM98</p>
-    <button onclick="addItem('Braised Mushroom With Sea Cucumber',60)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Braised Mushroom With Sea Cucumber And Fish Maw">
-    <h3>Braised Mushroom With Sea Cucumber And Fish Maw<br><small>冬菇海参鱼鳔</small></h3>
-    <p>S RM85 / L RM138</p>
-    <button onclick="addItem('Braised Mushroom With Sea Cucumber And Fish Maw',85)">Add</button>
-  </div>
-</div>
-
-<h2>Shellfish<br><small>贝壳类</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Scallop">
-    <h3>Garlic Steam Scallop<br><small>蒜蓉蒸带子</small></h3>
-    <p>RM7.50 / pc (min 4 pcs)</p>
-    <button onclick="addItem('Garlic Steam Scallop',7.5)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Oyster">
-    <h3>Oyster<br><small>生蚝</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Oyster',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Lala">
-    <h3>Lala<br><small>啦啦</small></h3>
-    <p>S RM35 / L RM68</p>
-    <button onclick="addItem('Lala',35)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Gong Gong">
-    <h3>Gong Gong (Conch)<br><small>贡贡</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Gong Gong (Conch)',0)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Baked Oyster With Cheese">
-    <h3>Baked Oyster With Cheese<br><small>奶香芝士焗生蚝</small></h3>
-    <p>Market Price</p>
-    <button onclick="addItem('Baked Oyster With Cheese',0)">Add</button>
-  </div>
-</div>
-
-<h2>Prawn<br><small>虾</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Dried Fried Prawns">
-    <h3>Dried Fried Prawns<br><small>干煎虾</small></h3>
-    <p>S RM48 / M RM78 / L RM108</p>
-    <button onclick="addItem('Dried Fried Prawns',48)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Boiling Prawns">
-    <h3>Boiling Prawns<br><small>白灼虾</small></h3>
-    <p>S RM48 / M RM78 / L RM108</p>
-    <button onclick="addItem('Boiling Prawns',48)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Indonesia Style Prawns">
-    <h3>Indonesia Style Prawns<br><small>印尼虾</small></h3>
-    <p>S RM48 / M RM78 / L RM108</p>
-    <button onclick="addItem('Indonesia Style Prawns',48)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Cereal Butter Prawns">
-    <h3>Cereal Butter Prawns<br><small>麦片虾</small></h3>
-    <p>S RM48 / M RM78 / L RM108</p>
-    <button onclick="addItem('Cereal Butter Prawns',48)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Pineapple Style Prawns">
-    <h3>Pineapple Style Prawns<br><small>黄梨虾</small></h3>
-    <p>RM48</p>
-    <button onclick="addItem('Pineapple Style Prawns',48)">Add</button>
-  </div>
-</div>
-
-<h2>Squid / Cuttlefish<br><small>苏东</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Curry Leaf Squid">
-    <h3>Curry Leaf Squid<br><small>干香苏东</small></h3>
-    <p>S RM48 / M RM78 / L RM108</p>
-    <button onclick="addItem('Curry Leaf Squid',48)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Butter Fried Squid">
-    <h3>Butter Fried Squid<br><small>牛油苏东</small></h3>
-    <p>S RM48 / M RM78 / L RM108</p>
-    <button onclick="addItem('Butter Fried Squid',48)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Deep Fried Baby Squid">
-    <h3>Deep Fried Baby Squid<br><small>葱汁苏东仔</small></h3>
-    <p>S RM48 / M RM78 / L RM108</p>
-    <button onclick="addItem('Deep Fried Baby Squid',48)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Sambal Belacan Squid">
-    <h3>Sambal Belacan Squid<br><small>参峇苏东</small></h3>
-    <p>S RM48 / M RM78 / L RM108</p>
-    <button onclick="addItem('Sambal Belacan Squid',48)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Salted Egg Yolk Squid">
-    <h3>Salted Egg Yolk Squid<br><small>黄金咸蛋</small></h3>
-    <p>S RM48 / M RM78 / L RM108</p>
-    <button onclick="addItem('Salted Egg Yolk Squid',48)">Add</button>
-  </div>
-</div>
-
-<h2>Chicken<br><small>鸡肉</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Garden Chicken">
-    <h3>Garden Chicken<br><small>招牌菜园鸡</small></h3>
-    <p>RM88</p>
-    <button onclick="addItem('Garden Chicken',88)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Boxing Chicken">
-    <h3>Boxing Chicken<br><small>拳头鸡</small></h3>
-    <p>RM38</p>
-    <button onclick="addItem('Boxing Chicken',38)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Salted Baked Chicken">
-    <h3>Salted Baked Chicken<br><small>盐焗鸡</small></h3>
-    <p>S RM35 / L RM68</p>
-    <button onclick="addItem('Salted Baked Chicken',35)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Sweet Sour Chicken">
-    <h3>Sweet Sour Chicken<br><small>酸甜鸡丁</small></h3>
-    <p>RM35</p>
-    <button onclick="addItem('Sweet Sour Chicken',35)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Garlic Chicken">
-    <h3>Garlic Chicken<br><small>蒜头鸡</small></h3>
-    <p>RM35</p>
-    <button onclick="addItem('Garlic Chicken',35)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Ginger Onion Chicken">
-    <h3>Ginger Onion Chicken<br><small>姜葱鸡</small></h3>
-    <p>RM35</p>
-    <button onclick="addItem('Ginger Onion Chicken',35)">Add</button>
-  </div>
-</div>
-
-<h2>Fish Fillet<br><small>鱼片</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Black Pepper Fish Fillet">
-    <h3>Black Pepper Fish Fillet<br><small>黑胡椒鱼片</small></h3>
-    <p>S RM35 / L RM68</p>
-    <button onclick="addItem('Black Pepper Fish Fillet',35)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Ginger Onion Fish Fillet">
-    <h3>Ginger Onion Fish Fillet<br><small>姜葱鱼片</small></h3>
-    <p>S RM35 / L RM68</p>
-    <button onclick="addItem('Ginger Onion Fish Fillet',35)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Sweet Sour Fish Fillet">
-    <h3>Sweet Sour Fish Fillet<br><small>酸甜鱼片</small></h3>
-    <p>S RM35 / L RM68</p>
-    <button onclick="addItem('Sweet Sour Fish Fillet',35)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Curry Fish Fillet">
-    <h3>Curry Fish Fillet<br><small>咖喱鱼片</small></h3>
-    <p>S RM35 / L RM68</p>
-    <button onclick="addItem('Curry Fish Fillet',35)">Add</button>
-  </div>
-</div>
-
-<h2>Meat<br><small>肉类</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Ostrich Meat">
-    <h3>Ostrich Meat<br><small>鸵鸟肉</small></h3>
-    <p>S RM45 / L RM85</p>
-    <button onclick="addItem('Ostrich Meat',45)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Venison Meat">
-    <h3>Venison Meat<br><small>鹿肉</small></h3>
-    <p>S RM45 / L RM85</p>
-    <button onclick="addItem('Venison Meat',45)">Add</button>
-  </div>
-</div>
-
-<h2>Tofu<br><small>豆腐</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Braised Beancurd With Mushroom">
-    <h3>Braised Beancurd With Mushroom<br><small>招牌野菇菇豆腐</small></h3>
-    <p>S RM20 / L RM36</p>
-    <button onclick="addItem('Braised Beancurd With Mushroom',20)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Braised Beancurd With Crab Meat">
-    <h3>Braised Beancurd With Crab Meat<br><small>蟹扒豆腐</small></h3>
-    <p>S RM26 / L RM50</p>
-    <button onclick="addItem('Braised Beancurd With Crab Meat',26)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Chicken Minced Beancurd">
-    <h3>Chicken Minced Beancurd<br><small>家乡豆腐</small></h3>
-    <p>S RM26 / L RM50</p>
-    <button onclick="addItem('Chicken Minced Beancurd',26)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Crispy Seafood Beancurd">
-    <h3>Crispy Seafood Beancurd<br><small>香脆海鲜炸豆腐</small></h3>
-    <p>S RM20 / L RM36</p>
-    <button onclick="addItem('Crispy Seafood Beancurd',20)">Add</button>
-  </div>
-</div>
-
-<h2>Egg<br><small>蛋</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Onion Omelette">
-    <h3>Onion Omelette<br><small>大葱蛋</small></h3>
-    <p>S RM12 / L RM20</p>
-    <button onclick="addItem('Onion Omelette',12)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Prawn Omelette">
-    <h3>Prawn Omelette<br><small>虾仁蛋</small></h3>
-    <p>S RM18 / L RM30</p>
-    <button onclick="addItem('Prawn Omelette',18)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Oyster Omelette">
-    <h3>Oyster Omelette<br><small>蚝煎蛋</small></h3>
-    <p>S RM18 / L RM30</p>
-    <button onclick="addItem('Oyster Omelette',18)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Furong Omelette">
-    <h3>Furong Omelette<br><small>芙蓉蛋</small></h3>
-    <p>S RM18 / L RM30</p>
-    <button onclick="addItem('Furong Omelette',18)">Add</button>
-  </div>
-</div>
-
-<h2>Vegetables<br><small>蔬菜</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Kangkong">
-    <h3>Kangkong<br><small>蕹菜</small></h3>
-    <p>S RM15 / L RM24</p>
-    <button onclick="addItem('Kangkong',15)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Baby Kailan">
-    <h3>Baby Kailan<br><small>菜胆</small></h3>
-    <p>S RM18 / L RM30</p>
-    <button onclick="addItem('Baby Kailan',18)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Spinach">
-    <h3>Spinach<br><small>菠菜</small></h3>
-    <p>S RM18 / L RM30</p>
-    <button onclick="addItem('Spinach',18)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Mix Vegetable">
-    <h3>Mix Vegetable<br><small>什菜</small></h3>
-    <p>S RM24 / L RM36</p>
-    <button onclick="addItem('Mix Vegetable',24)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Broccoli">
-    <h3>Broccoli<br><small>西兰花</small></h3>
-    <p>S RM22 / L RM34</p>
-    <button onclick="addItem('Broccoli',22)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Yam Ring">
-    <h3>Yam Ring<br><small>佛本飘香</small></h3>
-    <p>S RM36 / L RM58</p>
-    <button onclick="addItem('Yam Ring',36)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Scallop With Broccoli">
-    <h3>Scallop With Broccoli<br><small>带子西兰花</small></h3>
-    <p>S RM40 / L RM75</p>
-    <button onclick="addItem('Scallop With Broccoli',40)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Prawn With Broccoli">
-    <h3>Prawn With Broccoli<br><small>虾球西兰花</small></h3>
-    <p>S RM40 / L RM75</p>
-    <button onclick="addItem('Prawn With Broccoli',40)">Add</button>
-  </div>
-</div>
-
-<h2>Soup<br><small>汤</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Tom Yam Soup">
-    <h3>Tom Yam Soup<br><small>东炎海鲜汤</small></h3>
-    <p>S RM28 / L RM50</p>
-    <button onclick="addItem('Tom Yam Soup',28)">Add</button>
+<div class="container">
+  <div class="header">
+    <img src="logo.png" alt="Desaru Seafood Corner Logo">
   </div>
 
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Braised Sweet Corn Soup With Crab Meat">
-    <h3>Braised Sweet Corn Soup With Crab Meat<br><small>粟米蟹肉羹</small></h3>
-    <p>S RM35 / L RM60</p>
-    <button onclick="addItem('Braised Sweet Corn Soup With Crab Meat',35)">Add</button>
+  <div class="top-note">
+    Seafood Restaurant Ordering Menu<br>
+    海鲜餐厅点餐菜单
   </div>
 
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Mix Vege Soup">
-    <h3>Mix Vege Soup<br><small>什菜汤</small></h3>
-    <p>S RM24 / L RM46</p>
-    <button onclick="addItem('Mix Vege Soup',24)">Add</button>
-  </div>
-
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Seaweed Soup">
-    <h3>Seaweed Soup<br><small>紫菜汤</small></h3>
-    <p>S RM24 / L RM46</p>
-    <button onclick="addItem('Seaweed Soup',24)">Add</button>
-  </div>
+  <div id="menuContainer"></div>
 
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Salted Vegetable With Beancurd">
-    <h3>Salted Vegetable With Beancurd<br><small>咸菜豆腐汤</small></h3>
-    <p>S RM24 / L RM46</p>
-    <button onclick="addItem('Salted Vegetable With Beancurd',24)">Add</button>
-  </div>
-</div>
-
-<h2>Fried Noodles / Rice<br><small>炒粉</small></h2>
-<div class="menu">
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Seafood Fried">
-    <h3>Seafood Fried<br><small>海鲜炒</small></h3>
-    <p>S RM12 / M RM24 / L RM38</p>
-    <button onclick="addItem('Seafood Fried',12)">Add</button>
-  </div>
+  <div class="cart">
+    <h2>Cart<small>购物车</small></h2>
 
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Kampung Fried">
-    <h3>Kampung Fried<br><small>甘榜炒</small></h3>
-    <p>S RM12 / M RM24 / L RM38</p>
-    <button onclick="addItem('Kampung Fried',12)">Add</button>
-  </div>
+    <ul id="cart"></ul>
 
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Sambal Fried">
-    <h3>Sambal Fried<br><small>参峇炒</small></h3>
-    <p>S RM12 / M RM24 / L RM38</p>
-    <button onclick="addItem('Sambal Fried',12)">Add</button>
-  </div>
+    <div class="total">Total: RM <span id="total">0.00</span></div>
 
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Hokkian Fried">
-    <h3>Hokkian Fried<br><small>福建炒</small></h3>
-    <p>S RM12 / M RM24 / L RM38</p>
-    <button onclick="addItem('Hokkian Fried',12)">Add</button>
-  </div>
+    <input id="table" placeholder="Table Number / 桌号">
+    <input id="customer" placeholder="Customer Name / 顾客姓名（可选）">
+    <textarea id="remarks" rows="3" placeholder="Remarks / 备注（例如：不要辣 / less spicy）"></textarea>
 
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Seafood Soup">
-    <h3>Seafood Soup<br><small>海鲜汤</small></h3>
-    <p>S RM12 / M RM24 / L RM38</p>
-    <button onclick="addItem('Seafood Soup',12)">Add</button>
-  </div>
+    <div class="cart-actions">
+      <button class="primary-btn" onclick="sendOrder()">Send Order via WhatsApp</button>
+      <button class="secondary-btn" onclick="clearCart()">Clear Cart</button>
+    </div>
 
-  <div class="item">
-    <img src="https://via.placeholder.com/200" alt="Cantonese Fried">
-    <h3>Cantonese Fried<br><small>广东炒</small></h3>
-    <p>S RM12 / M RM24 / L RM38</p>
-    <button onclick="addItem('Cantonese Fried',12)">Add</button>
+    <div class="notice">
+      * Market Price / 时价 items will be sent as inquiry items and will not be included in total.<br>
+      * 时价菜品不会计入总额，会在 WhatsApp 里显示为询价项目。
+    </div>
   </div>
-</div>
-</div>
-
-<h2>Fried Noodles / Rice<br><small>炒粉</small></h2>
-<div class="menu">
-  <!-- 这里之后放炒粉菜品 -->
-</div>
-
-<div class="cart">
-  <h2>Cart<br><small>购物车</small></h2>
-
-  <ul id="cart"></ul>
-
-  <p>Total: RM <span id="total">0</span></p>
-
-  <input id="table" placeholder="Table Number / 桌号">
-
-  <br><br>
-
-  <button onclick="sendOrder()">Send Order via WhatsApp</button>
 </div>
 
 <script>
+const phone = "60105309267";
+
+const menuData = [
+  {
+    titleEn: "Signature Dishes",
+    titleZh: "招牌菜",
+    items: [
+      { en:"Golden Pumpkin Lobster", zh:"金瓜龙虾", image:"https://via.placeholder.com/300?text=Golden+Pumpkin+Lobster", marketPrice:true },
+      { en:"Chilli Crab", zh:"辣子蟹", image:"https://via.placeholder.com/300?text=Chilli+Crab", marketPrice:true },
+      { en:"Goose Palm Abalone", zh:"掌上明珠", image:"https://via.placeholder.com/300?text=Goose+Palm+Abalone", prices:{ Standard:468 } },
+      { en:"Lobster with Superior Stock", zh:"上汤龙虾", image:"https://via.placeholder.com/300?text=Lobster+Superior+Stock", marketPrice:true },
+      { en:"Salt Baked Chicken", zh:"盐焗鸡", image:"https://via.placeholder.com/300?text=Salt+Baked+Chicken", prices:{ Standard:68 } },
+      { en:"Lava and Red Pomegranate Fish", zh:"火焰石榴鱼", image:"https://via.placeholder.com/300?text=Lava+Red+Pomegranate+Fish", marketPrice:true },
+      { en:"Curry Fish Head", zh:"咖喱鱼头", image:"https://via.placeholder.com/300?text=Curry+Fish+Head", marketPrice:true }
+    ]
+  },
+  {
+    titleEn: "Lobster",
+    titleZh: "龙虾",
+    items: [
+      { en:"Steamed Lobster (Egg / Garlic)", zh:"清蒸龙虾（蛋蒜 / 蒜蓉）", image:"https://via.placeholder.com/300?text=Steamed+Lobster", marketPrice:true },
+      { en:"Desaru Corner Style Lobster", zh:"金沙龙虾", image:"https://via.placeholder.com/300?text=Desaru+Lobster", marketPrice:true },
+      { en:"Typhoon Lobster", zh:"避风塘龙虾", image:"https://via.placeholder.com/300?text=Typhoon+Lobster", marketPrice:true },
+      { en:"Golden Pumpkin Lobster", zh:"金瓜龙虾", image:"https://via.placeholder.com/300?text=Golden+Pumpkin+Lobster", marketPrice:true },
+      { en:"Western Style Lobster", zh:"西式奶油龙虾", image:"https://via.placeholder.com/300?text=Western+Lobster", marketPrice:true },
+      { en:"Salted Egg Lobster", zh:"黄金咸蛋龙虾", image:"https://via.placeholder.com/300?text=Salted+Egg+Lobster", marketPrice:true },
+      { en:"Cheese Lobster", zh:"芝士烤龙虾", image:"https://via.placeholder.com/300?text=Cheese+Lobster", marketPrice:true }
+    ]
+  },
+  {
+    titleEn: "Crab",
+    titleZh: "螃蟹",
+    items: [
+      { en:"Chilli Crab", zh:"辣子蟹", image:"https://via.placeholder.com/300?text=Chilli+Crab", marketPrice:true },
+      { en:"Volcanic Crab", zh:"招牌火山蟹", image:"https://via.placeholder.com/300?text=Volcanic+Crab", marketPrice:true },
+      { en:"Black Pepper Crab", zh:"黑胡椒蟹", image:"https://via.placeholder.com/300?text=Black+Pepper+Crab", marketPrice:true },
+      { en:"Salted Egg Crab", zh:"黄金咸蛋蟹", image:"https://via.placeholder.com/300?text=Salted+Egg+Crab", marketPrice:true },
+      { en:"Steamed Crab (Egg)", zh:"清蒸蟹（蛋）", image:"https://via.placeholder.com/300?text=Steamed+Crab", marketPrice:true },
+      { en:"Curry Leaf Crab", zh:"干香蟹", image:"https://via.placeholder.com/300?text=Curry+Leaf+Crab", marketPrice:true }
+    ]
+  },
+  {
+    titleEn: "Fish",
+    titleZh: "鱼",
+    items: [
+      { en:"Hongkong Steam", zh:"港蒸", image:"https://via.placeholder.com/300?text=Hongkong+Steam", marketPrice:true },
+      { en:"Nyonya Steam", zh:"娘惹蒸", image:"https://via.placeholder.com/300?text=Nyonya+Steam", marketPrice:true },
+      { en:"Teo Chew Steam", zh:"潮州蒸", image:"https://via.placeholder.com/300?text=Teo+Chew+Steam", marketPrice:true },
+      { en:"Banana Leaf Sour and Spicy", zh:"香蕉叶酸辣", image:"https://via.placeholder.com/300?text=Banana+Leaf+Fish", marketPrice:true },
+      { en:"Dry Fried", zh:"油炸", image:"https://via.placeholder.com/300?text=Dry+Fried+Fish", marketPrice:true },
+      { en:"Lava and Red Pomegranate", zh:"火焰石榴", image:"https://via.placeholder.com/300?text=Lava+Red+Pomegranate", marketPrice:true },
+      { en:"Sweet and Sour", zh:"酸甜", image:"https://via.placeholder.com/300?text=Sweet+Sour+Fish", marketPrice:true }
+    ]
+  },
+  {
+    titleEn: "Fish Head",
+    titleZh: "鱼头",
+    items: [
+      { en:"Curry Fish Head", zh:"咖喱鱼头", image:"https://via.placeholder.com/300?text=Curry+Fish+Head", marketPrice:true },
+      { en:"Bitter Gourd Fish Head", zh:"苦瓜鼓汁鱼头", image:"https://via.placeholder.com/300?text=Bitter+Gourd+Fish+Head", marketPrice:true },
+      { en:"Curry Leaf Fish Head", zh:"干香炒鱼头", image:"https://via.placeholder.com/300?text=Curry+Leaf+Fish+Head", marketPrice:true },
+      { en:"Claypot Fish Head", zh:"砂锅鱼头", image:"https://via.placeholder.com/300?text=Claypot+Fish+Head", marketPrice:true }
+    ]
+  },
+  {
+    titleEn: "Seafood Specialties",
+    titleZh: "海味",
+    items: [
+      { en:"Braised Shark's Fin Soup with Crab Meat", zh:"蟹肉鱼翅", image:"https://via.placeholder.com/300?text=Shark+Fin+Crab+Meat", prices:{ S:82, M:116, L:150 } },
+      { en:"Seafood Pot", zh:"海味锅", image:"https://via.placeholder.com/300?text=Seafood+Pot", prices:{ S:88, M:118, L:168 } },
+      { en:"Goose Palm Abalone", zh:"掌上明珠", image:"https://via.placeholder.com/300?text=Goose+Palm+Abalone", prices:{ Standard:468 } },
+      { en:"Braised Mushroom with Sea Cucumber", zh:"冬菇海参", image:"https://via.placeholder.com/300?text=Mushroom+Sea+Cucumber", prices:{ S:60, L:98 } },
+      { en:"Braised Mushroom with Sea Cucumber and Fish Maw", zh:"冬菇海参鱼鳔", image:"https://via.placeholder.com/300?text=Sea+Cucumber+Fish+Maw", prices:{ S:85, L:138 } }
+    ]
+  },
+  {
+    titleEn: "Shellfish",
+    titleZh: "贝壳类",
+    items: [
+      { en:"Garlic Steam Scallop", zh:"蒜蓉蒸带子", image:"https://via.placeholder.com/300?text=Garlic+Steam+Scallop", prices:{ "Per Pc":7.5 }, note:"Min 4 pcs" },
+      { en:"Oyster", zh:"生蚝", image:"https://via.placeholder.com/300?text=Oyster", marketPrice:true },
+      { en:"Lala", zh:"啦啦", image:"https://via.placeholder.com/300?text=Lala", prices:{ S:35, L:68 } },
+      { en:"Gong Gong", zh:"贡贡", image:"https://via.placeholder.com/300?text=Gong+Gong", marketPrice:true },
+      { en:"Baked Oyster with Cheese", zh:"奶香芝士焗生蚝", image:"https://via.placeholder.com/300?text=Baked+Oyster+Cheese", marketPrice:true }
+    ]
+  },
+  {
+    titleEn: "Prawn",
+    titleZh: "虾",
+    items: [
+      { en:"Dried Fried Prawns", zh:"干煎虾", image:"https://via.placeholder.com/300?text=Dried+Fried+Prawns", prices:{ S:48, M:78, L:108 } },
+      { en:"Boiling Prawns", zh:"白灼虾", image:"https://via.placeholder.com/300?text=Boiling+Prawns", prices:{ S:48, M:78, L:108 } },
+      { en:"Indonesia Style Prawns", zh:"印尼虾", image:"https://via.placeholder.com/300?text=Indonesia+Style+Prawns", prices:{ S:48, M:78, L:108 } },
+      { en:"Cereal Butter Prawns", zh:"麦片虾", image:"https://via.placeholder.com/300?text=Cereal+Butter+Prawns", prices:{ S:48, M:78, L:108 } },
+      { en:"Pineapple Style Prawns", zh:"黄梨虾", image:"https://via.placeholder.com/300?text=Pineapple+Style+Prawns", prices:{ S:48, M:78, L:108 } }
+    ]
+  },
+  {
+    titleEn: "Squid / Cuttlefish",
+    titleZh: "苏东",
+    items: [
+      { en:"Curry Leaf Squid", zh:"干香苏东", image:"https://via.placeholder.com/300?text=Curry+Leaf+Squid", prices:{ S:48, M:78, L:108 } },
+      { en:"Butter Fried Squid", zh:"牛油苏东", image:"https://via.placeholder.com/300?text=Butter+Fried+Squid", prices:{ S:48, M:78, L:108 } },
+      { en:"Deep Fried Baby Squid", zh:"苏东仔", image:"https://via.placeholder.com/300?text=Deep+Fried+Baby+Squid", prices:{ S:48, M:78, L:108 } },
+      { en:"Sambal Belacan Squid", zh:"参峇苏东", image:"https://via.placeholder.com/300?text=Sambal+Belacan+Squid", prices:{ S:48, M:78, L:108 } },
+      { en:"Salted Egg Yolk Squid", zh:"黄金咸蛋苏东", image:"https://via.placeholder.com/300?text=Salted+Egg+Yolk+Squid", prices:{ S:48, M:78, L:108 } }
+    ]
+  },
+  {
+    titleEn: "Chicken",
+    titleZh: "鸡肉",
+    items: [
+      { en:"Garden Chicken", zh:"招牌菜园鸡", image:"https://via.placeholder.com/300?text=Garden+Chicken", prices:{ Standard:88 } },
+      { en:"Boxing Chicken", zh:"拳头鸡", image:"https://via.placeholder.com/300?text=Boxing+Chicken", prices:{ Standard:38 } },
+      { en:"Salt Baked Chicken", zh:"盐焗鸡", image:"https://via.placeholder.com/300?text=Salt+Baked+Chicken", prices:{ S:35, L:68 } },
+      { en:"Sweet Sour Chicken", zh:"酸甜鸡丁", image:"https://via.placeholder.com/300?text=Sweet+Sour+Chicken", prices:{ Standard:35 } },
+      { en:"Garlic Chicken", zh:"蒜头鸡", image:"https://via.placeholder.com/300?text=Garlic+Chicken", prices:{ Standard:35 } },
+      { en:"Ginger Onion Chicken", zh:"姜葱鸡", image:"https://via.placeholder.com/300?text=Ginger+Onion+Chicken", prices:{ Standard:35 } }
+    ]
+  },
+  {
+    titleEn: "Fish Fillet",
+    titleZh: "鱼片",
+    items: [
+      { en:"Black Pepper Fish Fillet", zh:"黑胡椒鱼片", image:"https://via.placeholder.com/300?text=Black+Pepper+Fish+Fillet", prices:{ S:35, L:68 } },
+      { en:"Ginger Onion Fish Fillet", zh:"姜葱鱼片", image:"https://via.placeholder.com/300?text=Ginger+Onion+Fish+Fillet", prices:{ S:35, L:68 } },
+      { en:"Sweet Sour Fish Fillet", zh:"酸甜鱼片", image:"https://via.placeholder.com/300?text=Sweet+Sour+Fish+Fillet", prices:{ S:35, L:68 } },
+      { en:"Curry Fish Fillet", zh:"咖喱鱼片", image:"https://via.placeholder.com/300?text=Curry+Fish+Fillet", prices:{ S:35, L:68 } }
+    ]
+  },
+  {
+    titleEn: "Meat",
+    titleZh: "肉类",
+    items: [
+      { en:"Ostrich Meat", zh:"鸵鸟肉", image:"https://via.placeholder.com/300?text=Ostrich+Meat", prices:{ S:45, L:85 }, note:"Cooking style may vary" },
+      { en:"Venison Meat", zh:"鹿肉", image:"https://via.placeholder.com/300?text=Venison+Meat", prices:{ S:45, L:85 }, note:"Cooking style may vary" }
+    ]
+  },
+  {
+    titleEn: "Tofu",
+    titleZh: "豆腐",
+    items: [
+      { en:"Braised Beancurd with Mushroom", zh:"招牌野菇菇豆腐", image:"https://via.placeholder.com/300?text=Beancurd+Mushroom", prices:{ S:20, L:36 } },
+      { en:"Braised Beancurd with Crab Meat", zh:"蟹扒豆腐", image:"https://via.placeholder.com/300?text=Beancurd+Crab+Meat", prices:{ S:26, L:50 } },
+      { en:"Chicken Minced Beancurd", zh:"家乡豆腐", image:"https://via.placeholder.com/300?text=Chicken+Minced+Beancurd", prices:{ S:26, L:50 } },
+      { en:"Crispy Seafood Beancurd", zh:"香脆海鲜炸豆腐", image:"https://via.placeholder.com/300?text=Crispy+Seafood+Beancurd", prices:{ S:20, L:36 } }
+    ]
+  },
+  {
+    titleEn: "Egg",
+    titleZh: "蛋",
+    items: [
+      { en:"Onion Omelette", zh:"大葱蛋", image:"https://via.placeholder.com/300?text=Onion+Omelette", prices:{ S:12, L:20 } },
+      { en:"Prawn Omelette", zh:"虾仁蛋", image:"https://via.placeholder.com/300?text=Prawn+Omelette", prices:{ S:18, L:30 } },
+      { en:"Oyster Omelette", zh:"蚝煎蛋", image:"https://via.placeholder.com/300?text=Oyster+Omelette", prices:{ S:18, L:30 } },
+      { en:"Furong Omelette", zh:"芙蓉蛋", image:"https://via.placeholder.com/300?text=Furong+Omelette", prices:{ S:18, L:30 } }
+    ]
+  },
+  {
+    titleEn: "Vegetables",
+    titleZh: "蔬菜",
+    items: [
+      { en:"Kangkong", zh:"蕹菜", image:"https://via.placeholder.com/300?text=Kangkong", prices:{ S:15, L:24 } },
+      { en:"Baby Kailan", zh:"菜胆", image:"https://via.placeholder.com/300?text=Baby+Kailan", prices:{ S:18, L:30 } },
+      { en:"Spinach", zh:"菠菜", image:"https://via.placeholder.com/300?text=Spinach", prices:{ S:18, L:30 } },
+      { en:"Mix Vegetable", zh:"什菜", image:"https://via.placeholder.com/300?text=Mix+Vegetable", prices:{ S:24, L:36 } },
+      { en:"Broccoli", zh:"西兰花", image:"https://via.placeholder.com/300?text=Broccoli", prices:{ S:22, L:34 } },
+      { en:"Yam Ring", zh:"佛本飘香", image:"https://via.placeholder.com/300?text=Yam+Ring", prices:{ S:36, L:58 } },
+      { en:"Scallop with Broccoli", zh:"带子西兰花", image:"https://via.placeholder.com/300?text=Scallop+Broccoli", prices:{ S:40, L:75 } },
+      { en:"Prawn with Broccoli", zh:"虾球西兰花", image:"https://via.placeholder.com/300?text=Prawn+Broccoli", prices:{ S:40, L:75 } }
+    ]
+  },
+  {
+    titleEn: "Soup",
+    titleZh: "汤",
+    items: [
+      { en:"Tom Yam Soup", zh:"东炎海鲜汤", image:"https://via.placeholder.com/300?text=Tom+Yam+Soup", prices:{ S:28, L:50 } },
+      { en:"Braised Sweet Corn Soup with Crab Meat", zh:"粟米蟹肉羹", image:"https://via.placeholder.com/300?text=Sweet+Corn+Crab+Soup", prices:{ S:35, L:60 } },
+      { en:"Mix Vege Soup", zh:"什菜汤", image:"https://via.placeholder.com/300?text=Mix+Vege+Soup", prices:{ S:24, L:46 } },
+      { en:"Seaweed Soup", zh:"紫菜汤", image:"https://via.placeholder.com/300?text=Seaweed+Soup", prices:{ S:24, L:46 } },
+      { en:"Salted Vegetable with Beancurd", zh:"咸菜豆腐汤", image:"https://via.placeholder.com/300?text=Salted+Vegetable+Beancurd+Soup", prices:{ S:24, L:46 } }
+    ]
+  },
+  {
+    titleEn: "Fried Noodles / Rice",
+    titleZh: "炒粉 / 饭",
+    items: [
+      { en:"Seafood Fried", zh:"海鲜炒", image:"https://via.placeholder.com/300?text=Seafood+Fried", prices:{ S:12, M:24, L:38 } },
+      { en:"Kampung Fried", zh:"甘榜炒", image:"https://via.placeholder.com/300?text=Kampung+Fried", prices:{ S:12, M:24, L:38 } },
+      { en:"Sambal Fried", zh:"参峇炒", image:"https://via.placeholder.com/300?text=Sambal+Fried", prices:{ S:12, M:24, L:38 } },
+      { en:"Hokkian Fried", zh:"福建炒", image:"https://via.placeholder.com/300?text=Hokkian+Fried", prices:{ S:12, M:24, L:38 } },
+      { en:"Seafood Soup Noodle", zh:"海鲜汤", image:"https://via.placeholder.com/300?text=Seafood+Soup+Noodle", prices:{ S:12, M:24, L:38 } },
+      { en:"Cantonese Fried", zh:"广东炒", image:"https://via.placeholder.com/300?text=Cantonese+Fried", prices:{ S:12, M:24, L:38 } }
+    ]
+  },
+  {
+    titleEn: "Drinks",
+    titleZh: "饮料",
+    items: [
+      { en:"Chinese Tea", zh:"中国茶", image:"https://via.placeholder.com/300?text=Chinese+Tea", prices:{ Standard:1.5 } },
+      { en:"White Coffee", zh:"白咖啡", image:"https://via.placeholder.com/300?text=White+Coffee", prices:{ Standard:5.5 } }
+    ]
+  }
+];
+
 let cart = [];
 let total = 0;
 
-function addItem(name, price){
-  let found = cart.find(item => item.name === name);
+function formatPriceText(item){
+  if(item.marketPrice) return "Market Price / 时价";
+
+  const entries = Object.entries(item.prices || {});
+  return entries.map(([size, price]) => `${size}: RM${Number(price).toFixed(2)}`).join(" | ");
+}
+
+function createButtons(item){
+  if(item.marketPrice){
+    return `
+      <div class="btn-row">
+        <button class="btn-ask" onclick="askPrice('${escapeText(item.en)}','${escapeText(item.zh)}')">Ask Price</button>
+      </div>
+    `;
+  }
+
+  const entries = Object.entries(item.prices || {});
+  return `
+    <div class="btn-row">
+      ${entries.map(([size, price]) => `
+        <button class="btn-size" onclick="addItem('${escapeText(item.en)}','${escapeText(item.zh)}','${escapeText(size)}',${Number(price)})">
+          ${size} - RM${Number(price).toFixed(2)}
+        </button>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderMenu(){
+  const container = document.getElementById("menuContainer");
+  container.innerHTML = menuData.map(category => `
+    <div class="category">
+      <div class="category-title">
+        ${category.titleEn}
+        <small>${category.titleZh}</small>
+      </div>
+
+      <div class="menu-grid">
+        ${category.items.map(item => `
+          <div class="item">
+            <img src="${item.image}" alt="${item.en}">
+            <h3>${item.en}<small>${item.zh}</small></h3>
+            <div class="price">${formatPriceText(item)}</div>
+            ${item.note ? `<div class="price-note">${item.note}</div>` : ""}
+            ${createButtons(item)}
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `).join("");
+}
+
+function escapeText(str){
+  return String(str)
+    .replace(/\\/g, "\\\\")
+    .replace(/'/g, "\\'")
+    .replace(/"/g, '&quot;');
+}
+
+function addItem(nameEn, nameZh, size, price){
+  const itemKey = `${nameEn}__${size}`;
+  const found = cart.find(item => item.key === itemKey);
 
   if(found){
     found.qty++;
   }else{
-    cart.push({name:name, price:price, qty:1});
+    cart.push({
+      key:itemKey,
+      nameEn,
+      nameZh,
+      size,
+      price:Number(price),
+      qty:1,
+      marketPrice:false
+    });
   }
 
-  total += price;
+  total += Number(price);
+  showCart();
+}
+
+function askPrice(nameEn, nameZh){
+  const found = cart.find(item => item.nameEn === nameEn && item.marketPrice);
+
+  if(found){
+    found.qty++;
+  }else{
+    cart.push({
+      key:`${nameEn}__market`,
+      nameEn,
+      nameZh,
+      size:"Market Price",
+      price:0,
+      qty:1,
+      marketPrice:true
+    });
+  }
+
   showCart();
 }
 
 function showCart(){
-  let cartList = document.getElementById("cart");
+  const cartList = document.getElementById("cart");
   cartList.innerHTML = "";
 
-  cart.forEach(item => {
-    let li = document.createElement("li");
-    li.innerText = item.name + " x" + item.qty + " RM" + (item.price * item.qty);
-    cartList.appendChild(li);
-  });
+  if(cart.length === 0){
+    cartList.innerHTML = "<li>No items yet / 还没有点餐</li>";
+  }else{
+    cart.forEach((item, index) => {
+      const li = document.createElement("li");
 
-  document.getElementById("total").innerText = total;
+      if(item.marketPrice){
+        li.innerHTML = `
+          ${item.nameEn} (${item.nameZh}) - ${item.size} x${item.qty}
+          <button class="secondary-btn" style="margin-left:8px;padding:4px 8px;" onclick="removeOne(${index})">-1</button>
+        `;
+      }else{
+        li.innerHTML = `
+          ${item.nameEn} (${item.nameZh}) - ${item.size} x${item.qty} = RM${(item.price * item.qty).toFixed(2)}
+          <button class="secondary-btn" style="margin-left:8px;padding:4px 8px;" onclick="removeOne(${index})">-1</button>
+        `;
+      }
+
+      cartList.appendChild(li);
+    });
+  }
+
+  document.getElementById("total").innerText = total.toFixed(2);
+}
+
+function removeOne(index){
+  const item = cart[index];
+  if(!item) return;
+
+  if(!item.marketPrice){
+    total -= item.price;
+    if(total < 0) total = 0;
+  }
+
+  item.qty--;
+
+  if(item.qty <= 0){
+    cart.splice(index, 1);
+  }
+
+  showCart();
+}
+
+function clearCart(){
+  cart = [];
+  total = 0;
+  showCart();
 }
 
 function sendOrder(){
-  let table = document.getElementById("table").value;
-  let message = "Desaru Seafood Corner Order\n";
-  message += "Table: " + table + "\n\n";
+  const table = document.getElementById("table").value.trim();
+  const customer = document.getElementById("customer").value.trim();
+  const remarks = document.getElementById("remarks").value.trim();
 
-  cart.forEach(item => {
-    message += item.name + " x" + item.qty + " RM" + (item.price * item.qty) + "\n";
-  });
+  let message = "Desaru Seafood Corner Order\\n";
+  message += "Desaru Seafood Corner 点餐\\n\\n";
 
-  message += "\nTotal: RM" + total;
+  if(table) message += "Table / 桌号: " + table + "\\n";
+  if(customer) message += "Customer / 顾客: " + customer + "\\n";
 
-  let phone = "60105309267";
-  let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+  message += "\\nItems / 菜品:\\n";
 
+  if(cart.length === 0){
+    message += "- No items selected / 没有点餐\\n";
+  }else{
+    cart.forEach(item => {
+      if(item.marketPrice){
+        message += `- ${item.nameEn} (${item.nameZh}) x${item.qty} [Market Price / 时价]\\n`;
+      }else{
+        message += `- ${item.nameEn} (${item.nameZh}) [${item.size}] x${item.qty} = RM${(item.price * item.qty).toFixed(2)}\\n`;
+      }
+    });
+  }
+
+  message += `\\nTotal / 总额: RM${total.toFixed(2)}\\n`;
+
+  if(remarks){
+    message += `\\nRemarks / 备注: ${remarks}\\n`;
+  }
+
+  const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
   window.open(url, "_blank");
 }
+
+renderMenu();
+showCart();
 </script>
 
 </body>
