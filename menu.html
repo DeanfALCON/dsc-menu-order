@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Desaru Seafood Corner</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f5f5f5;
+padding:20px;
+}
+
+h1{
+text-align:center;
+}
+
+.menu{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.item{
+background:white;
+border-radius:10px;
+padding:10px;
+width:180px;
+box-shadow:0 2px 5px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+.item img{
+width:100%;
+height:120px;
+object-fit:cover;
+border-radius:8px;
+}
+
+button{
+background:#009933;
+color:white;
+border:none;
+padding:6px 10px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.cart{
+margin-top:30px;
+background:white;
+padding:15px;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Desaru Seafood Corner</h1>
+
+<h2>Menu</h2>
+
+<div class="menu">
+
+<div class="item">
+<img src="https://via.placeholder.com/200">
+<h3>Chilli Crab</h3>
+<p>RM68</p>
+<button onclick="addItem('Chilli Crab',68)">Add</button>
+</div>
+
+<div class="item">
+<img src="https://via.placeholder.com/200">
+<h3>Butter Prawn</h3>
+<p>RM38</p>
+<button onclick="addItem('Butter Prawn',38)">Add</button>
+</div>
+
+<div class="item">
+<img src="https://via.placeholder.com/200">
+<h3>Salted Egg Squid</h3>
+<p>RM28</p>
+<button onclick="addItem('Salted Egg Squid',28)">Add</button>
+</div>
+
+<div class="item">
+<img src="https://via.placeholder.com/200">
+<h3>Steamed Fish</h3>
+<p>RM45</p>
+<button onclick="addItem('Steamed Fish',45)">Add</button>
+</div>
+
+</div>
+
+<div class="cart">
+
+<h2>Cart</h2>
+
+<ul id="cart"></ul>
+
+<p>Total: RM <span id="total">0</span></p>
+
+<input id="table" placeholder="Table Number">
+
+<br><br>
+
+<button onclick="sendOrder()">Send Order via WhatsApp</button>
+
+</div>
+
+<script>
+
+let cart=[];
+let total=0;
+
+function addItem(name,price){
+
+let found=cart.find(item=>item.name===name);
+
+if(found){
+
+found.qty++;
+
+}else{
+
+cart.push({name:name,price:price,qty:1});
+
+}
+
+total+=price;
+
+showCart();
+
+}
+
+function showCart(){
+
+let cartList=document.getElementById("cart");
+
+cartList.innerHTML="";
+
+cart.forEach(item=>{
+
+let li=document.createElement("li");
+
+li.innerText=item.name+" x"+item.qty+" RM"+(item.price*item.qty);
+
+cartList.appendChild(li);
+
+});
+
+document.getElementById("total").innerText=total;
+
+}
+
+function sendOrder(){
+
+let table=document.getElementById("table").value;
+
+let message="Desaru Seafood Corner Order%0A";
+
+message+="Table: "+table+"%0A%0A";
+
+cart.forEach(item=>{
+
+message+=item.name+" x"+item.qty+" RM"+(item.price*item.qty)+"%0A";
+
+});
+
+message+="%0ATotal: RM"+total;
+
+let phone="60105309267";
+
+let url="https://wa.me/"+phone+"?text="+message;
+
+window.open(url);
+
+}
+
+</script>
+
+</body>
+
+</html>
