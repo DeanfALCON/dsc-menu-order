@@ -25,7 +25,7 @@ body{
 
 .header{
   text-align:center;
-  margin-bottom:20px;
+  margin-bottom:16px;
 }
 
 .header img{
@@ -37,7 +37,8 @@ body{
   text-align:center;
   color:#666;
   font-size:14px;
-  margin-bottom:20px;
+  margin-bottom:24px;
+  line-height:1.6;
 }
 
 .category-title{
@@ -97,6 +98,7 @@ body{
   color:#ff3300;
   font-weight:bold;
   min-height:20px;
+  line-height:1.5;
 }
 
 .price-note{
@@ -118,11 +120,6 @@ button{
   padding:8px 12px;
   cursor:pointer;
   font-weight:bold;
-}
-
-.btn-add{
-  background:#009933;
-  color:#fff;
 }
 
 .btn-size{
@@ -158,6 +155,20 @@ button{
   font-weight:normal;
 }
 
+.order-type-box{
+  margin-bottom:14px;
+  padding:12px;
+  border-radius:10px;
+  background:#fafafa;
+  border:1px solid #eee;
+}
+
+.order-type-box label{
+  margin-right:16px;
+  display:inline-block;
+  margin-top:8px;
+}
+
 #cart{
   padding-left:20px;
   margin-top:10px;
@@ -166,13 +177,24 @@ button{
 
 #cart li{
   margin-bottom:8px;
-  line-height:1.5;
+  line-height:1.6;
 }
 
-.total{
-  font-size:18px;
+.summary-line{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  margin:8px 0;
+  font-size:16px;
+}
+
+.summary-line.total{
+  font-size:20px;
   font-weight:bold;
-  margin:14px 0;
+  color:#009933;
+  border-top:1px solid #eee;
+  padding-top:10px;
+  margin-top:12px;
 }
 
 input, textarea{
@@ -201,9 +223,20 @@ input, textarea{
 }
 
 .notice{
-  margin-top:10px;
+  margin-top:12px;
   color:#666;
   font-size:13px;
+  line-height:1.6;
+}
+
+.empty-note{
+  color:#777;
+}
+
+.mini-btn{
+  margin-left:8px;
+  padding:4px 8px;
+  font-size:12px;
 }
 
 @media (max-width:768px){
@@ -221,6 +254,14 @@ input, textarea{
 
   .item img{
     height:140px;
+  }
+
+  .summary-line{
+    font-size:15px;
+  }
+
+  .summary-line.total{
+    font-size:18px;
   }
 }
 </style>
@@ -242,9 +283,39 @@ input, textarea{
   <div class="cart">
     <h2>Cart<small>购物车</small></h2>
 
+    <div class="order-type-box">
+      <strong>Order Type / 用餐方式</strong><br>
+      <label>
+        <input type="radio" name="orderType" value="dinein" checked onchange="showCart()">
+        Dine-in / 堂食
+      </label>
+      <label>
+        <input type="radio" name="orderType" value="takeaway" onchange="showCart()">
+        Takeaway / 打包
+      </label>
+    </div>
+
     <ul id="cart"></ul>
 
-    <div class="total">Total: RM <span id="total">0.00</span></div>
+    <div class="summary-line">
+      <span>Subtotal / 小计</span>
+      <span>RM <span id="subtotal">0.00</span></span>
+    </div>
+
+    <div class="summary-line">
+      <span>SST 6%</span>
+      <span>RM <span id="sst">0.00</span></span>
+    </div>
+
+    <div class="summary-line">
+      <span>Service Charge 6%</span>
+      <span>RM <span id="svc">0.00</span></span>
+    </div>
+
+    <div class="summary-line total">
+      <span>Grand Total / 总额</span>
+      <span>RM <span id="grandTotal">0.00</span></span>
+    </div>
 
     <input id="table" placeholder="Table Number / 桌号">
     <input id="customer" placeholder="Customer Name / 顾客姓名（可选）">
@@ -257,7 +328,9 @@ input, textarea{
 
     <div class="notice">
       * Market Price / 时价 items will be sent as inquiry items and will not be included in total.<br>
-      * 时价菜品不会计入总额，会在 WhatsApp 里显示为询价项目。
+      * Takeaway / 打包: 6% SST<br>
+      * Dine-in / 堂食: 6% SST + 6% Service Charge<br>
+      * Amounts are rounded to nearest 10 sen / 金额会四舍五入到最接近的 10 sen
     </div>
   </div>
 </div>
@@ -471,6 +544,38 @@ const menuData = [
 let cart = [];
 let total = 0;
 
+function escapeText(str){
+  return String(str)
+    .replace(/\\/g, "\\\\")
+    .replace(/'/g, "\\'")
+    .replace(/"/g, "&quot;");
+}
+
+function roundToTenCents(value){
+  return Math.round(value * 10) / 10;
+}
+
+function getOrderType(){
+  const selected = document.querySelector('input[name="orderType"]:checked');
+  return selected ? selected.value : "dinein";
+}
+
+function calculateCharges(){
+  const subtotal = roundToTenCents(Number(total));
+  const sst = roundToTenCents(subtotal * 0.06);
+  const orderType = getOrderType();
+  const svc = orderType === "dinein" ? roundToTenCents(subtotal * 0.06) : 0;
+  const grandTotal = roundToTenCents(subtotal + sst + svc);
+
+  return {
+    subtotal,
+    sst,
+    svc,
+    grandTotal,
+    orderType
+  };
+}
+
 function formatPriceText(item){
   if(item.marketPrice) return "Market Price / 时价";
 
@@ -523,13 +628,6 @@ function renderMenu(){
   `).join("");
 }
 
-function escapeText(str){
-  return String(str)
-    .replace(/\\/g, "\\\\")
-    .replace(/'/g, "\\'")
-    .replace(/"/g, '&quot;');
-}
-
 function addItem(nameEn, nameZh, size, price){
   const itemKey = `${nameEn}__${size}`;
   const found = cart.find(item => item.key === itemKey);
@@ -562,7 +660,7 @@ function askPrice(nameEn, nameZh){
       key:`${nameEn}__market`,
       nameEn,
       nameZh,
-      size:"Market Price",
+      size:"Market Price / 时价",
       price:0,
       qty:1,
       marketPrice:true
@@ -577,7 +675,7 @@ function showCart(){
   cartList.innerHTML = "";
 
   if(cart.length === 0){
-    cartList.innerHTML = "<li>No items yet / 还没有点餐</li>";
+    cartList.innerHTML = '<li class="empty-note">No items yet / 还没有点餐</li>';
   }else{
     cart.forEach((item, index) => {
       const li = document.createElement("li");
@@ -585,12 +683,12 @@ function showCart(){
       if(item.marketPrice){
         li.innerHTML = `
           ${item.nameEn} (${item.nameZh}) - ${item.size} x${item.qty}
-          <button class="secondary-btn" style="margin-left:8px;padding:4px 8px;" onclick="removeOne(${index})">-1</button>
+          <button class="secondary-btn mini-btn" onclick="removeOne(${index})">-1</button>
         `;
       }else{
         li.innerHTML = `
-          ${item.nameEn} (${item.nameZh}) - ${item.size} x${item.qty} = RM${(item.price * item.qty).toFixed(2)}
-          <button class="secondary-btn" style="margin-left:8px;padding:4px 8px;" onclick="removeOne(${index})">-1</button>
+          ${item.nameEn} (${item.nameZh}) [${item.size}] x${item.qty} = RM${(item.price * item.qty).toFixed(2)}
+          <button class="secondary-btn mini-btn" onclick="removeOne(${index})">-1</button>
         `;
       }
 
@@ -598,7 +696,11 @@ function showCart(){
     });
   }
 
-  document.getElementById("total").innerText = total.toFixed(2);
+  const charges = calculateCharges();
+  document.getElementById("subtotal").innerText = charges.subtotal.toFixed(2);
+  document.getElementById("sst").innerText = charges.sst.toFixed(2);
+  document.getElementById("svc").innerText = charges.svc.toFixed(2);
+  document.getElementById("grandTotal").innerText = charges.grandTotal.toFixed(2);
 }
 
 function removeOne(index){
@@ -626,35 +728,62 @@ function clearCart(){
 }
 
 function sendOrder(){
+  if(cart.length === 0){
+    alert("No items selected / 还没有点餐");
+    return;
+  }
+
   const table = document.getElementById("table").value.trim();
   const customer = document.getElementById("customer").value.trim();
   const remarks = document.getElementById("remarks").value.trim();
 
-  let message = "Desaru Seafood Corner Order\\n";
-  message += "Desaru Seafood Corner 点餐\\n\\n";
+  const charges = calculateCharges();
+  const orderTypeText = charges.orderType === "dinein" ? "Dine-in / 堂食" : "Takeaway / 打包";
 
-  if(table) message += "Table / 桌号: " + table + "\\n";
-  if(customer) message += "Customer / 顾客: " + customer + "\\n";
+  let normalItems = cart.filter(item => !item.marketPrice);
+  let marketItems = cart.filter(item => item.marketPrice);
 
-  message += "\\nItems / 菜品:\\n";
+  let message = "";
+  message += "🦞 DESARU SEAFOOD CORNER ORDER\n";
+  message += "============================\n";
+  message += `Order Type / 用餐方式: ${orderTypeText}\n`;
 
-  if(cart.length === 0){
-    message += "- No items selected / 没有点餐\\n";
-  }else{
-    cart.forEach(item => {
-      if(item.marketPrice){
-        message += `- ${item.nameEn} (${item.nameZh}) x${item.qty} [Market Price / 时价]\\n`;
-      }else{
-        message += `- ${item.nameEn} (${item.nameZh}) [${item.size}] x${item.qty} = RM${(item.price * item.qty).toFixed(2)}\\n`;
-      }
+  if(table){
+    message += `Table / 桌号: ${table}\n`;
+  }
+
+  if(customer){
+    message += `Customer / 顾客: ${customer}\n`;
+  }
+
+  message += "\n🍽️ ITEMS / 菜品\n";
+
+  normalItems.forEach((item, i) => {
+    message += `${i + 1}. ${item.nameEn} (${item.nameZh})\n`;
+    message += `   Size: ${item.size}\n`;
+    message += `   Qty: ${item.qty}\n`;
+    message += `   Amount: RM${(item.price * item.qty).toFixed(2)}\n`;
+  });
+
+  if(marketItems.length > 0){
+    message += "\n💬 MARKET PRICE ITEMS / 时价项目\n";
+    marketItems.forEach((item, i) => {
+      message += `${i + 1}. ${item.nameEn} (${item.nameZh}) x${item.qty}\n`;
     });
   }
 
-  message += `\\nTotal / 总额: RM${total.toFixed(2)}\\n`;
+  message += "\n🧾 BILL SUMMARY / 账单摘要\n";
+  message += `Subtotal / 小计: RM${charges.subtotal.toFixed(2)}\n`;
+  message += `SST 6%: RM${charges.sst.toFixed(2)}\n`;
+  message += `Service Charge 6%: RM${charges.svc.toFixed(2)}\n`;
+  message += `Grand Total / 总额: RM${charges.grandTotal.toFixed(2)}\n`;
 
   if(remarks){
-    message += `\\nRemarks / 备注: ${remarks}\\n`;
+    message += "\n📝 REMARKS / 备注\n";
+    message += `${remarks}\n`;
   }
+
+  message += "\nThank you / 谢谢";
 
   const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
   window.open(url, "_blank");
