@@ -41,21 +41,49 @@ body{
   line-height:1.6;
 }
 
-.category-title{
-  margin-top:38px;
-  margin-bottom:16px;
-  border-left:6px solid #ff3300;
-  padding-left:12px;
-  font-size:24px;
-  font-weight:bold;
+.category-block{
+  margin-top:20px;
 }
 
-.category-title small{
+.category-header{
+  width:100%;
+  border:none;
+  background:#fff;
+  border-left:6px solid #ff3300;
+  border-radius:12px;
+  padding:14px 16px;
+  font-size:22px;
+  font-weight:bold;
+  text-align:left;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+
+.category-header small{
   display:block;
   color:#777;
   font-size:14px;
   margin-top:4px;
   font-weight:normal;
+}
+
+.category-arrow{
+  font-size:22px;
+  color:#ff3300;
+  min-width:28px;
+  text-align:right;
+}
+
+.category-content{
+  display:none;
+  padding-top:14px;
+}
+
+.category-content.open{
+  display:block;
 }
 
 .menu-grid{
@@ -133,7 +161,6 @@ button{
 }
 
 .cart{
- .cart{
   margin-top:30px;
   background:#fff;
   border-radius:16px;
@@ -247,8 +274,9 @@ input, textarea{
     width:150px;
   }
 
-  .category-title{
-    font-size:20px;
+  .category-header{
+    font-size:18px;
+    padding:12px 14px;
   }
 
   .item img{
@@ -341,6 +369,7 @@ const menuData = [
   {
     titleEn: "Signature Dishes",
     titleZh: "招牌菜",
+    defaultOpen: true,
     items: [
       { en:"Golden Pumpkin Lobster", zh:"金瓜龙虾", image:"https://via.placeholder.com/300?text=Golden+Pumpkin+Lobster", marketPrice:true },
       { en:"Chilli Crab", zh:"辣子蟹", image:"https://via.placeholder.com/300?text=Chilli+Crab", marketPrice:true },
@@ -577,7 +606,6 @@ function calculateCharges(){
 
 function formatPriceText(item){
   if(item.marketPrice) return "Market Price / 时价";
-
   const entries = Object.entries(item.prices || {});
   return entries.map(([size, price]) => `${size}: RM${Number(price).toFixed(2)}`).join(" | ");
 }
@@ -603,25 +631,46 @@ function createButtons(item){
   `;
 }
 
+function toggleCategory(index){
+  const content = document.getElementById(`category-content-${index}`);
+  const arrow = document.getElementById(`category-arrow-${index}`);
+
+  if(content.classList.contains("open")){
+    content.classList.remove("open");
+    arrow.innerHTML = "＋";
+  }else{
+    content.classList.add("open");
+    arrow.innerHTML = "－";
+  }
+}
+
 function renderMenu(){
   const container = document.getElementById("menuContainer");
-  container.innerHTML = menuData.map(category => `
-    <div class="category">
-      <div class="category-title">
-        ${category.titleEn}
-        <small>${category.titleZh}</small>
-      </div>
 
-      <div class="menu-grid">
-        ${category.items.map(item => `
-          <div class="item">
-            <img src="${item.image}" alt="${item.en}">
-            <h3>${item.en}<small>${item.zh}</small></h3>
-            <div class="price">${formatPriceText(item)}</div>
-            ${item.note ? `<div class="price-note">${item.note}</div>` : ""}
-            ${createButtons(item)}
-          </div>
-        `).join("")}
+  container.innerHTML = menuData.map((category, index) => `
+    <div class="category-block">
+      <button class="category-header" onclick="toggleCategory(${index})">
+        <span>
+          ${category.titleEn}
+          <small>${category.titleZh}</small>
+        </span>
+        <span class="category-arrow" id="category-arrow-${index}">
+          ${category.defaultOpen ? "－" : "＋"}
+        </span>
+      </button>
+
+      <div class="category-content ${category.defaultOpen ? "open" : ""}" id="category-content-${index}">
+        <div class="menu-grid">
+          ${category.items.map(item => `
+            <div class="item">
+              <img src="${item.image}" alt="${item.en}">
+              <h3>${item.en}<small>${item.zh}</small></h3>
+              <div class="price">${formatPriceText(item)}</div>
+              ${item.note ? `<div class="price-note">${item.note}</div>` : ""}
+              ${createButtons(item)}
+            </div>
+          `).join("")}
+        </div>
       </div>
     </div>
   `).join("");
