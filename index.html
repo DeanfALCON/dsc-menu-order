@@ -5,76 +5,102 @@
 <title>Desaru Seafood Corner</title>
 
 <style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f5f5f5;
+  padding:20px;
+  margin:0;
+}
+
 .header{
-text-align:center;
-margin-bottom:20px;
+  text-align:center;
+  margin-bottom:20px;
 }
 
 .header img{
-width:150px;
-max-width:70%;
-}
-body{
-font-family: Arial;
-background:#f5f5f5;
-padding:20px;
+  width:150px;
+  max-width:70%;
 }
 
-h1{
-text-align:center;
-}
-
-.menu{
-display:flex;
-flex-wrap:wrap;
-gap:15px;
-}
-
-.item{
-background:white;
-border-radius:10px;
-padding:10px;
-width:180px;
-box-shadow:0 2px 5px rgba(0,0,0,0.2);
-text-align:center;
-}
-
-.item img{
-width:100%;
-height:120px;
-object-fit:cover;
-border-radius:8px;
-}
-
-button{
-background:#009933;
-color:white;
-border:none;
-padding:6px 10px;
-border-radius:5px;
-cursor:pointer;
-}
-
-.cart{
-margin-top:30px;
-background:white;
-padding:15px;
-border-radius:10px;
-}
-
-</style>
 h2{
-margin-top:35px;
-border-left:6px solid #ff3300;
-padding-left:12px;
-font-weight:bold;
+  margin-top:35px;
+  margin-bottom:15px;
+  border-left:6px solid #ff3300;
+  padding-left:12px;
+  color:#222;
 }
 
 h2 small{
-display:block;
-color:#777;
-font-size:14px;
+  display:block;
+  color:#777;
+  font-size:14px;
+  margin-top:3px;
 }
+
+.menu{
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-bottom:10px;
+}
+
+.item{
+  background:white;
+  border-radius:10px;
+  padding:10px;
+  width:180px;
+  box-shadow:0 2px 5px rgba(0,0,0,0.2);
+  text-align:center;
+}
+
+.item img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.item h3{
+  margin:10px 0 5px;
+  font-size:18px;
+}
+
+.item h3 small{
+  display:block;
+  color:#777;
+  font-size:14px;
+  margin-top:4px;
+}
+
+button{
+  background:#009933;
+  color:white;
+  border:none;
+  padding:8px 12px;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:0.9;
+}
+
+.cart{
+  margin-top:30px;
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 2px 5px rgba(0,0,0,0.15);
+}
+
+.cart input{
+  padding:8px;
+  width:220px;
+  max-width:100%;
+  border:1px solid #ccc;
+  border-radius:5px;
+}
+</style>
 </head>
 
 <body>
@@ -82,154 +108,168 @@ font-size:14px;
 <div class="header">
   <img src="logo.png" alt="Desaru Seafood Corner">
 </div>
+
 <h2>Signature Dishes<br><small>招牌菜</small></h2>
+<div class="menu">
+  <div class="item">
+    <img src="https://via.placeholder.com/200" alt="Chilli Crab">
+    <h3>Chilli Crab<br><small>辣椒螃蟹</small></h3>
+    <p>RM68</p>
+    <button onclick="addItem('Chilli Crab',68)">Add</button>
+  </div>
+</div>
 
 <h2>Lobster<br><small>龙虾</small></h2>
+<div class="menu">
+  <!-- 这里之后放龙虾菜品 -->
+</div>
 
 <h2>Crab<br><small>螃蟹</small></h2>
+<div class="menu">
+  <!-- 这里之后放螃蟹菜品 -->
+</div>
 
 <h2>Fish / Fish Head<br><small>鱼 / 鱼头</small></h2>
+<div class="menu">
+  <div class="item">
+    <img src="https://via.placeholder.com/200" alt="Steamed Fish">
+    <h3>Steamed Fish<br><small>清蒸鱼</small></h3>
+    <p>RM45</p>
+    <button onclick="addItem('Steamed Fish',45)">Add</button>
+  </div>
+</div>
 
 <h2>Seafood Specialties<br><small>海味</small></h2>
+<div class="menu">
+  <!-- 这里之后放海味菜品 -->
+</div>
 
 <h2>Shellfish<br><small>贝壳类</small></h2>
+<div class="menu">
+  <!-- 这里之后放贝壳类菜品 -->
+</div>
 
 <h2>Prawn<br><small>虾</small></h2>
+<div class="menu">
+  <div class="item">
+    <img src="https://via.placeholder.com/200" alt="Butter Prawn">
+    <h3>Butter Prawn<br><small>奶油虾</small></h3>
+    <p>RM38</p>
+    <button onclick="addItem('Butter Prawn',38)">Add</button>
+  </div>
+</div>
 
 <h2>Squid / Cuttlefish<br><small>苏东</small></h2>
+<div class="menu">
+  <div class="item">
+    <img src="https://via.placeholder.com/200" alt="Salted Egg Squid">
+    <h3>Salted Egg Squid<br><small>咸蛋苏东</small></h3>
+    <p>RM28</p>
+    <button onclick="addItem('Salted Egg Squid',28)">Add</button>
+  </div>
+</div>
 
 <h2>Chicken<br><small>鸡肉</small></h2>
+<div class="menu">
+  <!-- 这里之后放鸡肉菜品 -->
+</div>
 
 <h2>Fish Fillet<br><small>鱼片</small></h2>
+<div class="menu">
+  <!-- 这里之后放鱼片菜品 -->
+</div>
 
 <h2>Meat<br><small>肉类</small></h2>
+<div class="menu">
+  <!-- 这里之后放肉类菜品 -->
+</div>
 
 <h2>Tofu<br><small>豆腐</small></h2>
+<div class="menu">
+  <!-- 这里之后放豆腐菜品 -->
+</div>
 
 <h2>Egg<br><small>蛋</small></h2>
+<div class="menu">
+  <!-- 这里之后放蛋类菜品 -->
+</div>
 
 <h2>Vegetables<br><small>蔬菜</small></h2>
+<div class="menu">
+  <!-- 这里之后放蔬菜菜品 -->
+</div>
 
 <h2>Soup<br><small>汤</small></h2>
+<div class="menu">
+  <!-- 这里之后放汤类菜品 -->
+</div>
 
 <h2>Fried Noodles / Rice<br><small>炒粉</small></h2>
-<div class="item">
-<img src="https://via.placeholder.com/200">
-<h3>Chilli Crab</h3>
-<p>RM68</p>
-<button onclick="addItem('Chilli Crab',68)">Add</button>
-</div>
-
-<div class="item">
-<img src="https://via.placeholder.com/200">
-<h3>Butter Prawn</h3>
-<p>RM38</p>
-<button onclick="addItem('Butter Prawn',38)">Add</button>
-</div>
-
-<div class="item">
-<img src="https://via.placeholder.com/200">
-<h3>Salted Egg Squid</h3>
-<p>RM28</p>
-<button onclick="addItem('Salted Egg Squid',28)">Add</button>
-</div>
-
-<div class="item">
-<img src="https://via.placeholder.com/200">
-<h3>Steamed Fish</h3>
-<p>RM45</p>
-<button onclick="addItem('Steamed Fish',45)">Add</button>
-</div>
-
+<div class="menu">
+  <!-- 这里之后放炒粉菜品 -->
 </div>
 
 <div class="cart">
+  <h2>Cart<br><small>购物车</small></h2>
 
-<h2>Cart</h2>
+  <ul id="cart"></ul>
 
-<ul id="cart"></ul>
+  <p>Total: RM <span id="total">0</span></p>
 
-<p>Total: RM <span id="total">0</span></p>
+  <input id="table" placeholder="Table Number / 桌号">
 
-<input id="table" placeholder="Table Number">
+  <br><br>
 
-<br><br>
-
-<button onclick="sendOrder()">Send Order via WhatsApp</button>
-
+  <button onclick="sendOrder()">Send Order via WhatsApp</button>
 </div>
 
 <script>
+let cart = [];
+let total = 0;
 
-let cart=[];
-let total=0;
+function addItem(name, price){
+  let found = cart.find(item => item.name === name);
 
-function addItem(name,price){
+  if(found){
+    found.qty++;
+  }else{
+    cart.push({name:name, price:price, qty:1});
+  }
 
-let found=cart.find(item=>item.name===name);
-
-if(found){
-
-found.qty++;
-
-}else{
-
-cart.push({name:name,price:price,qty:1});
-
-}
-
-total+=price;
-
-showCart();
-
+  total += price;
+  showCart();
 }
 
 function showCart(){
+  let cartList = document.getElementById("cart");
+  cartList.innerHTML = "";
 
-let cartList=document.getElementById("cart");
+  cart.forEach(item => {
+    let li = document.createElement("li");
+    li.innerText = item.name + " x" + item.qty + " RM" + (item.price * item.qty);
+    cartList.appendChild(li);
+  });
 
-cartList.innerHTML="";
-
-cart.forEach(item=>{
-
-let li=document.createElement("li");
-
-li.innerText=item.name+" x"+item.qty+" RM"+(item.price*item.qty);
-
-cartList.appendChild(li);
-
-});
-
-document.getElementById("total").innerText=total;
-
+  document.getElementById("total").innerText = total;
 }
 
 function sendOrder(){
+  let table = document.getElementById("table").value;
+  let message = "Desaru Seafood Corner Order\n";
+  message += "Table: " + table + "\n\n";
 
-let table=document.getElementById("table").value;
+  cart.forEach(item => {
+    message += item.name + " x" + item.qty + " RM" + (item.price * item.qty) + "\n";
+  });
 
-let message="Desaru Seafood Corner Order%0A";
+  message += "\nTotal: RM" + total;
 
-message+="Table: "+table+"%0A%0A";
+  let phone = "60105309267";
+  let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
 
-cart.forEach(item=>{
-
-message+=item.name+" x"+item.qty+" RM"+(item.price*item.qty)+"%0A";
-
-});
-
-message+="%0ATotal: RM"+total;
-
-let phone="60105309267";
-
-let url="https://wa.me/"+phone+"?text="+message;
-
-window.open(url);
-
+  window.open(url, "_blank");
 }
-
 </script>
 
 </body>
-
 </html>
