@@ -13,7 +13,7 @@
 body{
   margin:0;
   font-family:Arial, sans-serif;
-  background:#f5f5f5;
+  background:#f7f7f7;
   color:#222;
 }
 
@@ -33,12 +33,73 @@ body{
   max-width:75%;
 }
 
-.top-note{
+.hero{
+  background:linear-gradient(135deg,#fff8f5,#ffffff);
+  border-radius:20px;
+  padding:24px 18px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.08);
+  margin-bottom:20px;
   text-align:center;
+}
+
+.hero h1{
+  margin:0 0 8px;
+  font-size:28px;
+  color:#d92d20;
+}
+
+.hero p{
+  margin:0;
   color:#666;
-  font-size:14px;
-  margin-bottom:24px;
   line-height:1.6;
+}
+
+.top-tools{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:16px;
+  margin-bottom:20px;
+}
+
+.search-box,
+.qr-box{
+  background:#fff;
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 3px 12px rgba(0,0,0,0.08);
+}
+
+.search-box h3,
+.qr-box h3{
+  margin:0 0 10px;
+  font-size:18px;
+}
+
+.search-box small,
+.qr-box small{
+  color:#777;
+}
+
+#searchInput{
+  width:100%;
+  padding:12px 14px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:15px;
+  margin-top:10px;
+}
+
+.qr-box{
+  text-align:center;
+}
+
+.qr-box img{
+  width:150px;
+  height:150px;
+  object-fit:contain;
+  margin-top:8px;
+  border-radius:10px;
+  background:#fafafa;
 }
 
 .category-block{
@@ -50,7 +111,7 @@ body{
   border:none;
   background:#fff;
   border-left:6px solid #ff3300;
-  border-radius:12px;
+  border-radius:14px;
   padding:14px 16px;
   font-size:22px;
   font-weight:bold;
@@ -88,29 +149,29 @@ body{
 
 .menu-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
   gap:16px;
 }
 
 .item{
   background:#fff;
-  border-radius:14px;
+  border-radius:16px;
   padding:12px;
-  box-shadow:0 3px 10px rgba(0,0,0,0.12);
+  box-shadow:0 3px 12px rgba(0,0,0,0.10);
 }
 
 .item img{
   width:100%;
   height:150px;
   object-fit:cover;
-  border-radius:10px;
+  border-radius:12px;
   background:#eee;
 }
 
 .item h3{
   margin:12px 0 6px;
   font-size:18px;
-  line-height:1.3;
+  line-height:1.35;
 }
 
 .item h3 small{
@@ -136,6 +197,15 @@ body{
   margin-bottom:10px;
 }
 
+.item-remark{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:13px;
+  margin-bottom:10px;
+}
+
 .btn-row{
   display:flex;
   flex-wrap:wrap;
@@ -144,8 +214,8 @@ body{
 
 button{
   border:none;
-  border-radius:8px;
-  padding:8px 12px;
+  border-radius:10px;
+  padding:9px 12px;
   cursor:pointer;
   font-weight:bold;
 }
@@ -160,25 +230,82 @@ button{
   color:#fff;
 }
 
-.cart{
-  margin-top:30px;
+.floating-cart-btn{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:1000;
+  background:#009933;
+  color:#fff;
+  border:none;
+  border-radius:999px;
+  padding:14px 18px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+  font-size:15px;
+}
+
+.cart-drawer{
+  position:fixed;
+  top:0;
+  right:-420px;
+  width:400px;
+  max-width:100%;
+  height:100vh;
   background:#fff;
-  border-radius:16px;
-  padding:18px;
-  box-shadow:0 2px 14px rgba(0,0,0,0.12);
+  box-shadow:-6px 0 20px rgba(0,0,0,0.18);
+  z-index:1100;
+  transition:right 0.3s ease;
+  display:flex;
+  flex-direction:column;
 }
 
-.cart h2{
-  margin:0 0 10px;
-  font-size:24px;
+.cart-drawer.open{
+  right:0;
 }
 
-.cart h2 small{
+.cart-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  z-index:1050;
+  display:none;
+}
+
+.cart-overlay.show{
+  display:block;
+}
+
+.cart-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 18px;
+  border-bottom:1px solid #eee;
+}
+
+.cart-header h2{
+  margin:0;
+  font-size:22px;
+}
+
+.cart-header h2 small{
   display:block;
   color:#777;
-  font-size:14px;
+  font-size:13px;
   margin-top:4px;
   font-weight:normal;
+}
+
+.close-btn{
+  background:#eee;
+  color:#222;
+  padding:8px 12px;
+}
+
+.cart-body{
+  padding:16px 18px 24px;
+  overflow-y:auto;
+  flex:1;
 }
 
 .order-type-box{
@@ -202,7 +329,7 @@ button{
 }
 
 #cart li{
-  margin-bottom:8px;
+  margin-bottom:10px;
   line-height:1.6;
 }
 
@@ -265,6 +392,29 @@ input, textarea{
   font-size:12px;
 }
 
+.remark-tag{
+  display:block;
+  color:#777;
+  font-size:12px;
+  margin-top:2px;
+}
+
+.no-result{
+  background:#fff;
+  border-radius:14px;
+  padding:18px;
+  margin-top:20px;
+  text-align:center;
+  color:#777;
+  box-shadow:0 3px 12px rgba(0,0,0,0.08);
+}
+
+@media (max-width:900px){
+  .top-tools{
+    grid-template-columns:1fr;
+  }
+}
+
 @media (max-width:768px){
   .container{
     padding:15px;
@@ -272,6 +422,10 @@ input, textarea{
 
   .header img{
     width:150px;
+  }
+
+  .hero h1{
+    font-size:24px;
   }
 
   .category-header{
@@ -290,6 +444,17 @@ input, textarea{
   .summary-line.total{
     font-size:18px;
   }
+
+  .cart-drawer{
+    width:100%;
+    right:-100%;
+  }
+
+  .floating-cart-btn{
+    right:14px;
+    bottom:14px;
+    padding:13px 16px;
+  }
 }
 </style>
 </head>
@@ -300,16 +465,45 @@ input, textarea{
     <img src="logo.png" alt="Desaru Seafood Corner Logo">
   </div>
 
-  <div class="top-note">
-    Seafood Restaurant Ordering Menu<br>
-    海鲜餐厅点餐菜单
+  <div class="hero">
+    <h1>Desaru Seafood Corner</h1>
+    <p>
+      Fresh seafood ordering menu<br>
+      新鲜海鲜点餐菜单
+    </p>
+  </div>
+
+  <div class="top-tools">
+    <div class="search-box">
+      <h3>Search Menu <small>/ 搜索菜品</small></h3>
+      <input id="searchInput" type="text" placeholder="Search dish name / 输入菜名..." oninput="renderMenu()">
+    </div>
+
+    <div class="qr-box">
+      <h3>Scan to Order <small>/ 扫码点餐</small></h3>
+      <img id="qrCodeImage" alt="QR Code">
+      <div style="margin-top:8px;color:#777;font-size:13px;">
+        Share this page with your customers
+      </div>
+    </div>
   </div>
 
   <div id="menuContainer"></div>
+</div>
 
-  <div class="cart">
+<button class="floating-cart-btn" onclick="openCart()">
+  🛒 Cart (<span id="cartCount">0</span>)
+</button>
+
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
     <h2>Cart<small>购物车</small></h2>
+    <button class="close-btn" onclick="closeCart()">Close</button>
+  </div>
 
+  <div class="cart-body">
     <div class="order-type-box">
       <strong>Order Type / 用餐方式</strong><br>
       <label>
@@ -346,7 +540,7 @@ input, textarea{
 
     <input id="table" placeholder="Table Number / 桌号">
     <input id="customer" placeholder="Customer Name / 顾客姓名（可选）">
-    <textarea id="remarks" rows="3" placeholder="Remarks / 备注（例如：不要辣 / less spicy）"></textarea>
+    <textarea id="remarks" rows="3" placeholder="Order Remarks / 整单备注"></textarea>
 
     <div class="cart-actions">
       <button class="primary-btn" onclick="sendOrder()">Send Order via WhatsApp</button>
@@ -610,11 +804,25 @@ function formatPriceText(item){
   return entries.map(([size, price]) => `${size}: RM${Number(price).toFixed(2)}`).join(" | ");
 }
 
-function createButtons(item){
+function getItemRemarkKey(categoryIndex, itemIndex){
+  return `remark-${categoryIndex}-${itemIndex}`;
+}
+
+function getItemRemark(categoryIndex, itemIndex){
+  const input = document.getElementById(getItemRemarkKey(categoryIndex, itemIndex));
+  return input ? input.value.trim() : "";
+}
+
+function clearItemRemark(categoryIndex, itemIndex){
+  const input = document.getElementById(getItemRemarkKey(categoryIndex, itemIndex));
+  if(input) input.value = "";
+}
+
+function createButtons(item, categoryIndex, itemIndex){
   if(item.marketPrice){
     return `
       <div class="btn-row">
-        <button class="btn-ask" onclick="askPrice('${escapeText(item.en)}','${escapeText(item.zh)}')">Ask Price</button>
+        <button class="btn-ask" onclick="askPrice('${escapeText(item.en)}','${escapeText(item.zh)}', ${categoryIndex}, ${itemIndex})">Ask Price</button>
       </div>
     `;
   }
@@ -623,7 +831,7 @@ function createButtons(item){
   return `
     <div class="btn-row">
       ${entries.map(([size, price]) => `
-        <button class="btn-size" onclick="addItem('${escapeText(item.en)}','${escapeText(item.zh)}','${escapeText(size)}',${Number(price)})">
+        <button class="btn-size" onclick="addItem('${escapeText(item.en)}','${escapeText(item.zh)}','${escapeText(size)}',${Number(price)}, ${categoryIndex}, ${itemIndex})">
           ${size} - RM${Number(price).toFixed(2)}
         </button>
       `).join("")}
@@ -646,28 +854,49 @@ function toggleCategory(index){
 
 function renderMenu(){
   const container = document.getElementById("menuContainer");
+  const searchInput = document.getElementById("searchInput");
+  const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
 
-  container.innerHTML = menuData.map((category, index) => `
+  const filteredCategories = menuData.map((category, categoryIndex) => {
+    const filteredItems = category.items.filter(item => {
+      if(!keyword) return true;
+      return item.en.toLowerCase().includes(keyword) || item.zh.toLowerCase().includes(keyword);
+    });
+
+    return {
+      ...category,
+      categoryIndex,
+      filteredItems
+    };
+  }).filter(category => category.filteredItems.length > 0);
+
+  if(filteredCategories.length === 0){
+    container.innerHTML = `<div class="no-result">No matching dishes found / 找不到相关菜品</div>`;
+    return;
+  }
+
+  container.innerHTML = filteredCategories.map(category => `
     <div class="category-block">
-      <button class="category-header" onclick="toggleCategory(${index})">
+      <button class="category-header" onclick="toggleCategory(${category.categoryIndex})">
         <span>
           ${category.titleEn}
           <small>${category.titleZh}</small>
         </span>
-        <span class="category-arrow" id="category-arrow-${index}">
-          ${category.defaultOpen ? "－" : "＋"}
+        <span class="category-arrow" id="category-arrow-${category.categoryIndex}">
+          ${(keyword || category.defaultOpen) ? "－" : "＋"}
         </span>
       </button>
 
-      <div class="category-content ${category.defaultOpen ? "open" : ""}" id="category-content-${index}">
+      <div class="category-content ${(keyword || category.defaultOpen) ? "open" : ""}" id="category-content-${category.categoryIndex}">
         <div class="menu-grid">
-          ${category.items.map(item => `
+          ${category.filteredItems.map((item, itemIndex) => `
             <div class="item">
               <img src="${item.image}" alt="${item.en}">
               <h3>${item.en}<small>${item.zh}</small></h3>
               <div class="price">${formatPriceText(item)}</div>
               ${item.note ? `<div class="price-note">${item.note}</div>` : ""}
-              ${createButtons(item)}
+              <input class="item-remark" id="${getItemRemarkKey(category.categoryIndex, itemIndex)}" placeholder="Item remark / 单品备注">
+              ${createButtons(item, category.categoryIndex, itemIndex)}
             </div>
           `).join("")}
         </div>
@@ -676,8 +905,9 @@ function renderMenu(){
   `).join("");
 }
 
-function addItem(nameEn, nameZh, size, price){
-  const itemKey = `${nameEn}__${size}`;
+function addItem(nameEn, nameZh, size, price, categoryIndex, itemIndex){
+  const remark = getItemRemark(categoryIndex, itemIndex);
+  const itemKey = `${nameEn}__${size}__${remark}`;
   const found = cart.find(item => item.key === itemKey);
 
   if(found){
@@ -690,32 +920,43 @@ function addItem(nameEn, nameZh, size, price){
       size,
       price:Number(price),
       qty:1,
+      remark,
       marketPrice:false
     });
   }
 
   total += Number(price);
+  clearItemRemark(categoryIndex, itemIndex);
   showCart();
 }
 
-function askPrice(nameEn, nameZh){
-  const found = cart.find(item => item.nameEn === nameEn && item.marketPrice);
+function askPrice(nameEn, nameZh, categoryIndex, itemIndex){
+  const remark = getItemRemark(categoryIndex, itemIndex);
+  const itemKey = `${nameEn}__market__${remark}`;
+  const found = cart.find(item => item.key === itemKey);
 
   if(found){
     found.qty++;
   }else{
     cart.push({
-      key:`${nameEn}__market`,
+      key:itemKey,
       nameEn,
       nameZh,
       size:"Market Price / 时价",
       price:0,
       qty:1,
+      remark,
       marketPrice:true
     });
   }
 
+  clearItemRemark(categoryIndex, itemIndex);
   showCart();
+}
+
+function updateCartCount(){
+  const count = cart.reduce((sum, item) => sum + item.qty, 0);
+  document.getElementById("cartCount").innerText = count;
 }
 
 function showCart(){
@@ -731,11 +972,13 @@ function showCart(){
       if(item.marketPrice){
         li.innerHTML = `
           ${item.nameEn} (${item.nameZh}) - ${item.size} x${item.qty}
+          ${item.remark ? `<span class="remark-tag">Remark: ${item.remark}</span>` : ""}
           <button class="secondary-btn mini-btn" onclick="removeOne(${index})">-1</button>
         `;
       }else{
         li.innerHTML = `
           ${item.nameEn} (${item.nameZh}) [${item.size}] x${item.qty} = RM${(item.price * item.qty).toFixed(2)}
+          ${item.remark ? `<span class="remark-tag">Remark: ${item.remark}</span>` : ""}
           <button class="secondary-btn mini-btn" onclick="removeOne(${index})">-1</button>
         `;
       }
@@ -749,6 +992,8 @@ function showCart(){
   document.getElementById("sst").innerText = charges.sst.toFixed(2);
   document.getElementById("svc").innerText = charges.svc.toFixed(2);
   document.getElementById("grandTotal").innerText = charges.grandTotal.toFixed(2);
+
+  updateCartCount();
 }
 
 function removeOne(index){
@@ -775,6 +1020,16 @@ function clearCart(){
   showCart();
 }
 
+function openCart(){
+  document.getElementById("cartDrawer").classList.add("open");
+  document.getElementById("cartOverlay").classList.add("show");
+}
+
+function closeCart(){
+  document.getElementById("cartDrawer").classList.remove("open");
+  document.getElementById("cartOverlay").classList.remove("show");
+}
+
 function sendOrder(){
   if(cart.length === 0){
     alert("No items selected / 还没有点餐");
@@ -788,57 +1043,63 @@ function sendOrder(){
   const charges = calculateCharges();
   const orderTypeText = charges.orderType === "dinein" ? "Dine-in / 堂食" : "Takeaway / 打包";
 
-  let normalItems = cart.filter(item => !item.marketPrice);
-  let marketItems = cart.filter(item => item.marketPrice);
+  const normalItems = cart.filter(item => !item.marketPrice);
+  const marketItems = cart.filter(item => item.marketPrice);
 
   let message = "";
-  message += "🦞 DESARU SEAFOOD CORNER ORDER\n";
+  message += "🦞 DESARU SEAFOOD CORNER\n";
   message += "============================\n";
-  message += `Order Type / 用餐方式: ${orderTypeText}\n`;
+  message += "NEW ORDER / 新订单\n\n";
+  message += `🪑 Order Type / 用餐方式: ${orderTypeText}\n`;
 
-  if(table){
-    message += `Table / 桌号: ${table}\n`;
-  }
+  if(table) message += `🔢 Table / 桌号: ${table}\n`;
+  if(customer) message += `👤 Customer / 顾客: ${customer}\n`;
 
-  if(customer){
-    message += `Customer / 顾客: ${customer}\n`;
-  }
-
-  message += "\n🍽️ ITEMS / 菜品\n";
+  message += "\n🍽️ ORDER ITEMS / 点餐内容\n";
 
   normalItems.forEach((item, i) => {
     message += `${i + 1}. ${item.nameEn} (${item.nameZh})\n`;
-    message += `   Size: ${item.size}\n`;
-    message += `   Qty: ${item.qty}\n`;
-    message += `   Amount: RM${(item.price * item.qty).toFixed(2)}\n`;
+    message += `   • Size: ${item.size}\n`;
+    message += `   • Qty: ${item.qty}\n`;
+    if(item.remark) message += `   • Remark: ${item.remark}\n`;
+    message += `   • Amount: RM${(item.price * item.qty).toFixed(2)}\n\n`;
   });
 
   if(marketItems.length > 0){
-    message += "\n💬 MARKET PRICE ITEMS / 时价项目\n";
+    message += "💬 MARKET PRICE ITEMS / 时价项目\n";
     marketItems.forEach((item, i) => {
-      message += `${i + 1}. ${item.nameEn} (${item.nameZh}) x${item.qty}\n`;
+      message += `${i + 1}. ${item.nameEn} (${item.nameZh})\n`;
+      message += `   • Qty: ${item.qty}\n`;
+      if(item.remark) message += `   • Remark: ${item.remark}\n`;
+      message += `   • Price: Market Price / 时价\n\n`;
     });
   }
 
-  message += "\n🧾 BILL SUMMARY / 账单摘要\n";
+  message += "🧾 BILL SUMMARY / 账单摘要\n";
   message += `Subtotal / 小计: RM${charges.subtotal.toFixed(2)}\n`;
   message += `SST 6%: RM${charges.sst.toFixed(2)}\n`;
   message += `Service Charge 6%: RM${charges.svc.toFixed(2)}\n`;
   message += `Grand Total / 总额: RM${charges.grandTotal.toFixed(2)}\n`;
 
   if(remarks){
-    message += "\n📝 REMARKS / 备注\n";
-    message += `${remarks}\n`;
+    message += `\n📝 ORDER REMARKS / 整单备注\n${remarks}\n`;
   }
 
-  message += "\nThank you / 谢谢";
+  message += "\n🙏 Thank you / 谢谢";
 
   const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
   window.open(url, "_blank");
 }
 
+function generateQRCode(){
+  const currentUrl = window.location.href;
+  const qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(currentUrl);
+  document.getElementById("qrCodeImage").src = qrUrl;
+}
+
 renderMenu();
 showCart();
+generateQRCode();
 </script>
 
 </body>
