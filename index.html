@@ -23,13 +23,102 @@ body{
   padding:20px;
 }
 
+.hidden{
+  display:none !important;
+}
+
+/* Landing */
+.landing{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+
+.landing-card{
+  width:100%;
+  max-width:760px;
+  background:#fff;
+  border-radius:24px;
+  padding:28px 22px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.10);
+  text-align:center;
+}
+
+.landing-logo{
+  width:180px;
+  max-width:70%;
+  margin-bottom:14px;
+}
+
+.landing-card h1{
+  margin:0 0 10px;
+  font-size:30px;
+  color:#d92d20;
+}
+
+.landing-card p{
+  margin:0;
+  color:#666;
+  line-height:1.7;
+}
+
+.order-type-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:26px;
+}
+
+.order-type-card{
+  border:none;
+  background:#fff;
+  border-radius:20px;
+  padding:24px 18px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.08);
+  cursor:pointer;
+  transition:transform 0.18s ease, box-shadow 0.18s ease;
+  border:2px solid transparent;
+}
+
+.order-type-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 22px rgba(0,0,0,0.12);
+  border-color:#ffd6cc;
+}
+
+.order-icon{
+  font-size:38px;
+  margin-bottom:10px;
+}
+
+.order-type-card h2{
+  margin:0 0 8px;
+  font-size:24px;
+  color:#222;
+}
+
+.order-type-card small{
+  display:block;
+  color:#777;
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+.order-type-card p{
+  font-size:14px;
+  color:#666;
+}
+
+/* Main */
 .header{
   text-align:center;
   margin-bottom:16px;
 }
 
 .header img{
-  width:180px;
+  width:170px;
   max-width:75%;
 }
 
@@ -38,7 +127,7 @@ body{
   border-radius:20px;
   padding:24px 18px;
   box-shadow:0 4px 16px rgba(0,0,0,0.08);
-  margin-bottom:20px;
+  margin-bottom:18px;
   text-align:center;
 }
 
@@ -52,6 +141,41 @@ body{
   margin:0;
   color:#666;
   line-height:1.6;
+}
+
+.status-bar{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  background:#fff;
+  border-radius:14px;
+  padding:12px 14px;
+  box-shadow:0 3px 12px rgba(0,0,0,0.08);
+  margin-bottom:18px;
+}
+
+.status-text{
+  color:#444;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.status-badge{
+  display:inline-block;
+  background:#fff3f0;
+  color:#d92d20;
+  border:1px solid #ffd2c8;
+  padding:6px 10px;
+  border-radius:999px;
+  font-weight:bold;
+  margin-left:6px;
+}
+
+.change-type-btn{
+  background:#222;
+  color:#fff;
 }
 
 .top-tools{
@@ -89,6 +213,22 @@ body{
   margin-top:10px;
 }
 
+.quick-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+
+.quick-nav button{
+  background:#fff3f0;
+  color:#d92d20;
+  border:1px solid #ffd2c8;
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:13px;
+}
+
 .qr-box{
   text-align:center;
 }
@@ -104,6 +244,7 @@ body{
 
 .category-block{
   margin-top:20px;
+  scroll-margin-top:20px;
 }
 
 .category-header{
@@ -138,6 +279,13 @@ body{
   text-align:right;
 }
 
+.category-count{
+  color:#777;
+  font-size:13px;
+  font-weight:normal;
+  margin-top:5px;
+}
+
 .category-content{
   display:none;
   padding-top:14px;
@@ -166,6 +314,30 @@ body{
   object-fit:cover;
   border-radius:12px;
   background:#eee;
+}
+
+.item-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:10px;
+}
+
+.tag{
+  font-size:11px;
+  padding:5px 8px;
+  border-radius:999px;
+  font-weight:bold;
+}
+
+.tag-signature{
+  background:#fff3f0;
+  color:#d92d20;
+}
+
+.tag-market{
+  background:#222;
+  color:#fff;
 }
 
 .item h3{
@@ -420,6 +592,18 @@ input, textarea{
     padding:15px;
   }
 
+  .landing-card{
+    padding:24px 16px;
+  }
+
+  .landing-card h1{
+    font-size:25px;
+  }
+
+  .order-type-grid{
+    grid-template-columns:1fr;
+  }
+
   .header img{
     width:150px;
   }
@@ -460,104 +644,154 @@ input, textarea{
 </head>
 <body>
 
-<div class="container">
-  <div class="header">
-    <img src="logo.png" alt="Desaru Seafood Corner Logo">
-  </div>
-
-  <div class="hero">
+<!-- Landing Page -->
+<div id="landingPage" class="landing">
+  <div class="landing-card">
+    <img src="logo.png" alt="Desaru Seafood Corner Logo" class="landing-logo">
     <h1>Desaru Seafood Corner</h1>
     <p>
-      Fresh seafood ordering menu<br>
-      新鲜海鲜点餐菜单
+      Fresh Seafood Dining Experience<br>
+      新鲜海鲜用餐体验
     </p>
-  </div>
 
-  <div class="top-tools">
-    <div class="search-box">
-      <h3>Search Menu <small>/ 搜索菜品</small></h3>
-      <input id="searchInput" type="text" placeholder="Search dish name / 输入菜名..." oninput="renderMenu()">
+    <div class="order-type-grid">
+      <button class="order-type-card" onclick="selectOrderType('dinein')">
+        <div class="order-icon">🍽️</div>
+        <h2>Dine-in</h2>
+        <small>堂食</small>
+        <p>Enjoy dining in restaurant<br>在餐厅享用</p>
+      </button>
+
+      <button class="order-type-card" onclick="selectOrderType('takeaway')">
+        <div class="order-icon">🥡</div>
+        <h2>Takeaway</h2>
+        <small>打包</small>
+        <p>Pack and bring home<br>打包带走</p>
+      </button>
     </div>
-
-    <div class="qr-box">
-      <h3>Scan to Order <small>/ 扫码点餐</small></h3>
-      <img id="qrCodeImage" alt="QR Code">
-      <div style="margin-top:8px;color:#777;font-size:13px;">
-        Share this page with your customers
-      </div>
-    </div>
   </div>
-
-  <div id="menuContainer"></div>
 </div>
 
-<button class="floating-cart-btn" onclick="openCart()">
-  🛒 Cart (<span id="cartCount">0</span>)
-</button>
+<!-- Main Menu Page -->
+<div id="mainPage" class="hidden">
+  <div class="container">
+    <div class="header">
+      <img src="logo.png" alt="Desaru Seafood Corner Logo">
+    </div>
 
-<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="hero">
+      <h1>Desaru Seafood Corner</h1>
+      <p>
+        Fresh seafood ordering menu<br>
+        新鲜海鲜点餐菜单
+      </p>
+    </div>
 
-<div class="cart-drawer" id="cartDrawer">
-  <div class="cart-header">
-    <h2>Cart<small>购物车</small></h2>
-    <button class="close-btn" onclick="closeCart()">Close</button>
+    <div class="status-bar">
+      <div class="status-text">
+        Order Type / 用餐方式:
+        <span class="status-badge" id="selectedOrderTypeText">Dine-in / 堂食</span>
+      </div>
+      <button class="change-type-btn" onclick="resetOrderType()">Change Order Type / 更改用餐方式</button>
+    </div>
+
+    <div class="top-tools">
+      <div class="search-box">
+        <h3>Search Menu <small>/ 搜索菜品</small></h3>
+        <input id="searchInput" type="text" placeholder="Search dish name / 输入菜名..." oninput="renderMenu()">
+
+        <div class="quick-nav">
+          <button onclick="jumpToCategory(0)">招牌菜</button>
+          <button onclick="jumpToCategory(1)">龙虾</button>
+          <button onclick="jumpToCategory(2)">螃蟹</button>
+          <button onclick="jumpToCategory(7)">虾</button>
+          <button onclick="jumpToCategory(8)">苏东</button>
+          <button onclick="jumpToCategory(15)">汤</button>
+          <button onclick="jumpToCategory(17)">饮料</button>
+        </div>
+      </div>
+
+      <div class="qr-box">
+        <h3>Scan to Order <small>/ 扫码点餐</small></h3>
+        <img id="qrCodeImage" alt="QR Code">
+        <div style="margin-top:8px;color:#777;font-size:13px;">
+          Share this page with your customers
+        </div>
+      </div>
+    </div>
+
+    <div id="menuContainer"></div>
   </div>
 
-  <div class="cart-body">
-    <div class="order-type-box">
-      <strong>Order Type / 用餐方式</strong><br>
-      <label>
-        <input type="radio" name="orderType" value="dinein" checked onchange="showCart()">
-        Dine-in / 堂食
-      </label>
-      <label>
-        <input type="radio" name="orderType" value="takeaway" onchange="showCart()">
-        Takeaway / 打包
-      </label>
+  <button class="floating-cart-btn" onclick="openCart()">
+    🛒 Cart (<span id="cartCount">0</span>)
+  </button>
+
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h2>Cart<small>购物车</small></h2>
+      <button class="close-btn" onclick="closeCart()">Close</button>
     </div>
 
-    <ul id="cart"></ul>
+    <div class="cart-body">
+      <div class="order-type-box">
+        <strong>Order Type / 用餐方式</strong><br>
+        <label>
+          <input type="radio" name="orderType" value="dinein" onchange="handleOrderTypeChange('dinein')">
+          Dine-in / 堂食
+        </label>
+        <label>
+          <input type="radio" name="orderType" value="takeaway" onchange="handleOrderTypeChange('takeaway')">
+          Takeaway / 打包
+        </label>
+      </div>
 
-    <div class="summary-line">
-      <span>Subtotal / 小计</span>
-      <span>RM <span id="subtotal">0.00</span></span>
-    </div>
+      <ul id="cart"></ul>
 
-    <div class="summary-line">
-      <span>SST 6%</span>
-      <span>RM <span id="sst">0.00</span></span>
-    </div>
+      <div class="summary-line">
+        <span>Subtotal / 小计</span>
+        <span>RM <span id="subtotal">0.00</span></span>
+      </div>
 
-    <div class="summary-line">
-      <span>Service Charge 6%</span>
-      <span>RM <span id="svc">0.00</span></span>
-    </div>
+      <div class="summary-line">
+        <span>SST 6%</span>
+        <span>RM <span id="sst">0.00</span></span>
+      </div>
 
-    <div class="summary-line total">
-      <span>Grand Total / 总额</span>
-      <span>RM <span id="grandTotal">0.00</span></span>
-    </div>
+      <div class="summary-line">
+        <span>Service Charge 6%</span>
+        <span>RM <span id="svc">0.00</span></span>
+      </div>
 
-    <input id="table" placeholder="Table Number / 桌号">
-    <input id="customer" placeholder="Customer Name / 顾客姓名（可选）">
-    <textarea id="remarks" rows="3" placeholder="Order Remarks / 整单备注"></textarea>
+      <div class="summary-line total">
+        <span>Grand Total / 总额</span>
+        <span>RM <span id="grandTotal">0.00</span></span>
+      </div>
 
-    <div class="cart-actions">
-      <button class="primary-btn" onclick="sendOrder()">Send Order via WhatsApp</button>
-      <button class="secondary-btn" onclick="clearCart()">Clear Cart</button>
-    </div>
+      <input id="table" placeholder="Table Number / 桌号">
+      <input id="customer" placeholder="Customer Name / 顾客姓名（可选）">
+      <textarea id="remarks" rows="3" placeholder="Order Remarks / 整单备注"></textarea>
 
-    <div class="notice">
-      * Market Price / 时价 items will be sent as inquiry items and will not be included in total.<br>
-      * Takeaway / 打包: 6% SST<br>
-      * Dine-in / 堂食: 6% SST + 6% Service Charge<br>
-      * Amounts are rounded to nearest 10 sen / 金额会四舍五入到最接近的 10 sen
+      <div class="cart-actions">
+        <button class="primary-btn" onclick="sendOrder()">Send Order via WhatsApp</button>
+        <button class="secondary-btn" onclick="clearCart()">Clear Cart</button>
+      </div>
+
+      <div class="notice">
+        * Market Price / 时价 items will be sent as inquiry items and will not be included in total.<br>
+        * Takeaway / 打包: 6% SST<br>
+        * Dine-in / 堂食: 6% SST + 6% Service Charge<br>
+        * Amounts are rounded to nearest 10 sen / 金额会四舍五入到最接近的 10 sen
+      </div>
     </div>
   </div>
 </div>
 
 <script>
 const phone = "60105309267";
+const STORAGE_KEY = "desaru_order_type";
 
 const menuData = [
   {
@@ -565,61 +799,61 @@ const menuData = [
     titleZh: "招牌菜",
     defaultOpen: true,
     items: [
-      { en:"Golden Pumpkin Lobster", zh:"金瓜龙虾", image:"https://via.placeholder.com/300?text=Golden+Pumpkin+Lobster", marketPrice:true },
-      { en:"Chilli Crab", zh:"辣子蟹", image:"https://via.placeholder.com/300?text=Chilli+Crab", marketPrice:true },
-      { en:"Goose Palm Abalone", zh:"掌上明珠", image:"https://via.placeholder.com/300?text=Goose+Palm+Abalone", prices:{ Standard:468 } },
-      { en:"Lobster with Superior Stock", zh:"上汤龙虾", image:"https://via.placeholder.com/300?text=Lobster+Superior+Stock", marketPrice:true },
-      { en:"Salt Baked Chicken", zh:"盐焗鸡", image:"https://via.placeholder.com/300?text=Salt+Baked+Chicken", prices:{ Standard:68 } },
-      { en:"Lava and Red Pomegranate Fish", zh:"火焰石榴鱼", image:"https://via.placeholder.com/300?text=Lava+Red+Pomegranate+Fish", marketPrice:true },
-      { en:"Curry Fish Head", zh:"咖喱鱼头", image:"https://via.placeholder.com/300?text=Curry+Fish+Head", marketPrice:true }
+      { en:"Golden Pumpkin Lobster", zh:"金瓜龙虾", image:"https://via.placeholder.com/300?text=Golden+Pumpkin+Lobster", marketPrice:true, tags:["signature","market"] },
+      { en:"Chilli Crab", zh:"辣子蟹", image:"https://via.placeholder.com/300?text=Chilli+Crab", marketPrice:true, tags:["signature","market"] },
+      { en:"Goose Palm Abalone", zh:"掌上明珠", image:"https://via.placeholder.com/300?text=Goose+Palm+Abalone", prices:{ Standard:468 }, tags:["signature"] },
+      { en:"Lobster with Superior Stock", zh:"上汤龙虾", image:"https://via.placeholder.com/300?text=Lobster+Superior+Stock", marketPrice:true, tags:["signature","market"] },
+      { en:"Salt Baked Chicken", zh:"盐焗鸡", image:"https://via.placeholder.com/300?text=Salt+Baked+Chicken", prices:{ Standard:68 }, tags:["signature"] },
+      { en:"Lava and Red Pomegranate Fish", zh:"火焰石榴鱼", image:"https://via.placeholder.com/300?text=Lava+Red+Pomegranate+Fish", marketPrice:true, tags:["signature","market"] },
+      { en:"Curry Fish Head", zh:"咖喱鱼头", image:"https://via.placeholder.com/300?text=Curry+Fish+Head", marketPrice:true, tags:["signature","market"] }
     ]
   },
   {
     titleEn: "Lobster",
     titleZh: "龙虾",
     items: [
-      { en:"Steamed Lobster (Egg / Garlic)", zh:"清蒸龙虾（蛋蒜 / 蒜蓉）", image:"https://via.placeholder.com/300?text=Steamed+Lobster", marketPrice:true },
-      { en:"Desaru Corner Style Lobster", zh:"金沙龙虾", image:"https://via.placeholder.com/300?text=Desaru+Lobster", marketPrice:true },
-      { en:"Typhoon Lobster", zh:"避风塘龙虾", image:"https://via.placeholder.com/300?text=Typhoon+Lobster", marketPrice:true },
-      { en:"Golden Pumpkin Lobster", zh:"金瓜龙虾", image:"https://via.placeholder.com/300?text=Golden+Pumpkin+Lobster", marketPrice:true },
-      { en:"Western Style Lobster", zh:"西式奶油龙虾", image:"https://via.placeholder.com/300?text=Western+Lobster", marketPrice:true },
-      { en:"Salted Egg Lobster", zh:"黄金咸蛋龙虾", image:"https://via.placeholder.com/300?text=Salted+Egg+Lobster", marketPrice:true },
-      { en:"Cheese Lobster", zh:"芝士烤龙虾", image:"https://via.placeholder.com/300?text=Cheese+Lobster", marketPrice:true }
+      { en:"Steamed Lobster (Egg / Garlic)", zh:"清蒸龙虾（蛋蒜 / 蒜蓉）", image:"https://via.placeholder.com/300?text=Steamed+Lobster", marketPrice:true, tags:["market"] },
+      { en:"Desaru Corner Style Lobster", zh:"金沙龙虾", image:"https://via.placeholder.com/300?text=Desaru+Lobster", marketPrice:true, tags:["market"] },
+      { en:"Typhoon Lobster", zh:"避风塘龙虾", image:"https://via.placeholder.com/300?text=Typhoon+Lobster", marketPrice:true, tags:["market"] },
+      { en:"Golden Pumpkin Lobster", zh:"金瓜龙虾", image:"https://via.placeholder.com/300?text=Golden+Pumpkin+Lobster", marketPrice:true, tags:["market"] },
+      { en:"Western Style Lobster", zh:"西式奶油龙虾", image:"https://via.placeholder.com/300?text=Western+Lobster", marketPrice:true, tags:["market"] },
+      { en:"Salted Egg Lobster", zh:"黄金咸蛋龙虾", image:"https://via.placeholder.com/300?text=Salted+Egg+Lobster", marketPrice:true, tags:["market"] },
+      { en:"Cheese Lobster", zh:"芝士烤龙虾", image:"https://via.placeholder.com/300?text=Cheese+Lobster", marketPrice:true, tags:["market"] }
     ]
   },
   {
     titleEn: "Crab",
     titleZh: "螃蟹",
     items: [
-      { en:"Chilli Crab", zh:"辣子蟹", image:"https://via.placeholder.com/300?text=Chilli+Crab", marketPrice:true },
-      { en:"Volcanic Crab", zh:"招牌火山蟹", image:"https://via.placeholder.com/300?text=Volcanic+Crab", marketPrice:true },
-      { en:"Black Pepper Crab", zh:"黑胡椒蟹", image:"https://via.placeholder.com/300?text=Black+Pepper+Crab", marketPrice:true },
-      { en:"Salted Egg Crab", zh:"黄金咸蛋蟹", image:"https://via.placeholder.com/300?text=Salted+Egg+Crab", marketPrice:true },
-      { en:"Steamed Crab (Egg)", zh:"清蒸蟹（蛋）", image:"https://via.placeholder.com/300?text=Steamed+Crab", marketPrice:true },
-      { en:"Curry Leaf Crab", zh:"干香蟹", image:"https://via.placeholder.com/300?text=Curry+Leaf+Crab", marketPrice:true }
+      { en:"Chilli Crab", zh:"辣子蟹", image:"https://via.placeholder.com/300?text=Chilli+Crab", marketPrice:true, tags:["market"] },
+      { en:"Volcanic Crab", zh:"招牌火山蟹", image:"https://via.placeholder.com/300?text=Volcanic+Crab", marketPrice:true, tags:["market"] },
+      { en:"Black Pepper Crab", zh:"黑胡椒蟹", image:"https://via.placeholder.com/300?text=Black+Pepper+Crab", marketPrice:true, tags:["market"] },
+      { en:"Salted Egg Crab", zh:"黄金咸蛋蟹", image:"https://via.placeholder.com/300?text=Salted+Egg+Crab", marketPrice:true, tags:["market"] },
+      { en:"Steamed Crab (Egg)", zh:"清蒸蟹（蛋）", image:"https://via.placeholder.com/300?text=Steamed+Crab", marketPrice:true, tags:["market"] },
+      { en:"Curry Leaf Crab", zh:"干香蟹", image:"https://via.placeholder.com/300?text=Curry+Leaf+Crab", marketPrice:true, tags:["market"] }
     ]
   },
   {
     titleEn: "Fish",
     titleZh: "鱼",
     items: [
-      { en:"Hongkong Steam", zh:"港蒸", image:"https://via.placeholder.com/300?text=Hongkong+Steam", marketPrice:true },
-      { en:"Nyonya Steam", zh:"娘惹蒸", image:"https://via.placeholder.com/300?text=Nyonya+Steam", marketPrice:true },
-      { en:"Teo Chew Steam", zh:"潮州蒸", image:"https://via.placeholder.com/300?text=Teo+Chew+Steam", marketPrice:true },
-      { en:"Banana Leaf Sour and Spicy", zh:"香蕉叶酸辣", image:"https://via.placeholder.com/300?text=Banana+Leaf+Fish", marketPrice:true },
-      { en:"Dry Fried", zh:"油炸", image:"https://via.placeholder.com/300?text=Dry+Fried+Fish", marketPrice:true },
-      { en:"Lava and Red Pomegranate", zh:"火焰石榴", image:"https://via.placeholder.com/300?text=Lava+Red+Pomegranate", marketPrice:true },
-      { en:"Sweet and Sour", zh:"酸甜", image:"https://via.placeholder.com/300?text=Sweet+Sour+Fish", marketPrice:true }
+      { en:"Hongkong Steam", zh:"港蒸", image:"https://via.placeholder.com/300?text=Hongkong+Steam", marketPrice:true, tags:["market"] },
+      { en:"Nyonya Steam", zh:"娘惹蒸", image:"https://via.placeholder.com/300?text=Nyonya+Steam", marketPrice:true, tags:["market"] },
+      { en:"Teo Chew Steam", zh:"潮州蒸", image:"https://via.placeholder.com/300?text=Teo+Chew+Steam", marketPrice:true, tags:["market"] },
+      { en:"Banana Leaf Sour and Spicy", zh:"香蕉叶酸辣", image:"https://via.placeholder.com/300?text=Banana+Leaf+Fish", marketPrice:true, tags:["market"] },
+      { en:"Dry Fried", zh:"油炸", image:"https://via.placeholder.com/300?text=Dry+Fried+Fish", marketPrice:true, tags:["market"] },
+      { en:"Lava and Red Pomegranate", zh:"火焰石榴", image:"https://via.placeholder.com/300?text=Lava+Red+Pomegranate", marketPrice:true, tags:["market"] },
+      { en:"Sweet and Sour", zh:"酸甜", image:"https://via.placeholder.com/300?text=Sweet+Sour+Fish", marketPrice:true, tags:["market"] }
     ]
   },
   {
     titleEn: "Fish Head",
     titleZh: "鱼头",
     items: [
-      { en:"Curry Fish Head", zh:"咖喱鱼头", image:"https://via.placeholder.com/300?text=Curry+Fish+Head", marketPrice:true },
-      { en:"Bitter Gourd Fish Head", zh:"苦瓜鼓汁鱼头", image:"https://via.placeholder.com/300?text=Bitter+Gourd+Fish+Head", marketPrice:true },
-      { en:"Curry Leaf Fish Head", zh:"干香炒鱼头", image:"https://via.placeholder.com/300?text=Curry+Leaf+Fish+Head", marketPrice:true },
-      { en:"Claypot Fish Head", zh:"砂锅鱼头", image:"https://via.placeholder.com/300?text=Claypot+Fish+Head", marketPrice:true }
+      { en:"Curry Fish Head", zh:"咖喱鱼头", image:"https://via.placeholder.com/300?text=Curry+Fish+Head", marketPrice:true, tags:["market"] },
+      { en:"Bitter Gourd Fish Head", zh:"苦瓜鼓汁鱼头", image:"https://via.placeholder.com/300?text=Bitter+Gourd+Fish+Head", marketPrice:true, tags:["market"] },
+      { en:"Curry Leaf Fish Head", zh:"干香炒鱼头", image:"https://via.placeholder.com/300?text=Curry+Leaf+Fish+Head", marketPrice:true, tags:["market"] },
+      { en:"Claypot Fish Head", zh:"砂锅鱼头", image:"https://via.placeholder.com/300?text=Claypot+Fish+Head", marketPrice:true, tags:["market"] }
     ]
   },
   {
@@ -638,10 +872,10 @@ const menuData = [
     titleZh: "贝壳类",
     items: [
       { en:"Garlic Steam Scallop", zh:"蒜蓉蒸带子", image:"https://via.placeholder.com/300?text=Garlic+Steam+Scallop", prices:{ "Per Pc":7.5 }, note:"Min 4 pcs" },
-      { en:"Oyster", zh:"生蚝", image:"https://via.placeholder.com/300?text=Oyster", marketPrice:true },
+      { en:"Oyster", zh:"生蚝", image:"https://via.placeholder.com/300?text=Oyster", marketPrice:true, tags:["market"] },
       { en:"Lala", zh:"啦啦", image:"https://via.placeholder.com/300?text=Lala", prices:{ S:35, L:68 } },
-      { en:"Gong Gong", zh:"贡贡", image:"https://via.placeholder.com/300?text=Gong+Gong", marketPrice:true },
-      { en:"Baked Oyster with Cheese", zh:"奶香芝士焗生蚝", image:"https://via.placeholder.com/300?text=Baked+Oyster+Cheese", marketPrice:true }
+      { en:"Gong Gong", zh:"贡贡", image:"https://via.placeholder.com/300?text=Gong+Gong", marketPrice:true, tags:["market"] },
+      { en:"Baked Oyster with Cheese", zh:"奶香芝士焗生蚝", image:"https://via.placeholder.com/300?text=Baked+Oyster+Cheese", marketPrice:true, tags:["market"] }
     ]
   },
   {
@@ -778,14 +1012,60 @@ function roundToTenCents(value){
 }
 
 function getOrderType(){
-  const selected = document.querySelector('input[name="orderType"]:checked');
-  return selected ? selected.value : "dinein";
+  return localStorage.getItem(STORAGE_KEY) || "";
+}
+
+function setOrderType(value){
+  localStorage.setItem(STORAGE_KEY, value);
+}
+
+function getOrderTypeText(value){
+  return value === "takeaway" ? "Takeaway / 打包" : "Dine-in / 堂食";
+}
+
+function updateOrderTypeUI(){
+  const orderType = getOrderType();
+  const textEl = document.getElementById("selectedOrderTypeText");
+  if(textEl){
+    textEl.textContent = getOrderTypeText(orderType || "dinein");
+  }
+
+  document.querySelectorAll('input[name="orderType"]').forEach(radio => {
+    radio.checked = radio.value === (orderType || "dinein");
+  });
+}
+
+function selectOrderType(type){
+  setOrderType(type);
+  showMainPage();
+}
+
+function resetOrderType(){
+  localStorage.removeItem(STORAGE_KEY);
+  document.getElementById("mainPage").classList.add("hidden");
+  document.getElementById("landingPage").classList.remove("hidden");
+  closeCart();
+}
+
+function showMainPage(){
+  document.getElementById("landingPage").classList.add("hidden");
+  document.getElementById("mainPage").classList.remove("hidden");
+  updateOrderTypeUI();
+  renderMenu();
+  showCart();
+  generateQRCode();
+}
+
+function handleOrderTypeChange(type){
+  setOrderType(type);
+  updateOrderTypeUI();
+  showCart();
 }
 
 function calculateCharges(){
+  const orderType = getOrderType() || "dinein";
   const subtotal = roundToTenCents(Number(total));
   const sst = roundToTenCents(subtotal * 0.06);
-  const orderType = getOrderType();
   const svc = orderType === "dinein" ? roundToTenCents(subtotal * 0.06) : 0;
   const grandTotal = roundToTenCents(subtotal + sst + svc);
 
@@ -818,6 +1098,17 @@ function clearItemRemark(categoryIndex, itemIndex){
   if(input) input.value = "";
 }
 
+function getTagsHtml(item){
+  let html = [];
+  if(item.tags && item.tags.includes("signature")){
+    html.push('<span class="tag tag-signature">Signature</span>');
+  }
+  if(item.marketPrice || (item.tags && item.tags.includes("market"))){
+    html.push('<span class="tag tag-market">Market Price</span>');
+  }
+  return html.length ? `<div class="item-tags">${html.join("")}</div>` : "";
+}
+
 function createButtons(item, categoryIndex, itemIndex){
   if(item.marketPrice){
     return `
@@ -843,12 +1134,29 @@ function toggleCategory(index){
   const content = document.getElementById(`category-content-${index}`);
   const arrow = document.getElementById(`category-arrow-${index}`);
 
+  if(!content || !arrow) return;
+
   if(content.classList.contains("open")){
     content.classList.remove("open");
     arrow.innerHTML = "＋";
   }else{
     content.classList.add("open");
     arrow.innerHTML = "－";
+  }
+}
+
+function jumpToCategory(index){
+  const block = document.getElementById(`category-block-${index}`);
+  const content = document.getElementById(`category-content-${index}`);
+  const arrow = document.getElementById(`category-arrow-${index}`);
+
+  if(content && !content.classList.contains("open")){
+    content.classList.add("open");
+    if(arrow) arrow.innerHTML = "－";
+  }
+
+  if(block){
+    block.scrollIntoView({ behavior:"smooth", block:"start" });
   }
 }
 
@@ -876,11 +1184,12 @@ function renderMenu(){
   }
 
   container.innerHTML = filteredCategories.map(category => `
-    <div class="category-block">
+    <div class="category-block" id="category-block-${category.categoryIndex}">
       <button class="category-header" onclick="toggleCategory(${category.categoryIndex})">
         <span>
           ${category.titleEn}
           <small>${category.titleZh}</small>
+          <div class="category-count">${category.filteredItems.length} item(s)</div>
         </span>
         <span class="category-arrow" id="category-arrow-${category.categoryIndex}">
           ${(keyword || category.defaultOpen) ? "－" : "＋"}
@@ -892,6 +1201,7 @@ function renderMenu(){
           ${category.filteredItems.map((item, itemIndex) => `
             <div class="item">
               <img src="${item.image}" alt="${item.en}">
+              ${getTagsHtml(item)}
               <h3>${item.en}<small>${item.zh}</small></h3>
               <div class="price">${formatPriceText(item)}</div>
               ${item.note ? `<div class="price-note">${item.note}</div>` : ""}
@@ -994,6 +1304,7 @@ function showCart(){
   document.getElementById("grandTotal").innerText = charges.grandTotal.toFixed(2);
 
   updateCartCount();
+  updateOrderTypeUI();
 }
 
 function removeOne(index){
@@ -1041,7 +1352,7 @@ function sendOrder(){
   const remarks = document.getElementById("remarks").value.trim();
 
   const charges = calculateCharges();
-  const orderTypeText = charges.orderType === "dinein" ? "Dine-in / 堂食" : "Takeaway / 打包";
+  const orderTypeText = getOrderTypeText(charges.orderType);
 
   const normalItems = cart.filter(item => !item.marketPrice);
   const marketItems = cart.filter(item => item.marketPrice);
@@ -1097,9 +1408,18 @@ function generateQRCode(){
   document.getElementById("qrCodeImage").src = qrUrl;
 }
 
-renderMenu();
-showCart();
-generateQRCode();
+function initPage(){
+  const savedType = getOrderType();
+
+  if(savedType){
+    showMainPage();
+  }else{
+    document.getElementById("landingPage").classList.remove("hidden");
+    document.getElementById("mainPage").classList.add("hidden");
+  }
+}
+
+initPage();
 </script>
 
 </body>
