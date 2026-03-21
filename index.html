@@ -309,13 +309,15 @@ textarea{
 }
 
 .search-box h3,
-.qr-box h3{
+.qr-box h3,
+.featured-title{
   margin:0 0 8px;
   font-size:18px;
 }
 
 .search-box small,
-.qr-box small{
+.qr-box small,
+.featured-title small{
   color:var(--muted);
 }
 
@@ -381,6 +383,74 @@ textarea{
   border:1px solid #f0f0f0;
 }
 
+/* Featured */
+.featured-section{
+  margin-bottom:22px;
+}
+
+.featured-title{
+  margin-bottom:12px;
+  font-size:22px;
+  font-weight:bold;
+  color:var(--primary);
+}
+
+.featured-title small{
+  display:block;
+  font-size:14px;
+  margin-top:4px;
+  font-weight:normal;
+}
+
+.featured-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:16px;
+}
+
+.featured-card{
+  background:linear-gradient(180deg,#fff,#fff8f5);
+  border:1px solid #f5dfd8;
+  border-radius:22px;
+  padding:18px;
+  box-shadow:var(--shadow-sm);
+}
+
+.featured-card h3{
+  margin:0 0 6px;
+  font-size:20px;
+}
+
+.featured-card h3 small{
+  display:block;
+  font-size:14px;
+  color:var(--muted);
+  margin-top:4px;
+  font-weight:normal;
+}
+
+.featured-desc{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+  margin-bottom:10px;
+}
+
+.featured-list{
+  margin:0 0 12px 18px;
+  padding:0;
+  color:#444;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.featured-btn{
+  background:linear-gradient(180deg, #f04a3a 0%, #d92d20 100%);
+  color:#fff;
+  width:100%;
+}
+
+/* Category */
 .category-block{
   margin-top:18px;
   scroll-margin-top:20px;
@@ -506,6 +576,18 @@ textarea{
   border:1px solid #111827;
 }
 
+.tag-popular{
+  background:#fff2e8;
+  color:#b45309;
+  border:1px solid #fed7aa;
+}
+
+.tag-bestvalue{
+  background:#ecfdf5;
+  color:#047857;
+  border:1px solid #a7f3d0;
+}
+
 .item h3{
   margin:12px 0 6px;
   font-size:18px;
@@ -583,6 +665,38 @@ button:hover{
   box-shadow:0 6px 14px rgba(17,24,39,.16);
 }
 
+/* Suggestion */
+.suggestion-box{
+  margin-top:10px;
+  padding:10px;
+  border-radius:12px;
+  background:#fff8f5;
+  border:1px solid #ffd9d0;
+}
+
+.suggestion-title{
+  font-size:12px;
+  font-weight:bold;
+  color:var(--primary);
+  margin-bottom:8px;
+}
+
+.suggestion-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+.suggestion-btn{
+  background:#fff;
+  color:var(--primary);
+  border:1px solid #ffd0c5;
+  font-size:12px;
+  padding:7px 10px;
+  border-radius:999px;
+}
+
+/* Floating cart */
 .floating-cart-btn{
   position:fixed;
   right:18px;
@@ -958,6 +1072,7 @@ input:focus, textarea:focus{
       </div>
     </div>
 
+    <div id="featuredContainer" class="featured-section"></div>
     <div id="menuContainer"></div>
   </div>
 
@@ -1041,117 +1156,126 @@ const menuData = [
     titleZh: "招牌菜",
     defaultOpen: true,
     items: [
-      { en:"Golden Pumpkin Lobster", zh:"金瓜龙虾", image:"https://via.placeholder.com/300?text=Golden+Pumpkin+Lobster", marketPrice:true, tags:["signature","market"] },
-      { en:"Chilli Crab", zh:"辣子蟹", image:"https://via.placeholder.com/300?text=Chilli+Crab", marketPrice:true, tags:["signature","market"] },
-      { en:"Goose Palm Abalone", zh:"掌上明珠", image:"https://via.placeholder.com/300?text=Goose+Palm+Abalone", prices:{ Standard:468 }, tags:["signature"] },
-      { en:"Lobster with Superior Stock", zh:"上汤龙虾", image:"https://via.placeholder.com/300?text=Lobster+Superior+Stock", marketPrice:true, tags:["signature","market"] },
-      { en:"Salt Baked Chicken", zh:"盐焗鸡", image:"https://via.placeholder.com/300?text=Salt+Baked+Chicken", prices:{ Standard:68 }, tags:["signature"] },
-      { en:"Lava and Red Pomegranate Fish", zh:"火焰石榴鱼", image:"https://via.placeholder.com/300?text=Lava+Red+Pomegranate+Fish", marketPrice:true, tags:["signature","market"] },
-      { en:"Curry Fish Head", zh:"咖喱鱼头", image:"https://via.placeholder.com/300?text=Curry+Fish+Head", marketPrice:true, tags:["signature","market"] }
+      { en:"Golden Pumpkin Cream Lobster", zh:"金瓜奶香龙虾", image:"https://via.placeholder.com/300?text=Golden+Pumpkin+Cream+Lobster", marketPrice:true, tags:["signature","market"] },
+      { en:"Signature Spicy Chilli Crab", zh:"招牌香辣螃蟹", image:"https://via.placeholder.com/300?text=Signature+Spicy+Chilli+Crab", marketPrice:true, tags:["signature","market","popular"] },
+      { en:"Premium Goose Web with Abalone Delight", zh:"鲍鱼掌上明珠", image:"https://via.placeholder.com/300?text=Premium+Goose+Web+Abalone", prices:{ Standard:468 }, tags:["signature"] },
+      { en:"Lobster in Premium Superior Broth", zh:"上汤鲜味龙虾", image:"https://via.placeholder.com/300?text=Lobster+Superior+Broth", marketPrice:true, tags:["signature","market"] },
+      { en:"Traditional Salt-Baked Chicken", zh:"古法盐焗鸡", image:"https://via.placeholder.com/300?text=Traditional+Salt+Baked+Chicken", prices:{ Standard:68 }, tags:["signature"] },
+      { en:"Flaming Pomegranate Sweet & Sour Fish", zh:"火焰石榴酸甜鱼", image:"https://via.placeholder.com/300?text=Flaming+Pomegranate+Fish", marketPrice:true, tags:["signature","market"] },
+      { en:"Signature Curry Fish Head Pot", zh:"招牌咖喱鱼头煲", image:"https://via.placeholder.com/300?text=Signature+Curry+Fish+Head+Pot", marketPrice:true, tags:["signature","market","popular"] }
     ]
   },
   {
     titleEn: "Lobster",
     titleZh: "龙虾",
     items: [
-      { en:"Steamed Lobster (Egg / Garlic)", zh:"清蒸龙虾（蛋蒜 / 蒜蓉）", image:"https://via.placeholder.com/300?text=Steamed+Lobster", marketPrice:true, tags:["market"] },
-      { en:"Desaru Corner Style Lobster", zh:"金沙龙虾", image:"https://via.placeholder.com/300?text=Desaru+Lobster", marketPrice:true, tags:["market"] },
-      { en:"Typhoon Lobster", zh:"避风塘龙虾", image:"https://via.placeholder.com/300?text=Typhoon+Lobster", marketPrice:true, tags:["market"] },
-      { en:"Golden Pumpkin Lobster", zh:"金瓜龙虾", image:"https://via.placeholder.com/300?text=Golden+Pumpkin+Lobster", marketPrice:true, tags:["market"] },
-      { en:"Western Style Lobster", zh:"西式奶油龙虾", image:"https://via.placeholder.com/300?text=Western+Lobster", marketPrice:true, tags:["market"] },
-      { en:"Salted Egg Lobster", zh:"黄金咸蛋龙虾", image:"https://via.placeholder.com/300?text=Salted+Egg+Lobster", marketPrice:true, tags:["market"] },
-      { en:"Cheese Lobster", zh:"芝士烤龙虾", image:"https://via.placeholder.com/300?text=Cheese+Lobster", marketPrice:true, tags:["market"] }
+      {
+        en:"Australian Lobster (Whole)",
+        zh:"澳洲龙虾（整只）",
+        image:"https://via.placeholder.com/300?text=Australian+Lobster",
+        prices:{ Standard:198 },
+        tags:["signature","popular"],
+        note:"Approx. 500g–600g / per lobster · Same cooking styles available"
+      },
+      {
+        en:"Local Lobster (By Weight)",
+        zh:"本地龙虾（按重量）",
+        image:"https://via.placeholder.com/300?text=Local+Lobster",
+        marketPrice:true,
+        tags:["bestvalue","market"],
+        note:"RM280/kg · Approx. 300g–500g each · Minimum 600g · Same cooking styles available"
+      }
     ]
   },
   {
     titleEn: "Crab",
     titleZh: "螃蟹",
     items: [
-      { en:"Chilli Crab", zh:"辣子蟹", image:"https://via.placeholder.com/300?text=Chilli+Crab", marketPrice:true, tags:["market"] },
-      { en:"Volcanic Crab", zh:"招牌火山蟹", image:"https://via.placeholder.com/300?text=Volcanic+Crab", marketPrice:true, tags:["market"] },
-      { en:"Black Pepper Crab", zh:"黑胡椒蟹", image:"https://via.placeholder.com/300?text=Black+Pepper+Crab", marketPrice:true, tags:["market"] },
-      { en:"Salted Egg Crab", zh:"黄金咸蛋蟹", image:"https://via.placeholder.com/300?text=Salted+Egg+Crab", marketPrice:true, tags:["market"] },
-      { en:"Steamed Crab (Egg)", zh:"清蒸蟹（蛋）", image:"https://via.placeholder.com/300?text=Steamed+Crab", marketPrice:true, tags:["market"] },
-      { en:"Curry Leaf Crab", zh:"干香蟹", image:"https://via.placeholder.com/300?text=Curry+Leaf+Crab", marketPrice:true, tags:["market"] }
+      { en:"Signature Spicy Chilli Crab", zh:"招牌香辣螃蟹", image:"https://via.placeholder.com/300?text=Signature+Spicy+Chilli+Crab", marketPrice:true, tags:["market","popular"] },
+      { en:"Volcanic Lava Crab (Signature Sauce)", zh:"招牌火山蟹", image:"https://via.placeholder.com/300?text=Volcanic+Lava+Crab", marketPrice:true, tags:["market"] },
+      { en:"Black Pepper Aromatic Crab", zh:"黑胡椒香辣蟹", image:"https://via.placeholder.com/300?text=Black+Pepper+Aromatic+Crab", marketPrice:true, tags:["market","popular"] },
+      { en:"Salted Egg Yolk Crab Supreme", zh:"至尊咸蛋黄蟹", image:"https://via.placeholder.com/300?text=Salted+Egg+Yolk+Crab+Supreme", marketPrice:true, tags:["market","popular"] },
+      { en:"Classic Steamed Crab (Egg Infused)", zh:"清蒸蛋香蟹", image:"https://via.placeholder.com/300?text=Classic+Steamed+Crab", marketPrice:true, tags:["market"] },
+      { en:"Curry Leaf Spiced Crab", zh:"干香咖喱叶蟹", image:"https://via.placeholder.com/300?text=Curry+Leaf+Spiced+Crab", marketPrice:true, tags:["market"] }
     ]
   },
   {
     titleEn: "Fish",
     titleZh: "鱼",
     items: [
-      { en:"Hongkong Steam", zh:"港蒸", image:"https://via.placeholder.com/300?text=Hongkong+Steam", marketPrice:true, tags:["market"] },
-      { en:"Nyonya Steam", zh:"娘惹蒸", image:"https://via.placeholder.com/300?text=Nyonya+Steam", marketPrice:true, tags:["market"] },
-      { en:"Teo Chew Steam", zh:"潮州蒸", image:"https://via.placeholder.com/300?text=Teo+Chew+Steam", marketPrice:true, tags:["market"] },
-      { en:"Banana Leaf Sour and Spicy", zh:"香蕉叶酸辣", image:"https://via.placeholder.com/300?text=Banana+Leaf+Fish", marketPrice:true, tags:["market"] },
-      { en:"Dry Fried", zh:"油炸", image:"https://via.placeholder.com/300?text=Dry+Fried+Fish", marketPrice:true, tags:["market"] },
-      { en:"Lava and Red Pomegranate", zh:"火焰石榴", image:"https://via.placeholder.com/300?text=Lava+Red+Pomegranate", marketPrice:true, tags:["market"] },
-      { en:"Sweet and Sour", zh:"酸甜", image:"https://via.placeholder.com/300?text=Sweet+Sour+Fish", marketPrice:true, tags:["market"] }
+      { en:"Hong Kong Style Premium Steamed Fish", zh:"港式清蒸鲜鱼", image:"https://via.placeholder.com/300?text=Hong+Kong+Premium+Steamed+Fish", marketPrice:true, tags:["market"] },
+      { en:"Nyonya Style Spicy & Sour Fish", zh:"娘惹风味蒸鱼", image:"https://via.placeholder.com/300?text=Nyonya+Style+Fish", marketPrice:true, tags:["market"] },
+      { en:"Teochew Style Steamed Fish", zh:"潮州风味蒸鱼", image:"https://via.placeholder.com/300?text=Teochew+Style+Steamed+Fish", marketPrice:true, tags:["market"] },
+      { en:"Banana Leaf Spicy & Sour Fish", zh:"香蕉叶酸辣鱼", image:"https://via.placeholder.com/300?text=Banana+Leaf+Fish", marketPrice:true, tags:["market"] },
+      { en:"Crispy Golden Fried Fish", zh:"香脆油炸鱼", image:"https://via.placeholder.com/300?text=Crispy+Golden+Fried+Fish", marketPrice:true, tags:["market"] },
+      { en:"Flaming Pomegranate Sweet & Sour Fish", zh:"火焰石榴酸甜鱼", image:"https://via.placeholder.com/300?text=Flaming+Pomegranate+Fish", marketPrice:true, tags:["market","signature"] },
+      { en:"Classic Sweet & Sour Fish", zh:"酸甜开胃鱼", image:"https://via.placeholder.com/300?text=Classic+Sweet+Sour+Fish", marketPrice:true, tags:["market"] }
     ]
   },
   {
     titleEn: "Fish Head",
     titleZh: "鱼头",
     items: [
-      { en:"Curry Fish Head", zh:"咖喱鱼头", image:"https://via.placeholder.com/300?text=Curry+Fish+Head", marketPrice:true, tags:["market"] },
-      { en:"Bitter Gourd Fish Head", zh:"苦瓜鼓汁鱼头", image:"https://via.placeholder.com/300?text=Bitter+Gourd+Fish+Head", marketPrice:true, tags:["market"] },
-      { en:"Curry Leaf Fish Head", zh:"干香炒鱼头", image:"https://via.placeholder.com/300?text=Curry+Leaf+Fish+Head", marketPrice:true, tags:["market"] },
-      { en:"Claypot Fish Head", zh:"砂锅鱼头", image:"https://via.placeholder.com/300?text=Claypot+Fish+Head", marketPrice:true, tags:["market"] }
+      { en:"Signature Curry Fish Head Pot", zh:"招牌咖喱鱼头煲", image:"https://via.placeholder.com/300?text=Signature+Curry+Fish+Head+Pot", marketPrice:true, tags:["market","signature","popular"] },
+      { en:"Bitter Gourd Black Bean Fish Head", zh:"苦瓜豆豉鱼头", image:"https://via.placeholder.com/300?text=Bitter+Gourd+Black+Bean+Fish+Head", marketPrice:true, tags:["market"] },
+      { en:"Curry Leaf Fried Fish Head", zh:"干香咖喱叶鱼头", image:"https://via.placeholder.com/300?text=Curry+Leaf+Fish+Head", marketPrice:true, tags:["market"] },
+      { en:"Claypot Fish Head (Chef Style)", zh:"砂锅风味鱼头", image:"https://via.placeholder.com/300?text=Claypot+Fish+Head", marketPrice:true, tags:["market"] }
     ]
   },
   {
     titleEn: "Seafood Specialties",
     titleZh: "海味",
     items: [
-      { en:"Braised Shark's Fin Soup with Crab Meat", zh:"蟹肉鱼翅", image:"https://via.placeholder.com/300?text=Shark+Fin+Crab+Meat", prices:{ S:82, M:116, L:150 } },
-      { en:"Seafood Pot", zh:"海味锅", image:"https://via.placeholder.com/300?text=Seafood+Pot", prices:{ S:88, M:118, L:168 } },
-      { en:"Goose Palm Abalone", zh:"掌上明珠", image:"https://via.placeholder.com/300?text=Goose+Palm+Abalone", prices:{ Standard:468 } },
-      { en:"Braised Mushroom with Sea Cucumber", zh:"冬菇海参", image:"https://via.placeholder.com/300?text=Mushroom+Sea+Cucumber", prices:{ S:60, L:98 } },
-      { en:"Braised Mushroom with Sea Cucumber and Fish Maw", zh:"冬菇海参鱼鳔", image:"https://via.placeholder.com/300?text=Sea+Cucumber+Fish+Maw", prices:{ S:85, L:138 } }
+      { en:"Braised Shark’s Fin Soup with Crab Meat", zh:"蟹肉鱼翅羹", image:"https://via.placeholder.com/300?text=Braised+Sharks+Fin+Soup+Crab+Meat", prices:{ S:82, M:116, L:150 } },
+      { en:"Signature Seafood Treasure Pot", zh:"招牌海味一品锅", image:"https://via.placeholder.com/300?text=Signature+Seafood+Treasure+Pot", prices:{ S:88, M:118, L:168 }, tags:["signature"] },
+      { en:"Premium Goose Web with Abalone Delight", zh:"鲍鱼掌上明珠", image:"https://via.placeholder.com/300?text=Premium+Goose+Web+Abalone", prices:{ Standard:468 }, tags:["signature"] },
+      { en:"Braised Mushroom with Sea Cucumber", zh:"冬菇海参", image:"https://via.placeholder.com/300?text=Braised+Mushroom+Sea+Cucumber", prices:{ S:60, L:98 } },
+      { en:"Braised Mushroom with Fish Maw & Sea Cucumber", zh:"冬菇海参鱼鳔", image:"https://via.placeholder.com/300?text=Braised+Mushroom+Fish+Maw+Sea+Cucumber", prices:{ S:85, L:138 } }
     ]
   },
   {
     titleEn: "Shellfish",
     titleZh: "贝壳类",
     items: [
-      { en:"Garlic Steam Scallop", zh:"蒜蓉蒸带子", image:"https://via.placeholder.com/300?text=Garlic+Steam+Scallop", prices:{ "Per Pc":7.5 }, note:"Min 4 pcs" },
-      { en:"Oyster", zh:"生蚝", image:"https://via.placeholder.com/300?text=Oyster", marketPrice:true, tags:["market"] },
-      { en:"Lala", zh:"啦啦", image:"https://via.placeholder.com/300?text=Lala", prices:{ S:35, L:68 } },
-      { en:"Gong Gong", zh:"贡贡", image:"https://via.placeholder.com/300?text=Gong+Gong", marketPrice:true, tags:["market"] },
-      { en:"Baked Oyster with Cheese", zh:"奶香芝士焗生蚝", image:"https://via.placeholder.com/300?text=Baked+Oyster+Cheese", marketPrice:true, tags:["market"] }
+      { en:"Garlic Steamed Scallop Premium", zh:"蒜蓉蒸鲜带子", image:"https://via.placeholder.com/300?text=Garlic+Steamed+Scallop+Premium", prices:{ "Per Pc":7.5 }, note:"Min 4 pcs" },
+      { en:"Fresh Oyster Selection", zh:"新鲜生蚝", image:"https://via.placeholder.com/300?text=Fresh+Oyster+Selection", marketPrice:true, tags:["market"] },
+      { en:"Signature Lala Delight", zh:"招牌啦啦", image:"https://via.placeholder.com/300?text=Signature+Lala+Delight", prices:{ S:35, L:68 }, tags:["bestvalue"] },
+      { en:"Sea Snail (Gong Gong)", zh:"贡贡", image:"https://via.placeholder.com/300?text=Sea+Snail+Gong+Gong", marketPrice:true, tags:["market"] },
+      { en:"Cheesy Baked Oyster", zh:"芝士焗生蚝", image:"https://via.placeholder.com/300?text=Cheesy+Baked+Oyster", marketPrice:true, tags:["market","signature"] }
     ]
   },
   {
     titleEn: "Prawn",
     titleZh: "虾",
     items: [
-      { en:"Dried Fried Prawns", zh:"干煎虾", image:"https://via.placeholder.com/300?text=Dried+Fried+Prawns", prices:{ S:48, M:78, L:108 } },
-      { en:"Boiling Prawns", zh:"白灼虾", image:"https://via.placeholder.com/300?text=Boiling+Prawns", prices:{ S:48, M:78, L:108 } },
-      { en:"Indonesia Style Prawns", zh:"印尼虾", image:"https://via.placeholder.com/300?text=Indonesia+Style+Prawns", prices:{ S:48, M:78, L:108 } },
-      { en:"Cereal Butter Prawns", zh:"麦片虾", image:"https://via.placeholder.com/300?text=Cereal+Butter+Prawns", prices:{ S:48, M:78, L:108 } },
-      { en:"Pineapple Style Prawns", zh:"黄梨虾", image:"https://via.placeholder.com/300?text=Pineapple+Style+Prawns", prices:{ S:48, M:78, L:108 } }
+      { en:"Golden Dry Fried Prawns", zh:"干煎香虾", image:"https://via.placeholder.com/300?text=Golden+Dry+Fried+Prawns", prices:{ S:48, M:78, L:108 } },
+      { en:"Classic Boiled Fresh Prawns", zh:"白灼鲜虾", image:"https://via.placeholder.com/300?text=Classic+Boiled+Fresh+Prawns", prices:{ S:48, M:78, L:108 }, tags:["bestvalue"] },
+      { en:"Indonesia Style Spicy Prawns", zh:"印尼风味虾", image:"https://via.placeholder.com/300?text=Indonesia+Style+Spicy+Prawns", prices:{ S:48, M:78, L:108 } },
+      { en:"Cereal Butter Crispy Prawns", zh:"麦片牛油香脆虾", image:"https://via.placeholder.com/300?text=Cereal+Butter+Crispy+Prawns", prices:{ S:48, M:78, L:108 }, tags:["popular"] },
+      { en:"Pineapple Sweet Prawns", zh:"黄梨开胃虾", image:"https://via.placeholder.com/300?text=Pineapple+Sweet+Prawns", prices:{ S:48, M:78, L:108 } }
     ]
   },
   {
     titleEn: "Squid / Cuttlefish",
     titleZh: "苏东",
     items: [
-      { en:"Curry Leaf Squid", zh:"干香苏东", image:"https://via.placeholder.com/300?text=Curry+Leaf+Squid", prices:{ S:48, M:78, L:108 } },
-      { en:"Butter Fried Squid", zh:"牛油苏东", image:"https://via.placeholder.com/300?text=Butter+Fried+Squid", prices:{ S:48, M:78, L:108 } },
-      { en:"Deep Fried Baby Squid", zh:"苏东仔", image:"https://via.placeholder.com/300?text=Deep+Fried+Baby+Squid", prices:{ S:48, M:78, L:108 } },
-      { en:"Sambal Belacan Squid", zh:"参峇苏东", image:"https://via.placeholder.com/300?text=Sambal+Belacan+Squid", prices:{ S:48, M:78, L:108 } },
-      { en:"Salted Egg Yolk Squid", zh:"黄金咸蛋苏东", image:"https://via.placeholder.com/300?text=Salted+Egg+Yolk+Squid", prices:{ S:48, M:78, L:108 } }
+      { en:"Curry Leaf Crispy Squid", zh:"干香咖喱叶苏东", image:"https://via.placeholder.com/300?text=Curry+Leaf+Crispy+Squid", prices:{ S:48, M:78, L:108 } },
+      { en:"Butter Fried Squid", zh:"牛油香炸苏东", image:"https://via.placeholder.com/300?text=Butter+Fried+Squid", prices:{ S:48, M:78, L:108 } },
+      { en:"Crispy Baby Squid", zh:"香脆苏东仔", image:"https://via.placeholder.com/300?text=Crispy+Baby+Squid", prices:{ S:48, M:78, L:108 }, tags:["bestvalue"] },
+      { en:"Sambal Belacan Squid", zh:"参峇马来苏东", image:"https://via.placeholder.com/300?text=Sambal+Belacan+Squid", prices:{ S:48, M:78, L:108 } },
+      { en:"Salted Egg Yolk Squid Supreme", zh:"至尊咸蛋黄苏东", image:"https://via.placeholder.com/300?text=Salted+Egg+Yolk+Squid+Supreme", prices:{ S:48, M:78, L:108 }, tags:["popular"] }
     ]
   },
   {
     titleEn: "Chicken",
     titleZh: "鸡肉",
     items: [
-      { en:"Garden Chicken", zh:"招牌菜园鸡", image:"https://via.placeholder.com/300?text=Garden+Chicken", prices:{ Standard:88 } },
-      { en:"Boxing Chicken", zh:"拳头鸡", image:"https://via.placeholder.com/300?text=Boxing+Chicken", prices:{ Standard:38 } },
-      { en:"Salt Baked Chicken", zh:"盐焗鸡", image:"https://via.placeholder.com/300?text=Salt+Baked+Chicken", prices:{ S:35, L:68 } },
-      { en:"Sweet Sour Chicken", zh:"酸甜鸡丁", image:"https://via.placeholder.com/300?text=Sweet+Sour+Chicken", prices:{ Standard:35 } },
-      { en:"Garlic Chicken", zh:"蒜头鸡", image:"https://via.placeholder.com/300?text=Garlic+Chicken", prices:{ Standard:35 } },
-      { en:"Ginger Onion Chicken", zh:"姜葱鸡", image:"https://via.placeholder.com/300?text=Ginger+Onion+Chicken", prices:{ Standard:35 } }
+      { en:"Signature Garden Style Chicken", zh:"招牌菜园鸡", image:"https://via.placeholder.com/300?text=Signature+Garden+Style+Chicken", prices:{ Standard:88 }, tags:["signature"] },
+      { en:"Crispy Boxing Chicken", zh:"香脆拳头鸡", image:"https://via.placeholder.com/300?text=Crispy+Boxing+Chicken", prices:{ Standard:38 } },
+      { en:"Traditional Salt-Baked Chicken", zh:"古法盐焗鸡", image:"https://via.placeholder.com/300?text=Traditional+Salt+Baked+Chicken", prices:{ S:35, L:68 }, tags:["popular"] },
+      { en:"Sweet & Sour Chicken Bites", zh:"酸甜鸡丁", image:"https://via.placeholder.com/300?text=Sweet+Sour+Chicken+Bites", prices:{ Standard:35 }, tags:["bestvalue"] },
+      { en:"Garlic Fragrant Chicken", zh:"蒜香鸡", image:"https://via.placeholder.com/300?text=Garlic+Fragrant+Chicken", prices:{ Standard:35 } },
+      { en:"Ginger & Onion Chicken", zh:"姜葱鸡", image:"https://via.placeholder.com/300?text=Ginger+Onion+Chicken", prices:{ Standard:35 } }
     ]
   },
   {
@@ -1160,7 +1284,7 @@ const menuData = [
     items: [
       { en:"Black Pepper Fish Fillet", zh:"黑胡椒鱼片", image:"https://via.placeholder.com/300?text=Black+Pepper+Fish+Fillet", prices:{ S:35, L:68 } },
       { en:"Ginger Onion Fish Fillet", zh:"姜葱鱼片", image:"https://via.placeholder.com/300?text=Ginger+Onion+Fish+Fillet", prices:{ S:35, L:68 } },
-      { en:"Sweet Sour Fish Fillet", zh:"酸甜鱼片", image:"https://via.placeholder.com/300?text=Sweet+Sour+Fish+Fillet", prices:{ S:35, L:68 } },
+      { en:"Sweet & Sour Fish Fillet", zh:"酸甜鱼片", image:"https://via.placeholder.com/300?text=Sweet+Sour+Fish+Fillet", prices:{ S:35, L:68 }, tags:["bestvalue"] },
       { en:"Curry Fish Fillet", zh:"咖喱鱼片", image:"https://via.placeholder.com/300?text=Curry+Fish+Fillet", prices:{ S:35, L:68 } }
     ]
   },
@@ -1168,27 +1292,27 @@ const menuData = [
     titleEn: "Meat",
     titleZh: "肉类",
     items: [
-      { en:"Ostrich Meat", zh:"鸵鸟肉", image:"https://via.placeholder.com/300?text=Ostrich+Meat", prices:{ S:45, L:85 }, note:"Cooking style may vary" },
-      { en:"Venison Meat", zh:"鹿肉", image:"https://via.placeholder.com/300?text=Venison+Meat", prices:{ S:45, L:85 }, note:"Cooking style may vary" }
+      { en:"Premium Ostrich Meat (Chef Style)", zh:"主厨鸵鸟肉", image:"https://via.placeholder.com/300?text=Premium+Ostrich+Meat", prices:{ S:45, L:85 }, note:"Cooking style may vary" },
+      { en:"Venison Delight (Chef Style)", zh:"主厨鹿肉", image:"https://via.placeholder.com/300?text=Venison+Delight", prices:{ S:45, L:85 }, note:"Cooking style may vary" }
     ]
   },
   {
     titleEn: "Tofu",
     titleZh: "豆腐",
     items: [
-      { en:"Braised Beancurd with Mushroom", zh:"招牌野菇菇豆腐", image:"https://via.placeholder.com/300?text=Beancurd+Mushroom", prices:{ S:20, L:36 } },
-      { en:"Braised Beancurd with Crab Meat", zh:"蟹扒豆腐", image:"https://via.placeholder.com/300?text=Beancurd+Crab+Meat", prices:{ S:26, L:50 } },
-      { en:"Chicken Minced Beancurd", zh:"家乡豆腐", image:"https://via.placeholder.com/300?text=Chicken+Minced+Beancurd", prices:{ S:26, L:50 } },
-      { en:"Crispy Seafood Beancurd", zh:"香脆海鲜炸豆腐", image:"https://via.placeholder.com/300?text=Crispy+Seafood+Beancurd", prices:{ S:20, L:36 } }
+      { en:"Signature Mushroom Beancurd", zh:"招牌野菇豆腐", image:"https://via.placeholder.com/300?text=Signature+Mushroom+Beancurd", prices:{ S:20, L:36 }, tags:["signature"] },
+      { en:"Braised Beancurd with Crab Meat", zh:"蟹肉豆腐", image:"https://via.placeholder.com/300?text=Braised+Beancurd+Crab+Meat", prices:{ S:26, L:50 }, tags:["popular"] },
+      { en:"Homestyle Chicken Minced Beancurd", zh:"家乡豆腐", image:"https://via.placeholder.com/300?text=Homestyle+Chicken+Minced+Beancurd", prices:{ S:26, L:50 }, tags:["bestvalue"] },
+      { en:"Crispy Seafood Beancurd", zh:"香脆海鲜豆腐", image:"https://via.placeholder.com/300?text=Crispy+Seafood+Beancurd", prices:{ S:20, L:36 } }
     ]
   },
   {
     titleEn: "Egg",
     titleZh: "蛋",
     items: [
-      { en:"Onion Omelette", zh:"大葱蛋", image:"https://via.placeholder.com/300?text=Onion+Omelette", prices:{ S:12, L:20 } },
+      { en:"Classic Onion Omelette", zh:"大葱蛋", image:"https://via.placeholder.com/300?text=Classic+Onion+Omelette", prices:{ S:12, L:20 }, tags:["bestvalue"] },
       { en:"Prawn Omelette", zh:"虾仁蛋", image:"https://via.placeholder.com/300?text=Prawn+Omelette", prices:{ S:18, L:30 } },
-      { en:"Oyster Omelette", zh:"蚝煎蛋", image:"https://via.placeholder.com/300?text=Oyster+Omelette", prices:{ S:18, L:30 } },
+      { en:"Oyster Omelette Deluxe", zh:"蚝煎蛋", image:"https://via.placeholder.com/300?text=Oyster+Omelette+Deluxe", prices:{ S:18, L:30 }, tags:["popular"] },
       { en:"Furong Omelette", zh:"芙蓉蛋", image:"https://via.placeholder.com/300?text=Furong+Omelette", prices:{ S:18, L:30 } }
     ]
   },
@@ -1196,48 +1320,108 @@ const menuData = [
     titleEn: "Vegetables",
     titleZh: "蔬菜",
     items: [
-      { en:"Kangkong", zh:"蕹菜", image:"https://via.placeholder.com/300?text=Kangkong", prices:{ S:15, L:24 } },
-      { en:"Baby Kailan", zh:"菜胆", image:"https://via.placeholder.com/300?text=Baby+Kailan", prices:{ S:18, L:30 } },
-      { en:"Spinach", zh:"菠菜", image:"https://via.placeholder.com/300?text=Spinach", prices:{ S:18, L:30 } },
-      { en:"Mix Vegetable", zh:"什菜", image:"https://via.placeholder.com/300?text=Mix+Vegetable", prices:{ S:24, L:36 } },
-      { en:"Broccoli", zh:"西兰花", image:"https://via.placeholder.com/300?text=Broccoli", prices:{ S:22, L:34 } },
-      { en:"Yam Ring", zh:"佛本飘香", image:"https://via.placeholder.com/300?text=Yam+Ring", prices:{ S:36, L:58 } },
-      { en:"Scallop with Broccoli", zh:"带子西兰花", image:"https://via.placeholder.com/300?text=Scallop+Broccoli", prices:{ S:40, L:75 } },
-      { en:"Prawn with Broccoli", zh:"虾球西兰花", image:"https://via.placeholder.com/300?text=Prawn+Broccoli", prices:{ S:40, L:75 } }
+      { en:"Sambal Kangkong", zh:"参峇蕹菜", image:"https://via.placeholder.com/300?text=Sambal+Kangkong", prices:{ S:15, L:24 }, tags:["bestvalue"] },
+      { en:"Baby Kailan with Garlic", zh:"蒜蓉菜胆", image:"https://via.placeholder.com/300?text=Baby+Kailan+with+Garlic", prices:{ S:18, L:30 } },
+      { en:"Spinach with Superior Broth", zh:"上汤菠菜", image:"https://via.placeholder.com/300?text=Spinach+with+Superior+Broth", prices:{ S:18, L:30 } },
+      { en:"Mixed Vegetables Delight", zh:"什锦蔬菜", image:"https://via.placeholder.com/300?text=Mixed+Vegetables+Delight", prices:{ S:24, L:36 } },
+      { en:"Broccoli with Premium Seafood", zh:"海鲜西兰花", image:"https://via.placeholder.com/300?text=Broccoli+with+Premium+Seafood", prices:{ S:22, L:34 }, tags:["signature"] },
+      { en:"Golden Yam Ring Basket", zh:"佛本飘香", image:"https://via.placeholder.com/300?text=Golden+Yam+Ring+Basket", prices:{ S:36, L:58 }, tags:["signature"] },
+      { en:"Scallop with Broccoli", zh:"带子西兰花", image:"https://via.placeholder.com/300?text=Scallop+with+Broccoli", prices:{ S:40, L:75 } },
+      { en:"Prawn with Broccoli", zh:"虾球西兰花", image:"https://via.placeholder.com/300?text=Prawn+with+Broccoli", prices:{ S:40, L:75 } }
     ]
   },
   {
     titleEn: "Soup",
     titleZh: "汤",
     items: [
-      { en:"Tom Yam Soup", zh:"东炎海鲜汤", image:"https://via.placeholder.com/300?text=Tom+Yam+Soup", prices:{ S:28, L:50 } },
-      { en:"Braised Sweet Corn Soup with Crab Meat", zh:"粟米蟹肉羹", image:"https://via.placeholder.com/300?text=Sweet+Corn+Crab+Soup", prices:{ S:35, L:60 } },
-      { en:"Mix Vege Soup", zh:"什菜汤", image:"https://via.placeholder.com/300?text=Mix+Vege+Soup", prices:{ S:24, L:46 } },
-      { en:"Seaweed Soup", zh:"紫菜汤", image:"https://via.placeholder.com/300?text=Seaweed+Soup", prices:{ S:24, L:46 } },
-      { en:"Salted Vegetable with Beancurd", zh:"咸菜豆腐汤", image:"https://via.placeholder.com/300?text=Salted+Vegetable+Beancurd+Soup", prices:{ S:24, L:46 } }
+      { en:"Tom Yam Seafood Soup", zh:"东炎海鲜汤", image:"https://via.placeholder.com/300?text=Tom+Yam+Seafood+Soup", prices:{ S:28, L:50 }, tags:["popular","signature"] },
+      { en:"Sweet Corn Crab Meat Soup", zh:"粟米蟹肉羹", image:"https://via.placeholder.com/300?text=Sweet+Corn+Crab+Meat+Soup", prices:{ S:35, L:60 }, tags:["signature"] },
+      { en:"Mixed Vegetable Soup", zh:"什菜汤", image:"https://via.placeholder.com/300?text=Mixed+Vegetable+Soup", prices:{ S:24, L:46 }, tags:["bestvalue"] },
+      { en:"Seaweed Egg Soup", zh:"紫菜蛋花汤", image:"https://via.placeholder.com/300?text=Seaweed+Egg+Soup", prices:{ S:24, L:46 } },
+      { en:"Salted Vegetable Beancurd Soup", zh:"咸菜豆腐汤", image:"https://via.placeholder.com/300?text=Salted+Vegetable+Beancurd+Soup", prices:{ S:24, L:46 } }
     ]
   },
   {
     titleEn: "Fried Noodles / Rice",
     titleZh: "炒粉 / 饭",
     items: [
-      { en:"Seafood Fried", zh:"海鲜炒", image:"https://via.placeholder.com/300?text=Seafood+Fried", prices:{ S:12, M:24, L:38 } },
-      { en:"Kampung Fried", zh:"甘榜炒", image:"https://via.placeholder.com/300?text=Kampung+Fried", prices:{ S:12, M:24, L:38 } },
-      { en:"Sambal Fried", zh:"参峇炒", image:"https://via.placeholder.com/300?text=Sambal+Fried", prices:{ S:12, M:24, L:38 } },
-      { en:"Hokkian Fried", zh:"福建炒", image:"https://via.placeholder.com/300?text=Hokkian+Fried", prices:{ S:12, M:24, L:38 } },
-      { en:"Seafood Soup Noodle", zh:"海鲜汤", image:"https://via.placeholder.com/300?text=Seafood+Soup+Noodle", prices:{ S:12, M:24, L:38 } },
-      { en:"Cantonese Fried", zh:"广东炒", image:"https://via.placeholder.com/300?text=Cantonese+Fried", prices:{ S:12, M:24, L:38 } }
+      { en:"Signature Seafood Fried Rice / Noodles", zh:"招牌海鲜炒", image:"https://via.placeholder.com/300?text=Signature+Seafood+Fried", prices:{ S:12, M:24, L:38 }, tags:["signature","popular"] },
+      { en:"Kampung Style Fried Rice / Noodles", zh:"甘榜炒", image:"https://via.placeholder.com/300?text=Kampung+Style+Fried", prices:{ S:12, M:24, L:38 } },
+      { en:"Sambal Fried Rice / Noodles", zh:"参峇炒", image:"https://via.placeholder.com/300?text=Sambal+Fried", prices:{ S:12, M:24, L:38 } },
+      { en:"Hokkien Style Fried Noodles", zh:"福建炒", image:"https://via.placeholder.com/300?text=Hokkien+Style+Fried+Noodles", prices:{ S:12, M:24, L:38 } },
+      { en:"Seafood Soup Noodles", zh:"海鲜汤面", image:"https://via.placeholder.com/300?text=Seafood+Soup+Noodles", prices:{ S:12, M:24, L:38 }, tags:["bestvalue"] },
+      { en:"Cantonese Style Fried Noodles", zh:"广东炒", image:"https://via.placeholder.com/300?text=Cantonese+Style+Fried+Noodles", prices:{ S:12, M:24, L:38 } }
     ]
   },
   {
     titleEn: "Drinks",
     titleZh: "饮料",
     items: [
-      { en:"Chinese Tea", zh:"中国茶", image:"https://via.placeholder.com/300?text=Chinese+Tea", prices:{ Standard:1.5 } },
-      { en:"White Coffee", zh:"白咖啡", image:"https://via.placeholder.com/300?text=White+Coffee", prices:{ Standard:5.5 } }
+      { en:"Chinese Tea (Per Pax)", zh:"中国茶", image:"https://via.placeholder.com/300?text=Chinese+Tea", prices:{ Standard:1.5 }, tags:["bestvalue"] },
+      { en:"Premium White Coffee", zh:"白咖啡", image:"https://via.placeholder.com/300?text=Premium+White+Coffee", prices:{ Standard:5.5 } }
     ]
   }
 ];
+
+const featuredCombos = [
+  {
+    titleEn: "Seafood Set for 2",
+    titleZh: "双人海鲜套餐",
+    descEn: "Fast order for 2 pax",
+    descZh: "适合2人快速点单",
+    items: [
+      { nameEn:"Australian Lobster (Whole)", nameZh:"澳洲龙虾（整只）", size:"Standard", price:198 },
+      { nameEn:"Cereal Butter Crispy Prawns", nameZh:"麦片牛油香脆虾", size:"S", price:48 },
+      { nameEn:"Spinach with Superior Broth", nameZh:"上汤菠菜", size:"S", price:18 },
+      { nameEn:"Tom Yam Seafood Soup", nameZh:"东炎海鲜汤", size:"S", price:28 }
+    ]
+  },
+  {
+    titleEn: "Chef’s Must Try",
+    titleZh: "主厨推荐组合",
+    descEn: "Signature dishes picked for you",
+    descZh: "帮你搭配的招牌组合",
+    items: [
+      { nameEn:"Signature Spicy Chilli Crab", nameZh:"招牌香辣螃蟹", size:"Market Price", marketPrice:true },
+      { nameEn:"Australian Lobster (Whole)", nameZh:"澳洲龙虾（整只）", size:"Standard", price:198 },
+      { nameEn:"Signature Seafood Fried Rice / Noodles", nameZh:"招牌海鲜炒", size:"S", price:12 }
+    ]
+  },
+  {
+    titleEn: "Family Seafood Feast",
+    titleZh: "家庭海鲜盛宴",
+    descEn: "Best for sharing",
+    descZh: "适合家庭共享",
+    items: [
+      { nameEn:"Australian Lobster (Whole)", nameZh:"澳洲龙虾（整只）", size:"Standard", price:198 },
+      { nameEn:"Signature Spicy Chilli Crab", nameZh:"招牌香辣螃蟹", size:"Market Price", marketPrice:true },
+      { nameEn:"Cereal Butter Crispy Prawns", nameZh:"麦片牛油香脆虾", size:"M", price:78 },
+      { nameEn:"Sambal Kangkong", nameZh:"参峇蕹菜", size:"L", price:24 },
+      { nameEn:"Tom Yam Seafood Soup", nameZh:"东炎海鲜汤", size:"L", price:50 }
+    ]
+  }
+];
+
+const itemSuggestions = {
+  "Australian Lobster (Whole)": [
+    { nameEn:"Garlic Steamed Scallop Premium", nameZh:"蒜蓉蒸鲜带子", size:"Per Pc", price:7.5 },
+    { nameEn:"Tom Yam Seafood Soup", nameZh:"东炎海鲜汤", size:"S", price:28 },
+    { nameEn:"Signature Seafood Fried Rice / Noodles", nameZh:"招牌海鲜炒", size:"S", price:12 }
+  ],
+  "Local Lobster (By Weight)": [
+    { nameEn:"Garlic Steamed Scallop Premium", nameZh:"蒜蓉蒸鲜带子", size:"Per Pc", price:7.5 },
+    { nameEn:"Mixed Vegetable Soup", nameZh:"什菜汤", size:"S", price:24 },
+    { nameEn:"Signature Seafood Fried Rice / Noodles", nameZh:"招牌海鲜炒", size:"S", price:12 }
+  ],
+  "Signature Spicy Chilli Crab": [
+    { nameEn:"Signature Seafood Fried Rice / Noodles", nameZh:"招牌海鲜炒", size:"S", price:12 },
+    { nameEn:"Baby Kailan with Garlic", nameZh:"蒜蓉菜胆", size:"S", price:18 }
+  ],
+  "Cereal Butter Crispy Prawns": [
+    { nameEn:"Tom Yam Seafood Soup", nameZh:"东炎海鲜汤", size:"S", price:28 },
+    { nameEn:"Signature Seafood Fried Rice / Noodles", nameZh:"招牌海鲜炒", size:"S", price:12 }
+  ]
+};
 
 let cart = [];
 let total = 0;
@@ -1293,6 +1477,7 @@ function showMainPage(){
   document.getElementById("landingPage").classList.add("hidden");
   document.getElementById("mainPage").classList.remove("hidden");
   updateOrderTypeUI();
+  renderFeaturedCombos();
   renderMenu();
   showCart();
   generateQRCode();
@@ -1348,6 +1533,12 @@ function getTagsHtml(item){
   if(item.marketPrice || (item.tags && item.tags.includes("market"))){
     html.push('<span class="tag tag-market">Market Price</span>');
   }
+  if(item.tags && item.tags.includes("popular")){
+    html.push('<span class="tag tag-popular">Popular</span>');
+  }
+  if(item.tags && item.tags.includes("bestvalue")){
+    html.push('<span class="tag tag-bestvalue">Best Value</span>');
+  }
   return html.length ? `<div class="item-tags">${html.join("")}</div>` : "";
 }
 
@@ -1368,6 +1559,24 @@ function createButtons(item, categoryIndex, itemIndex){
           ${size} - RM${Number(price).toFixed(2)}
         </button>
       `).join("")}
+    </div>
+  `;
+}
+
+function getSuggestionHtml(item){
+  const suggestions = itemSuggestions[item.en];
+  if(!suggestions || !suggestions.length) return "";
+
+  return `
+    <div class="suggestion-box">
+      <div class="suggestion-title">Recommended Pairing / 推荐搭配</div>
+      <div class="suggestion-row">
+        ${suggestions.map(s => `
+          <button class="suggestion-btn" onclick="addSuggestion('${escapeText(s.nameEn)}','${escapeText(s.nameZh)}','${escapeText(s.size)}',${Number(s.price)})">
+            ${s.nameZh} ${s.size} - RM${Number(s.price).toFixed(2)}
+          </button>
+        `).join("")}
+      </div>
     </div>
   `;
 }
@@ -1400,6 +1609,32 @@ function jumpToCategory(index){
   if(block){
     block.scrollIntoView({ behavior:"smooth", block:"start" });
   }
+}
+
+function renderFeaturedCombos(){
+  const container = document.getElementById("featuredContainer");
+  if(!container) return;
+
+  container.innerHTML = `
+    <div class="featured-title">
+      Recommended Sets
+      <small>推荐组合</small>
+    </div>
+    <div class="featured-grid">
+      ${featuredCombos.map((combo, index) => `
+        <div class="featured-card">
+          <h3>${combo.titleEn}<small>${combo.titleZh}</small></h3>
+          <div class="featured-desc">${combo.descEn}<br>${combo.descZh}</div>
+          <ul class="featured-list">
+            ${combo.items.map(item => `
+              <li>${item.nameEn} (${item.nameZh})${item.marketPrice ? " - Market Price" : ` - ${item.size}`}</li>
+            `).join("")}
+          </ul>
+          <button class="featured-btn" onclick="addCombo(${index})">Add Combo / 加入套餐</button>
+        </div>
+      `).join("")}
+    </div>
+  `;
 }
 
 function renderMenu(){
@@ -1447,6 +1682,7 @@ function renderMenu(){
               <h3>${item.en}<small>${item.zh}</small></h3>
               <div class="price">${formatPriceText(item)}</div>
               ${item.note ? `<div class="price-note">${item.note}</div>` : ""}
+              ${getSuggestionHtml(item)}
               <input class="item-remark" id="${getItemRemarkKey(category.categoryIndex, itemIndex)}" placeholder="📝 Item remark / 单品备注">
               ${createButtons(item, category.categoryIndex, itemIndex)}
             </div>
@@ -1455,6 +1691,69 @@ function renderMenu(){
       </div>
     </div>
   `).join("");
+}
+
+function addPresetItem(nameEn, nameZh, size, price, remark = ""){
+  const itemKey = `${nameEn}__${size}__${remark}`;
+  const found = cart.find(item => item.key === itemKey);
+
+  if(found){
+    found.qty++;
+  }else{
+    cart.push({
+      key:itemKey,
+      nameEn,
+      nameZh,
+      size,
+      price:Number(price),
+      qty:1,
+      remark,
+      marketPrice:false
+    });
+  }
+
+  total += Number(price);
+}
+
+function addPresetMarketItem(nameEn, nameZh, remark = ""){
+  const itemKey = `${nameEn}__market__${remark}`;
+  const found = cart.find(item => item.key === itemKey);
+
+  if(found){
+    found.qty++;
+  }else{
+    cart.push({
+      key:itemKey,
+      nameEn,
+      nameZh,
+      size:"Market Price / 时价",
+      price:0,
+      qty:1,
+      remark,
+      marketPrice:true
+    });
+  }
+}
+
+function addCombo(index){
+  const combo = featuredCombos[index];
+  if(!combo) return;
+
+  combo.items.forEach(item => {
+    if(item.marketPrice){
+      addPresetMarketItem(item.nameEn, item.nameZh);
+    }else{
+      addPresetItem(item.nameEn, item.nameZh, item.size, item.price);
+    }
+  });
+
+  showCart();
+  openCart();
+}
+
+function addSuggestion(nameEn, nameZh, size, price){
+  addPresetItem(nameEn, nameZh, size, price);
+  showCart();
 }
 
 function addItem(nameEn, nameZh, size, price, categoryIndex, itemIndex){
