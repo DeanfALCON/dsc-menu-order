@@ -15,9 +15,7 @@
   --line:#eceff3;
   --primary:#d92d20;
   --primary-soft:#fff1ee;
-  --primary-soft-2:#ffe4dd;
   --success:#059669;
-  --success-soft:#ecfdf5;
   --shadow-sm:0 6px 18px rgba(15,23,42,.06);
   --shadow-md:0 10px 30px rgba(15,23,42,.10);
   --shadow-lg:0 20px 50px rgba(15,23,42,.14);
@@ -74,7 +72,7 @@ textarea{
   border:1px solid rgba(255,255,255,.8);
   border-radius:32px;
   padding:34px 24px 28px;
-  box-shadow:0 20px 50px rgba(15,23,42,.14);
+  box-shadow:var(--shadow-lg);
   text-align:center;
   position:relative;
   overflow:hidden;
@@ -1175,7 +1173,7 @@ const menuData = [
       { en:"Lobster in Premium Superior Broth", zh:"上汤鲜味龙虾", image:"https://via.placeholder.com/300?text=Lobster+Superior+Broth", prices:{ Standard:198 }, tags:["signature"] },
       { en:"Traditional Salt-Baked Chicken", zh:"古法盐焗鸡", image:"https://via.placeholder.com/300?text=Traditional+Salt+Baked+Chicken", prices:{ Standard:68 }, tags:["signature"] },
       { en:"Flaming Pomegranate Sweet & Sour Fish", zh:"火焰石榴酸甜鱼", image:"https://via.placeholder.com/300?text=Flaming+Pomegranate+Fish", marketPrice:true, tags:["signature","market"] },
-      { en:"Signature Curry Fish Head Pot", zh:"招牌咖喱鱼头煲", image:"https://via.placeholder.com/300?text=Signature+Curry+Fish+Head+Pot", marketPrice:true, tags:["signature","market","popular"] }
+      { en:"Signature Curry Fish Head Pot", zh:"招牌咖喱鱼头煲", image:"https://via.placeholder.com/300?text=Signature+Curry+Fish+Head+Pot", prices:{ Standard:88 }, tags:["signature","popular"], note:"Per portion / 每份" }
     ]
   },
   {
@@ -1257,10 +1255,35 @@ const menuData = [
     titleEn: "Fish Head",
     titleZh: "鱼头",
     items: [
-      { en:"Signature Curry Fish Head Pot", zh:"招牌咖喱鱼头煲", image:"https://via.placeholder.com/300?text=Signature+Curry+Fish+Head+Pot", marketPrice:true, tags:["market","signature","popular"] },
-      { en:"Bitter Gourd Black Bean Fish Head", zh:"苦瓜豆豉鱼头", image:"https://via.placeholder.com/300?text=Bitter+Gourd+Black+Bean+Fish+Head", marketPrice:true, tags:["market"] },
-      { en:"Curry Leaf Fried Fish Head", zh:"干香咖喱叶鱼头", image:"https://via.placeholder.com/300?text=Curry+Leaf+Fish+Head", marketPrice:true, tags:["market"] },
-      { en:"Claypot Fish Head (Chef Style)", zh:"砂锅风味鱼头", image:"https://via.placeholder.com/300?text=Claypot+Fish+Head", marketPrice:true, tags:["market"] }
+      {
+        en:"Signature Curry Fish Head Pot",
+        zh:"招牌咖喱鱼头煲",
+        image:"https://via.placeholder.com/300?text=Signature+Curry+Fish+Head+Pot",
+        prices:{ Standard:88 },
+        tags:["signature","popular"],
+        note:"Per portion / 每份"
+      },
+      {
+        en:"Bitter Gourd Black Bean Fish Head",
+        zh:"苦瓜豆豉鱼头",
+        image:"https://via.placeholder.com/300?text=Bitter+Gourd+Black+Bean+Fish+Head",
+        prices:{ Standard:88 },
+        note:"Per portion / 每份"
+      },
+      {
+        en:"Curry Leaf Fried Fish Head",
+        zh:"干香咖喱叶鱼头",
+        image:"https://via.placeholder.com/300?text=Curry+Leaf+Fish+Head",
+        prices:{ Standard:88 },
+        note:"Per portion / 每份"
+      },
+      {
+        en:"Claypot Fish Head (Chef Style)",
+        zh:"砂锅风味鱼头",
+        image:"https://via.placeholder.com/300?text=Claypot+Fish+Head",
+        prices:{ Standard:88 },
+        note:"Per portion / 每份"
+      }
     ]
   },
   {
@@ -1910,6 +1933,10 @@ function addSpecialItem(categoryIndex, itemIndex){
   showCart();
 }
 
+function askPrice(nameEn, nameZh){
+  alert("This item is currently market price / 此项目目前为时价");
+}
+
 function updateCartCount(){
   const count = cart.reduce((sum, item) => sum + item.qty, 0);
   const btn = document.getElementById("floatingCartBtn");
@@ -1934,7 +1961,7 @@ function showCart(){
     cart.forEach((item, index) => {
       const li = document.createElement("li");
       li.innerHTML = `
-        ${item.nameEn} (${item.nameZh}) [${item.size}] x${item.qty} = RM${(item.price * item.qty).toFixed(2)}
+        ${item.nameEn} (${item.nameZh}) [${item.size}] x${item.qty} - RM${(item.price * item.qty).toFixed(2)}
         ${item.remark ? `<span class="remark-tag">${item.remark}</span>` : ""}
         <button class="secondary-btn mini-btn" onclick="removeOne(${index})">-1</button>
       `;
@@ -1998,35 +2025,30 @@ function sendOrder(){
   const orderTypeText = getOrderTypeText(charges.orderType);
 
   let message = "";
-  message += "🦞 DESARU SEAFOOD CORNER\n";
-  message += "============================\n";
-  message += "NEW ORDER / 新订单\n\n";
-  message += `🪑 Order Type / 用餐方式: ${orderTypeText}\n`;
+  message += "DESARU SEAFOOD CORNER\n";
+  message += "NEW ORDER\n\n";
 
-  if(table) message += `🔢 Table / 桌号: ${table}\n`;
-  if(customer) message += `👤 Customer / 顾客: ${customer}\n`;
+  message += `Order Type: ${orderTypeText}\n`;
+  if(table) message += `Table: ${table}\n`;
+  if(customer) message += `Customer: ${customer}\n`;
 
-  message += "\n🍽️ ORDER ITEMS / 点餐内容\n";
+  message += "\nItems:\n";
 
   cart.forEach((item, i) => {
-    message += `${i + 1}. ${item.nameEn} (${item.nameZh})\n`;
-    message += `   • Option: ${item.size}\n`;
-    message += `   • Qty: ${item.qty}\n`;
-    if(item.remark) message += `   • Remark: ${item.remark}\n`;
-    message += `   • Amount: RM${(item.price * item.qty).toFixed(2)}\n\n`;
+    message += `${i + 1}. ${item.nameEn}\n`;
+    message += `   ${item.size} x${item.qty} - RM${(item.price * item.qty).toFixed(2)}\n`;
+    if(item.remark) message += `   ${item.remark}\n`;
   });
 
-  message += "🧾 BILL SUMMARY / 账单摘要\n";
-  message += `Subtotal / 小计: RM${charges.subtotal.toFixed(2)}\n`;
-  message += `SST 6%: RM${charges.sst.toFixed(2)}\n`;
-  message += `Service Charge 6%: RM${charges.svc.toFixed(2)}\n`;
-  message += `Grand Total / 总额: RM${charges.grandTotal.toFixed(2)}\n`;
+  message += "\nSummary:\n";
+  message += `Subtotal: RM${charges.subtotal.toFixed(2)}\n`;
+  message += `SST: RM${charges.sst.toFixed(2)}\n`;
+  message += `Service: RM${charges.svc.toFixed(2)}\n`;
+  message += `Total: RM${charges.grandTotal.toFixed(2)}\n`;
 
   if(remarks){
-    message += `\n📝 ORDER REMARKS / 整单备注\n${remarks}\n`;
+    message += `\nRemarks:\n${remarks}\n`;
   }
-
-  message += "\n🙏 Thank you / 谢谢";
 
   const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
   window.open(url, "_blank");
