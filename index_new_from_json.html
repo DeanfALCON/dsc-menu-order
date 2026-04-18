@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desaru Seafood Corner</title>
+  <style>
+    :root{
+      --bg:#f6f7f9;
+      --surface:#ffffff;
+      --surface-soft:#fff8f5;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --line:#eceff3;
+      --primary:#d92d20;
+      --primary-soft:#fff1ee;
+      --success:#059669;
+      --dark:#111827;
+      --shadow-sm:0 6px 18px rgba(15,23,42,.06);
+      --shadow-md:0 10px 30px rgba(15,23,42,.10);
+      --shadow-lg:0 20px 50px rgba(15,23,42,.14);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:radial-gradient(circle at top left,#fff5f1 0%,transparent 30%),linear-gradient(180deg,#fbfbfc 0%,#f4f6f8 100%);
+      color:var(--text);
+    }
+    button,input,select,textarea{font:inherit}
+    .hidden{display:none!important}
+    .container{max-width:1240px;margin:0 auto;padding:24px}
+
+    .landing{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+    .landing-card{width:100%;max-width:820px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.8);border-radius:32px;padding:34px 24px 28px;box-shadow:var(--shadow-lg);text-align:center;position:relative;overflow:hidden}
+    .landing-card::before{content:"";position:absolute;inset:auto -120px -120px auto;width:260px;height:260px;background:radial-gradient(circle, rgba(217,45,32,.10), transparent 70%);pointer-events:none}
+    .landing-logo{width:190px;max-width:72%;margin-bottom:16px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.08))}
+    .landing-card h1{margin:0 0 10px;font-size:34px;color:var(--primary)}
+    .landing-card p{margin:0;color:var(--muted);line-height:1.75;font-size:15px}
+    .landing-subline{display:inline-flex;align-items:center;gap:8px;background:var(--primary-soft);color:var(--primary);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:bold;margin-top:14px}
+    .order-type-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+    .order-type-card{border:none;background:linear-gradient(180deg, #ffffff 0%, #fffaf8 100%);border-radius:26px;padding:28px 20px;box-shadow:var(--shadow-md);cursor:pointer;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;border:1px solid #f4e6e1;text-align:left;position:relative;overflow:hidden}
+    .order-type-card::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;background:radial-gradient(circle, rgba(217,45,32,.10), transparent 70%)}
+    .order-type-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(15,23,42,.14);border-color:#f5c7bb}
+    .order-icon{width:62px;height:62px;display:flex;align-items:center;justify-content:center;border-radius:18px;background:var(--primary-soft);font-size:30px;margin-bottom:16px}
+    .order-type-card h2{margin:0 0 8px;font-size:26px;color:var(--text)}
+    .order-type-card small{display:block;color:var(--muted);font-size:14px;margin-bottom:12px}
+    .order-type-card p{font-size:14px;color:var(--muted);margin:0}
+    .order-type-tip{margin-top:18px;font-size:13px;color:var(--muted)}
+
+    .header{text-align:center;margin-bottom:14px}
+    .header img{width:164px;max-width:72%;filter:drop-shadow(0 10px 18px rgba(0,0,0,.08))}
+    .hero{background:linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,248,245,.98));border:1px solid rgba(255,255,255,.75);border-radius:28px;padding:28px 22px;box-shadow:var(--shadow-md);margin-bottom:18px;text-align:center;position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;left:-80px;top:-80px;width:220px;height:220px;background:radial-gradient(circle, rgba(217,45,32,.08), transparent 70%)}
+    .hero h1{position:relative;margin:0 0 8px;font-size:32px;color:var(--primary)}
+    .hero p{position:relative;margin:0;color:var(--muted);line-height:1.7}
+    .status-bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.75);border-radius:18px;padding:14px 16px;box-shadow:var(--shadow-sm);margin-bottom:18px}
+    .status-text{color:#374151;font-size:14px;line-height:1.5}
+    .status-badge{display:inline-flex;align-items:center;gap:6px;background:var(--primary-soft);color:var(--primary);border:1px solid #ffd5cc;padding:7px 12px;border-radius:999px;font-weight:bold;margin-left:6px}
+    .change-type-btn{background:#111827;color:#fff;border:none;border-radius:12px;padding:10px 14px;box-shadow:var(--shadow-sm)}
+
+    .top-tools{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:20px}
+    .search-box,.qr-box{background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.8);border-radius:22px;padding:18px;box-shadow:var(--shadow-sm)}
+    .search-box h3,.qr-box h3{margin:0 0 8px;font-size:18px}
+    .search-box small,.qr-box small{color:var(--muted)}
+    .search-input-wrap{position:relative;margin-top:12px}
+    .search-input-wrap span{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#9ca3af;font-size:16px}
+    #searchInput{width:100%;padding:13px 14px 13px 42px;border:1px solid #e5e7eb;border-radius:14px;font-size:15px;background:#fff;outline:none;transition:border-color .18s ease, box-shadow .18s ease}
+    #searchInput:focus,input:focus,textarea:focus,select:focus{border-color:#f0b6a8;box-shadow:0 0 0 4px rgba(217,45,32,.08)}
+    .quick-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .quick-nav button{background:var(--primary-soft);color:var(--primary);border:1px solid #ffd5cc;padding:8px 12px;border-radius:999px;font-size:13px;font-weight:bold}
+    .qr-box{text-align:center}
+    .qr-box img{width:156px;height:156px;object-fit:contain;margin-top:10px;border-radius:14px;background:#fafafa;padding:8px;border:1px solid #f0f0f0}
+
+    .ai-box{margin-bottom:18px;background:linear-gradient(135deg,#fff,#fff8f5);border:1px solid #f6ddd6;border-radius:22px;padding:18px;box-shadow:var(--shadow-sm)}
+    .ai-box h3{margin:0 0 6px;color:var(--primary);font-size:22px}
+    .ai-box p{margin:0;color:var(--muted);line-height:1.7}
+    .ai-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .ai-btn{background:linear-gradient(180deg, #08a55b 0%, #059669 100%);color:#fff;border:none;border-radius:12px;padding:10px 14px;font-weight:bold;box-shadow:0 10px 22px rgba(5,150,105,.22)}
+    .ai-btn.secondary{background:linear-gradient(180deg, #f04a3a 0%, #d92d20 100%);box-shadow:0 10px 22px rgba(217,45,32,.22)}
+
+    .category-block{margin-top:18px;scroll-margin-top:20px}
+    .category-header{width:100%;border:none;background:linear-gradient(180deg, #ffffff 0%, #fff9f7 100%);border-left:6px solid var(--primary);border-radius:20px;padding:16px 18px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow-sm)}
+    .category-header small{display:block;color:var(--muted);font-size:14px;margin-top:4px;font-weight:normal}
+    .category-main{font-size:22px;font-weight:bold;line-height:1.2}
+    .category-arrow{font-size:24px;color:var(--primary);min-width:28px;text-align:right}
+    .category-count{color:var(--muted);font-size:13px;font-weight:normal;margin-top:6px}
+    .category-content{display:none;padding-top:14px;animation:fadeIn .18s ease}
+    .category-content.open{display:block}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:16px}
+    .item{background:rgba(255,255,255,.97);border:1px solid rgba(255,255,255,.8);border-radius:22px;padding:12px;box-shadow:var(--shadow-sm);transition:transform .18s ease, box-shadow .18s ease}
+    .item:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    .item img{width:100%;height:176px;object-fit:cover;border-radius:16px;background:#ececec}
+    .item-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+    .tag{font-size:11px;padding:6px 9px;border-radius:999px;font-weight:bold}
+    .tag-signature{background:linear-gradient(180deg,#fff5db,#ffe9a8);color:#8b5e00;border:1px solid #f5d66f}
+    .tag-market{background:#111827;color:#fff;border:1px solid #111827}
+    .tag-popular{background:#fff2e8;color:#b45309;border:1px solid #fed7aa}
+    .tag-bestvalue{background:#ecfdf5;color:#047857;border:1px solid #a7f3d0}
+    .item h3{margin:12px 0 6px;font-size:18px;line-height:1.35}
+    .item h3 small{display:block;color:var(--muted);font-size:14px;margin-top:4px;font-weight:normal}
+    .price{margin:10px 0 10px;color:var(--primary);font-weight:bold;min-height:22px;line-height:1.6;font-size:15px}
+    .price-note{font-size:12px;color:var(--muted);margin-top:-4px;margin-bottom:10px}
+    .item-remark,.item-control,input,textarea{width:100%;padding:11px 12px;border:1px solid #e5e7eb;border-radius:12px;font-size:13px;margin-bottom:10px;background:#fff;outline:none}
+    .btn-row{display:flex;flex-wrap:wrap;gap:8px}
+    button{border:none;border-radius:12px;padding:10px 13px;cursor:pointer;font-weight:bold}
+    .btn-size{background:linear-gradient(180deg, #f04a3a 0%, #d92d20 100%);color:#fff;box-shadow:0 6px 14px rgba(217,45,32,.18)}
+    .btn-ask{background:#111827;color:#fff;box-shadow:0 6px 14px rgba(17,24,39,.16)}
+
+    .suggestion-box{margin-top:10px;padding:10px;border-radius:12px;background:#fff8f5;border:1px solid #ffd9d0}
+    .suggestion-title{font-size:12px;font-weight:bold;color:var(--primary);margin-bottom:8px}
+    .suggestion-row{display:flex;flex-wrap:wrap;gap:6px}
+    .suggestion-btn{background:#fff;color:var(--primary);border:1px solid #ffd0c5;font-size:12px;padding:7px 10px;border-radius:999px}
+
+    .floating-cart-btn{position:fixed;right:18px;bottom:18px;z-index:1000;background:linear-gradient(180deg, #08a55b 0%, #059669 100%);color:#fff;border:none;border-radius:999px;padding:14px 18px;box-shadow:0 14px 30px rgba(5,150,105,.28);font-size:15px;min-width:150px}
+    .cart-drawer{position:fixed;top:0;right:-430px;width:410px;max-width:100%;height:100vh;background:rgba(255,255,255,.98);backdrop-filter:blur(10px);box-shadow:-16px 0 42px rgba(15,23,42,.18);z-index:1100;transition:right .3s ease;display:flex;flex-direction:column;border-left:1px solid rgba(255,255,255,.7)}
+    .cart-drawer.open{right:0}
+    .cart-overlay{position:fixed;inset:0;background:rgba(17,24,39,.36);z-index:1050;display:none}
+    .cart-overlay.show{display:block}
+    .cart-header{display:flex;justify-content:space-between;align-items:center;padding:18px;border-bottom:1px solid var(--line)}
+    .cart-header h2{margin:0;font-size:22px}
+    .cart-header h2 small{display:block;color:var(--muted);font-size:13px;margin-top:4px;font-weight:normal}
+    .close-btn{background:#f3f4f6;color:#111827;padding:9px 12px;border-radius:12px}
+    .cart-body{padding:16px 18px 24px;overflow-y:auto;flex:1}
+    .order-type-box,.summary-card{margin-bottom:14px;padding:14px;border-radius:16px;background:#fafafa;border:1px solid #efefef}
+    .order-type-box label{margin-right:14px;display:inline-block;margin-top:8px}
+    #cart{padding-left:20px;margin-top:10px;margin-bottom:14px}
+    #cart li{margin-bottom:10px;line-height:1.6}
+    .summary-line{display:flex;justify-content:space-between;gap:16px;margin:8px 0;font-size:16px}
+    .summary-line.total{font-size:20px;font-weight:bold;color:var(--success);border-top:1px solid #ececec;padding-top:12px;margin-top:12px}
+    .cart-actions{display:flex;flex-wrap:wrap;gap:10px}
+    .primary-btn{background:linear-gradient(180deg, #08a55b 0%, #059669 100%);color:#fff;box-shadow:0 10px 22px rgba(5,150,105,.22)}
+    .secondary-btn{background:#e5e7eb;color:#111827}
+    .notice{margin-top:12px;color:var(--muted);font-size:13px;line-height:1.7}
+    .no-result,.loading-box,.error-box{background:#fff;border-radius:18px;padding:18px;margin-top:20px;text-align:center;color:var(--muted);box-shadow:var(--shadow-sm)}
+    .error-box{color:#b91c1c}
+    .remark-tag{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+    .mini-btn{margin-left:8px;padding:4px 8px;font-size:12px;background:#f3f4f6;color:#111827}
+
+    @media (max-width:900px){.top-tools{grid-template-columns:1fr}}
+    @media (max-width:768px){
+      .container{padding:16px}
+      .landing-card{padding:26px 16px 22px;border-radius:26px}
+      .landing-card h1{font-size:27px}
+      .order-type-grid{grid-template-columns:1fr}
+      .header img{width:150px}
+      .hero{border-radius:22px;padding:22px 16px}
+      .hero h1{font-size:26px}
+      .category-main{font-size:18px}
+      .category-header{padding:14px 14px;border-radius:16px}
+      .item{border-radius:18px}
+      .item img{height:150px}
+      .summary-line{font-size:15px}
+      .summary-line.total{font-size:18px}
+      .cart-drawer{width:100%;right:-100%}
+      .floating-cart-btn{right:14px;bottom:14px;padding:13px 16px;min-width:140px}
+    }
+  </style>
+</head>
+<body>
+  <div id="landingPage" class="landing">
+    <div class="landing-card">
+      <img src="logo.png" alt="Desaru Seafood Corner Logo" class="landing-logo" />
+      <h1>Desaru Seafood Corner</h1>
+      <p>Fresh Seafood Dining Experience<br />新鲜海鲜用餐体验</p>
+      <div class="landing-subline">AI Assisted Digital Ordering Menu</div>
+      <div class="order-type-grid">
+        <button class="order-type-card" onclick="selectOrderType('dinein')">
+          <div class="order-icon">🍽️</div>
+          <h2>Dine-in</h2>
+          <small>堂食</small>
+          <p>Enjoy dining in restaurant<br />在餐厅享用</p>
+        </button>
+        <button class="order-type-card" onclick="selectOrderType('takeaway')">
+          <div class="order-icon">🥡</div>
+          <h2>Takeaway</h2>
+          <small>打包</small>
+          <p>Pack and bring home<br />打包带走</p>
+        </button>
+      </div>
+      <div class="order-type-tip">Please select your order type before browsing the menu.</div>
+    </div>
+  </div>
+
+  <div id="mainPage" class="hidden">
+    <div class="container">
+      <div class="header">
+        <img src="logo.png" alt="Desaru Seafood Corner Logo" />
+      </div>
+
+      <div class="hero">
+        <h1 id="restaurantName">Desaru Seafood Corner</h1>
+        <p>Premium seafood ordering menu<br />高级海鲜点餐菜单</p>
+      </div>
+
+      <div class="status-bar">
+        <div class="status-text">
+          Order Type / 用餐方式:
+          <span class="status-badge" id="selectedOrderTypeText">Dine-in / 堂食</span>
+        </div>
+        <button class="change-type-btn" onclick="resetOrderType()">Change Order Type / 更改用餐方式</button>
+      </div>
+
+      <div class="ai-box">
+        <h3>Desaru AI Ordering Assistant</h3>
+        <p>
+          Need recommendations? Use the quick AI buttons below. The system can suggest dishes for 2–3 pax,
+          family sharing, or signature seafood combos.
+        </p>
+        <div class="ai-actions">
+          <button class="ai-btn" onclick="sendAIMessage('Hi, recommend a signature seafood set for 2 to 3 pax.')">AI Recommend 2–3 Pax</button>
+          <button class="ai-btn" onclick="sendAIMessage('Hi, recommend a family seafood feast for 4 to 6 pax.')">AI Recommend Family Set</button>
+          <button class="ai-btn secondary" onclick="sendAIMessage('Hi, what are your signature dishes today?')">Ask Signature Dishes</button>
+        </div>
+      </div>
+
+      <div class="top-tools">
+        <div class="search-box">
+          <h3>Search Menu <small>/ 搜索菜品</small></h3>
+          <div class="search-input-wrap">
+            <span>🔍</span>
+            <input id="searchInput" type="text" placeholder="Search dish name / 输入菜名..." oninput="renderMenu()" />
+          </div>
+          <div class="quick-nav" id="quickNav"></div>
+        </div>
+
+        <div class="qr-box">
+          <h3>Scan to Order <small>/ 扫码点餐</small></h3>
+          <img id="qrCodeImage" alt="QR Code" />
+          <div style="margin-top:8px;color:var(--muted);font-size:13px;">Share this page with your customers</div>
+        </div>
+      </div>
+
+      <div id="menuContainer" class="loading-box">Loading menu...</div>
+    </div>
+
+    <button id="floatingCartBtn" class="floating-cart-btn" onclick="openCart()">
+      🛒 Cart (<span id="cartCount">0</span>)
+    </button>
+
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+    <div class="cart-drawer" id="cartDrawer">
+      <div class="cart-header">
+        <h2>Cart<small>购物车</small></h2>
+        <button class="close-btn" onclick="closeCart()">Close</button>
+      </div>
+      <div class="cart-body">
+        <div class="order-type-box">
+          <strong>Order Type / 用餐方式</strong><br />
+          <label><input type="radio" name="orderType" value="dinein" onchange="handleOrderTypeChange('dinein')" /> Dine-in / 堂食</label>
+          <label><input type="radio" name="orderType" value="takeaway" onchange="handleOrderTypeChange('takeaway')" /> Takeaway / 打包</label>
+        </div>
+
+        <ul id="cart"></ul>
+
+        <div class="summary-card">
+          <div class="summary-line"><span>Subtotal / 小计</span><span>RM <span id="subtotal">0.00</span></span></div>
+          <div class="summary-line"><span>SST</span><span>RM <span id="sst">0.00</span></span></div>
+          <div class="summary-line"><span>Service Charge</span><span>RM <span id="svc">0.00</span></span></div>
+          <div class="summary-line total"><span>Grand Total / 总额</span><span>RM <span id="grandTotal">0.00</span></span></div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <input id="table" placeholder="Table Number / 桌号" />
+          <input id="customer" placeholder="Customer Name / 顾客姓名（可选）" />
+          <input id="phoneInput" placeholder="Customer Phone / 顾客电话（可选）" />
+          <input id="pickupTime" placeholder="Arrival / Pickup Time / 到店或取餐时间（可选）" />
+          <input id="paxCount" placeholder="Pax / 人数（可选）" />
+          <textarea id="remarks" rows="3" placeholder="Order Remarks / 整单备注"></textarea>
+        </div>
+
+        <div class="cart-actions">
+          <button class="primary-btn" onclick="sendOrder()">Send Order via WhatsApp</button>
+          <button class="secondary-btn" onclick="clearCart()">Clear Cart</button>
+        </div>
+
+        <div class="notice" id="pricingNotice">
+          * Takeaway / 打包: 6% SST<br />
+          * Dine-in / 堂食: 6% SST + 6% Service Charge<br />
+          * Amounts are rounded to nearest 10 sen / 金额会四舍五入到最接近的 10 sen
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const WHATSAPP_NUMBER = '60105309267';
+    const STORAGE_KEY = 'desaru_order_type';
+    const MENU_JSON_PATH = 'desaru_menu_master.json';
+
+    const lobsterStyles = [
+      { value:'Golden Pumpkin Cream', label:'Golden Pumpkin Cream / 金瓜奶香' },
+      { value:'Signature Golden Sand', label:'Signature Golden Sand / 金沙风味' },
+      { value:'Salted Egg Yolk', label:'Salted Egg Yolk / 咸蛋黄' },
+      { value:'Superior Broth', label:'Superior Broth / 上汤' },
+      { value:'Typhoon Shelter', label:'Typhoon Shelter / 避风塘' },
+      { value:'Garlic Steam', label:'Garlic Steam / 蒜蓉清蒸' }
+    ];
+
+    const crabStyles = [
+      { value:'Signature Spicy Chilli', label:'Signature Spicy Chilli / 招牌香辣' },
+      { value:'Black Pepper', label:'Black Pepper / 黑胡椒' },
+      { value:'Salted Egg Yolk', label:'Salted Egg Yolk / 咸蛋黄' },
+      { value:'Curry Leaf', label:'Curry Leaf / 咖喱叶' },
+      { value:'Steamed Egg', label:'Steamed Egg / 清蒸蛋香' },
+      { value:'Volcanic Signature Sauce', label:'Volcanic Signature Sauce / 火山招牌酱' }
+    ];
+
+    const itemSuggestions = {
+      'Australian Lobster (Whole)': [
+        { nameEn:'Garlic Steamed Scallop Premium', nameZh:'蒜蓉蒸鲜带子', label:'Per Pc', price:7.5 },
+        { nameEn:'Tom Yam Seafood Soup', nameZh:'东炎海鲜汤', label:'S', price:28 },
+        { nameEn:'Signature Seafood Fried Rice / Noodles', nameZh:'招牌海鲜炒', label:'S', price:12 }
+      ],
+      'Baby Local Lobster (1kg Set)': [
+        { nameEn:'Tom Yam Seafood Soup', nameZh:'东炎海鲜汤', label:'S', price:28 },
+        { nameEn:'Signature Seafood Fried Rice / Noodles', nameZh:'招牌海鲜炒', label:'S', price:12 }
+      ],
+      'Crab': [
+        { nameEn:'Signature Seafood Fried Rice / Noodles', nameZh:'招牌海鲜炒', label:'S', price:12 },
+        { nameEn:'Baby Kailan with Garlic', nameZh:'蒜蓉菜胆', label:'S', price:18 }
+      ],
+      'Cereal Butter Crispy Prawns': [
+        { nameEn:'Tom Yam Seafood Soup', nameZh:'东炎海鲜汤', label:'S', price:28 },
+        { nameEn:'Signature Seafood Fried Rice / Noodles', nameZh:'招牌海鲜炒', label:'S', price:12 }
+      ]
+    };
+
+    let menuSource = null;
+    let cart = [];
+    let searchKeyword = '';
+
+    function roundToTenCents(value){ return Math.round(value * 10) / 10; }
+    function money(value){ return Number(value || 0).toFixed(2); }
+    function escapeHtml(str){ return String(str ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+    function slug(str){ return String(str || '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+
+    function getOrderType(){ return localStorage.getItem(STORAGE_KEY) || ''; }
+    function setOrderType(value){ localStorage.setItem(STORAGE_KEY, value); }
+    function getOrderTypeText(value){ return value === 'takeaway' ? 'Takeaway / 打包' : 'Dine-in / 堂食'; }
+
+    function getPricingRules(){
+      const fallback = {
+        takeaway: { sstRate: 0.06, serviceChargeRate: 0 },
+        dinein: { sstRate: 0.06, serviceChargeRate: 0.06 }
+      };
+      return menuSource?.restaurant?.pricingRules || fallback;
+    }
+
+    function updateOrderTypeUI(){
+      const orderType = getOrderType() || 'dinein';
+      document.getElementById('selectedOrderTypeText').textContent = getOrderTypeText(orderType);
+      document.querySelectorAll('input[name="orderType"]').forEach(radio => radio.checked = radio.value === orderType);
+    }
+
+    function selectOrderType(type){ setOrderType(type); showMainPage(); }
+    function resetOrderType(){ localStorage.removeItem(STORAGE_KEY); document.getElementById('mainPage').classList.add('hidden'); document.getElementById('landingPage').classList.remove('hidden'); closeCart(); }
+    function handleOrderTypeChange(type){ setOrderType(type); updateOrderTypeUI(); showCart(); }
+    function openCart(){ document.getElementById('cartDrawer').classList.add('open'); document.getElementById('cartOverlay').classList.add('show'); }
+    function closeCart(){ document.getElementById('cartDrawer').classList.remove('open'); document.getElementById('cartOverlay').classList.remove('show'); }
+
+    async function loadMenu(){
+      try {
+        const res = await fetch(MENU_JSON_PATH, { cache:'no-store' });
+        if(!res.ok) throw new Error('Unable to load menu JSON');
+        menuSource = await res.json();
+        document.getElementById('restaurantName').textContent = menuSource.restaurant?.name || 'Desaru Seafood Corner';
+        renderQuickNav();
+        renderMenu();
+        updatePricingNotice();
+      } catch (err) {
+        document.getElementById('menuContainer').innerHTML = `<div class="error-box">Failed to load ${escapeHtml(MENU_JSON_PATH)}.<br>Please make sure index.html and desaru_menu_master.json are in the same GitHub folder.</div>`;
+        console.error(err);
+      }
+    }
+
+    function showMainPage(){
+      document.getElementById('landingPage').classList.add('hidden');
+      document.getElementById('mainPage').classList.remove('hidden');
+      updateOrderTypeUI();
+      generateQRCode();
+      if(!menuSource) loadMenu();
+      showCart();
+    }
+
+    function renderQuickNav(){
+      const quickNav = document.getElementById('quickNav');
+      const preferred = [0,1,2,7,8,15,17];
+      const categories = menuSource?.categories || [];
+      quickNav.innerHTML = preferred
+        .filter(index => categories[index])
+        .map(index => `<button onclick="jumpToCategory(${index})">${escapeHtml(categories[index].name.zh)}</button>`)
+        .join('');
+    }
+
+    function updatePricingNotice(){
+      const rules = getPricingRules();
+      document.getElementById('pricingNotice').innerHTML = `
+        * Takeaway / 打包: ${(rules.takeaway.sstRate * 100).toFixed(0)}% SST<br>
+        * Dine-in / 堂食: ${(rules.dinein.sstRate * 100).toFixed(0)}% SST + ${(rules.dinein.serviceChargeRate * 100).toFixed(0)}% Service Charge<br>
+        * Amounts are rounded to nearest 10 sen / 金额会四舍五入到最接近的 10 sen
+      `;
+    }
+
+    function getTagsHtml(item){
+      const tags = item.tags || [];
+      const out = [];
+      if(tags.includes('signature')) out.push('<span class="tag tag-signature">Signature</span>');
+      if(item.marketPrice) out.push('<span class="tag tag-market">Market Price</span>');
+      if(tags.includes('popular')) out.push('<span class="tag tag-popular">Popular</span>');
+      if(tags.includes('bestvalue')) out.push('<span class="tag tag-bestvalue">Best Value</span>');
+      return out.length ? `<div class="item-tags">${out.join('')}</div>` : '';
+    }
+
+    function formatPriceText(item){
+      if(item.marketPrice) return 'Market Price / 时价';
+      return (item.variants || []).map(v => `${escapeHtml(v.label)}: RM${money(v.price)}`).join(' | ');
+    }
+
+    function getRemarkInputId(catIndex, itemIndex){ return `remark-${catIndex}-${itemIndex}`; }
+    function getStyleSelectId(catIndex, itemIndex){ return `style-${catIndex}-${itemIndex}`; }
+    function getVariantSelectId(catIndex, itemIndex){ return `variant-${catIndex}-${itemIndex}`; }
+
+    function getSpecialControls(category, item, catIndex, itemIndex){
+      if(category.specialType !== 'lobster' && category.specialType !== 'crab') return '';
+      const styles = category.specialType === 'lobster' ? lobsterStyles : crabStyles;
+      const styleOptions = styles.map(s => `<option value="${escapeHtml(s.value)}">${escapeHtml(s.label)}</option>`).join('');
+      const variantOptions = (item.variants || []).map(v => `<option value="${escapeHtml(v.label)}">${escapeHtml(v.label)} - RM${money(v.price)}</option>`).join('');
+      return `
+        <select class="item-control" id="${getStyleSelectId(catIndex, itemIndex)}">
+          <option value="">Choose Cooking Style / 选择做法</option>
+          ${styleOptions}
+        </select>
+        <select class="item-control" id="${getVariantSelectId(catIndex, itemIndex)}">
+          <option value="">Choose Option / 选择规格</option>
+          ${variantOptions}
+        </select>
+      `;
+    }
+
+    function getSuggestionHtml(item){
+      const suggestions = itemSuggestions[item.name.en];
+      if(!suggestions || !suggestions.length) return '';
+      return `
+        <div class="suggestion-box">
+          <div class="suggestion-title">Recommended Pairing / 推荐搭配</div>
+          <div class="suggestion-row">
+            ${suggestions.map(s => `
+              <button class="suggestion-btn" onclick="addSuggestion('${escapeHtml(s.nameEn)}','${escapeHtml(s.nameZh)}','${escapeHtml(s.label)}',${Number(s.price)})">
+                ${escapeHtml(s.nameZh)} ${escapeHtml(s.label)} - RM${money(s.price)}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderMenu(){
+      const container = document.getElementById('menuContainer');
+      if(!menuSource){
+        container.innerHTML = '<div class="loading-box">Loading menu...</div>';
+        return;
+      }
+
+      searchKeyword = document.getElementById('searchInput').value.trim().toLowerCase();
+      const categories = menuSource.categories.map((category, catIndex) => {
+        const items = category.items.filter(item => {
+          if(!searchKeyword) return true;
+          return item.name.en.toLowerCase().includes(searchKeyword) || item.name.zh.toLowerCase().includes(searchKeyword);
+        });
+        return { ...category, catIndex, filteredItems: items };
+      }).filter(category => category.filteredItems.length > 0);
+
+      if(!categories.length){
+        container.innerHTML = '<div class="no-result">No matching dishes found / 找不到相关菜品</div>';
+        return;
+      }
+
+      container.innerHTML = categories.map(category => `
+        <div class="category-block" id="category-block-${category.catIndex}">
+          <button class="category-header" onclick="toggleCategory(${category.catIndex})">
+            <span>
+              <div class="category-main">${escapeHtml(category.name.en)}</div>
+              <small>${escapeHtml(category.name.zh)}</small>
+              <div class="category-count">${category.filteredItems.length} item(s)</div>
+            </span>
+            <span class="category-arrow" id="category-arrow-${category.catIndex}">${(searchKeyword || category.defaultOpen) ? '－' : '＋'}</span>
+          </button>
+          <div class="category-content ${(searchKeyword || category.defaultOpen) ? 'open' : ''}" id="category-content-${category.catIndex}">
+            <div class="menu-grid">
+              ${category.filteredItems.map((item, itemIndex) => `
+                <div class="item">
+                  <img src="${escapeHtml(item.image || 'https://via.placeholder.com/300?text=Desaru+Seafood+Corner')}" alt="${escapeHtml(item.name.en)}" onerror="this.src='https://via.placeholder.com/300?text=Desaru+Seafood+Corner'" />
+                  ${getTagsHtml(item)}
+                  <h3>${escapeHtml(item.name.en)}<small>${escapeHtml(item.name.zh)}</small></h3>
+                  <div class="price">${formatPriceText(item)}</div>
+                  ${item.note ? `<div class="price-note">${escapeHtml(item.note)}</div>` : ''}
+                  ${getSuggestionHtml(item)}
+                  ${getSpecialControls(category, item, category.catIndex, itemIndex)}
+                  <input class="item-remark" id="${getRemarkInputId(category.catIndex, itemIndex)}" placeholder="📝 Item remark / 单品备注" />
+                  <div class="btn-row">
+                    ${renderItemButtons(category, item, category.catIndex, itemIndex)}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderItemButtons(category, item, catIndex, itemIndex){
+      if(item.marketPrice){
+        return `<button class="btn-ask" onclick="askPrice('${escapeHtml(item.name.en)}','${escapeHtml(item.name.zh)}', ${catIndex}, ${itemIndex})">Ask Price</button>`;
+      }
+      if(category.specialType === 'lobster' || category.specialType === 'crab'){
+        return `<button class="btn-size" onclick="addSpecialItem(${catIndex}, ${itemIndex})">Add to Cart / 加入购物车</button>`;
+      }
+      return (item.variants || []).map(v => `
+        <button class="btn-size" onclick="addItem('${escapeHtml(item.name.en)}','${escapeHtml(item.name.zh)}','${escapeHtml(v.label)}',${Number(v.price)},${catIndex},${itemIndex})">
+          ${escapeHtml(v.label)} - RM${money(v.price)}
+        </button>
+      `).join('');
+    }
+
+    function toggleCategory(index){
+      const content = document.getElementById(`category-content-${index}`);
+      const arrow = document.getElementById(`category-arrow-${index}`);
+      if(!content || !arrow) return;
+      const open = content.classList.toggle('open');
+      arrow.textContent = open ? '－' : '＋';
+    }
+
+    function jumpToCategory(index){
+      const block = document.getElementById(`category-block-${index}`);
+      const content = document.getElementById(`category-content-${index}`);
+      const arrow = document.getElementById(`category-arrow-${index}`);
+      if(content && !content.classList.contains('open')) content.classList.add('open');
+      if(arrow) arrow.textContent = '－';
+      if(block) block.scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+
+    function getRemark(catIndex, itemIndex){
+      return document.getElementById(getRemarkInputId(catIndex, itemIndex))?.value.trim() || '';
+    }
+
+    function clearRemark(catIndex, itemIndex){
+      const el = document.getElementById(getRemarkInputId(catIndex, itemIndex));
+      if(el) el.value = '';
+    }
+
+    function addOrIncreaseCartItem(payload){
+      const key = [payload.nameEn, payload.label, payload.remark || '', payload.style || '', payload.marketPrice ? 'market' : 'priced'].join('__');
+      const found = cart.find(i => i.key === key);
+      if(found){ found.qty += 1; }
+      else cart.push({ key, qty:1, ...payload });
+      showCart();
+    }
+
+    function addItem(nameEn, nameZh, label, price, catIndex, itemIndex){
+      const remark = getRemark(catIndex, itemIndex);
+      addOrIncreaseCartItem({ nameEn, nameZh, label, price:Number(price), remark, style:'', marketPrice:false });
+      clearRemark(catIndex, itemIndex);
+    }
+
+    function addSuggestion(nameEn, nameZh, label, price){
+      addOrIncreaseCartItem({ nameEn, nameZh, label, price:Number(price), remark:'', style:'', marketPrice:false });
+    }
+
+    function addSpecialItem(catIndex, itemIndex){
+      const category = menuSource.categories[catIndex];
+      const item = category.items[itemIndex];
+      const style = document.getElementById(getStyleSelectId(catIndex, itemIndex))?.value || '';
+      const selectedLabel = document.getElementById(getVariantSelectId(catIndex, itemIndex))?.value || '';
+      if(!style){ alert('Please choose cooking style / 请选择做法'); return; }
+      if(!selectedLabel){ alert('Please choose option / 请选择规格'); return; }
+      const variant = (item.variants || []).find(v => v.label === selectedLabel);
+      if(!variant){ alert('Invalid option'); return; }
+      const remark = getRemark(catIndex, itemIndex);
+      addOrIncreaseCartItem({ nameEn:item.name.en, nameZh:item.name.zh, label:variant.label, price:Number(variant.price), remark, style, marketPrice:false });
+      clearRemark(catIndex, itemIndex);
+    }
+
+    function askPrice(nameEn, nameZh, catIndex, itemIndex){
+      const remark = getRemark(catIndex, itemIndex);
+      const text = `Hi, I want to ask price for:\n- ${nameEn} / ${nameZh}${remark ? `\nRemark: ${remark}` : ''}`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+      clearRemark(catIndex, itemIndex);
+    }
+
+    function calculateCharges(){
+      const orderType = getOrderType() || 'dinein';
+      const rules = getPricingRules();
+      const subtotalRaw = cart.filter(i => !i.marketPrice).reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const subtotal = roundToTenCents(subtotalRaw);
+      const sst = roundToTenCents(subtotal * (rules[orderType]?.sstRate || 0));
+      const svc = roundToTenCents(subtotal * (rules[orderType]?.serviceChargeRate || 0));
+      const grandTotal = roundToTenCents(subtotal + sst + svc);
+      return { subtotal, sst, svc, grandTotal, orderType };
+    }
+
+    function removeCartItem(index){ cart.splice(index, 1); showCart(); }
+
+    function showCart(){
+      const cartEl = document.getElementById('cart');
+      const countEl = document.getElementById('cartCount');
+      const itemCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      countEl.textContent = itemCount;
+
+      if(!cart.length){
+        cartEl.innerHTML = '<li class="empty-note">Cart is empty / 购物车还是空的</li>';
+      } else {
+        cartEl.innerHTML = cart.map((item, index) => `
+          <li>
+            <strong>${escapeHtml(item.nameEn)}</strong> / ${escapeHtml(item.nameZh)}<br />
+            ${escapeHtml(item.label)} × ${item.qty}
+            ${item.style ? `<span class="remark-tag">Style: ${escapeHtml(item.style)}</span>` : ''}
+            ${item.remark ? `<span class="remark-tag">Remark: ${escapeHtml(item.remark)}</span>` : ''}
+            <span class="remark-tag">RM ${money(item.price)} each</span>
+            <button class="mini-btn" onclick="removeCartItem(${index})">Remove</button>
+          </li>
+        `).join('');
+      }
+
+      const charges = calculateCharges();
+      document.getElementById('subtotal').textContent = money(charges.subtotal);
+      document.getElementById('sst').textContent = money(charges.sst);
+      document.getElementById('svc').textContent = money(charges.svc);
+      document.getElementById('grandTotal').textContent = money(charges.grandTotal);
+      updateOrderTypeUI();
+    }
+
+    function clearCart(){ cart = []; showCart(); }
+
+    function sendAIMessage(message){
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    function sendOrder(){
+      if(!cart.length){ alert('Cart is empty / 购物车还是空的'); return; }
+      const charges = calculateCharges();
+      const table = document.getElementById('table').value.trim();
+      const customer = document.getElementById('customer').value.trim();
+      const phone = document.getElementById('phoneInput').value.trim();
+      const pickupTime = document.getElementById('pickupTime').value.trim();
+      const paxCount = document.getElementById('paxCount').value.trim();
+      const remarks = document.getElementById('remarks').value.trim();
+
+      let lines = [];
+      lines.push('Desaru Seafood Corner Order');
+      lines.push('==============================');
+      lines.push(`Order Type: ${getOrderTypeText(charges.orderType)}`);
+      if(table) lines.push(`Table: ${table}`);
+      if(customer) lines.push(`Customer: ${customer}`);
+      if(phone) lines.push(`Phone: ${phone}`);
+      if(pickupTime) lines.push(`Arrival/Pickup Time: ${pickupTime}`);
+      if(paxCount) lines.push(`Pax: ${paxCount}`);
+      lines.push('');
+      lines.push('Order Items:');
+
+      cart.forEach((item, idx) => {
+        lines.push(`${idx + 1}. ${item.nameEn} / ${item.nameZh}`);
+        lines.push(`   - ${item.label} x ${item.qty}`);
+        if(item.style) lines.push(`   - Style: ${item.style}`);
+        if(item.remark) lines.push(`   - Remark: ${item.remark}`);
+        lines.push(`   - RM ${money(item.price * item.qty)}`);
+      });
+
+      lines.push('');
+      lines.push(`Subtotal: RM ${money(charges.subtotal)}`);
+      lines.push(`SST: RM ${money(charges.sst)}`);
+      if(charges.orderType === 'dinein') lines.push(`Service Charge: RM ${money(charges.svc)}`);
+      lines.push(`Grand Total: RM ${money(charges.grandTotal)}`);
+      if(remarks){ lines.push(''); lines.push(`Order Remarks: ${remarks}`); }
+      lines.push('');
+      lines.push('Please confirm my order. Thank you.');
+
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
+    }
+
+    function generateQRCode(){
+      const currentUrl = window.location.href;
+      document.getElementById('qrCodeImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(currentUrl)}`;
+    }
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      document.getElementById('searchInput').addEventListener('input', renderMenu);
+      if(getOrderType()) showMainPage();
+    });
+  </script>
+</body>
+</html>
