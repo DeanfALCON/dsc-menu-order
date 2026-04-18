@@ -145,7 +145,7 @@
             "en": "Golden Delight Lobster",
             "zh": "黄金风味龙虾"
           },
-          "image": "https://via.placeholder.com/600x420?text=Golden+Delight+Lobster",
+         "image": "images/GoldenLobster.jpg",
           "note": "1kg local lobster + 6 buns · approximately 4 lobsters",
           "tags": [
             "award",
@@ -166,7 +166,7 @@
             "en": "Local Lobster",
             "zh": "本地龙虾"
           },
-         "image": "images/golden-lobster.jpg"
+         "image": "images/GoldenLobster.jpg"
           "note": "RM280/kg",
           "tags": [
             "signature",
