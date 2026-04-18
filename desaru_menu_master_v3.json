@@ -23,7 +23,7 @@
       },
       "subtitle": "Award Winning Signature",
       "description": "1kg local lobster + 6 buns. Approximately 4 lobsters per serving.",
-      "price": 388,
+      "price": 338,
       "tag": "Award Winning"
     },
     {
@@ -145,7 +145,7 @@
             "en": "Golden Delight Lobster",
             "zh": "黄金风味龙虾"
           },
-         "image": "images/golden-delight-lobster.jpg",
+         "image": "image/golden-delight-lobster.jpg",
           "note": "1kg local lobster + 6 buns · approximately 4 lobsters",
           "tags": [
             "award",
@@ -155,7 +155,7 @@
           "variants": [
             {
               "label": "1 set",
-              "price": 388
+              "price": 338
             }
           ],
           "fixedStyle": "Golden Delight"
