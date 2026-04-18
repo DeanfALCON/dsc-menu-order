@@ -1,0 +1,1983 @@
+{
+  "restaurant": {
+    "id": "desaru-seafood-corner",
+    "name": "Desaru Seafood Corner",
+    "currency": "MYR",
+    "languages": [
+      "en",
+      "zh"
+    ],
+    "pricingRules": {
+      "takeaway": {
+        "sstRate": 0.06,
+        "serviceChargeRate": 0.0
+      },
+      "dinein": {
+        "sstRate": 0.06,
+        "serviceChargeRate": 0.06
+      },
+      "rounding": "nearest_0.10"
+    }
+  },
+  "categories": [
+    {
+      "id": "signature-dishes",
+      "name": {
+        "en": "Signature Dishes",
+        "zh": "招牌菜"
+      },
+      "defaultOpen": true,
+      "specialType": null,
+      "items": [
+        {
+          "id": "golden-pumpkin-cream-lobster",
+          "name": {
+            "en": "Golden Pumpkin Cream Lobster",
+            "zh": "金瓜奶香龙虾"
+          },
+          "image": "https://via.placeholder.com/300?text=Golden+Pumpkin+Cream+Lobster",
+          "marketPrice": false,
+          "tags": [
+            "signature",
+            "popular"
+          ],
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 198
+            }
+          ]
+        },
+        {
+          "id": "signature-spicy-chilli-crab",
+          "name": {
+            "en": "Signature Spicy Chilli Crab",
+            "zh": "招牌香辣螃蟹"
+          },
+          "image": "https://via.placeholder.com/300?text=Signature+Spicy+Chilli+Crab",
+          "marketPrice": false,
+          "tags": [
+            "signature",
+            "popular"
+          ],
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 130
+            }
+          ]
+        },
+        {
+          "id": "premium-goose-web-with-abalone-delight",
+          "name": {
+            "en": "Premium Goose Web with Abalone Delight",
+            "zh": "鲍鱼掌上明珠"
+          },
+          "image": "https://via.placeholder.com/300?text=Premium+Goose+Web+Abalone",
+          "marketPrice": false,
+          "tags": [
+            "signature"
+          ],
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 468
+            }
+          ]
+        },
+        {
+          "id": "lobster-in-premium-superior-broth",
+          "name": {
+            "en": "Lobster in Premium Superior Broth",
+            "zh": "上汤鲜味龙虾"
+          },
+          "image": "https://via.placeholder.com/300?text=Lobster+Superior+Broth",
+          "marketPrice": false,
+          "tags": [
+            "signature"
+          ],
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 198
+            }
+          ]
+        },
+        {
+          "id": "traditional-salt-baked-chicken",
+          "name": {
+            "en": "Traditional Salt-Baked Chicken",
+            "zh": "古法盐焗鸡"
+          },
+          "image": "https://via.placeholder.com/300?text=Traditional+Salt+Baked+Chicken",
+          "marketPrice": false,
+          "tags": [
+            "signature"
+          ],
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 68
+            }
+          ]
+        },
+        {
+          "id": "flaming-pomegranate-sweet-sour-fish",
+          "name": {
+            "en": "Flaming Pomegranate Sweet & Sour Fish",
+            "zh": "火焰石榴酸甜鱼"
+          },
+          "image": "https://via.placeholder.com/300?text=Flaming+Pomegranate+Fish",
+          "marketPrice": true,
+          "tags": [
+            "signature",
+            "market"
+          ]
+        },
+        {
+          "id": "signature-curry-fish-head-pot",
+          "name": {
+            "en": "Signature Curry Fish Head Pot",
+            "zh": "招牌咖喱鱼头煲"
+          },
+          "image": "https://via.placeholder.com/300?text=Signature+Curry+Fish+Head+Pot",
+          "marketPrice": false,
+          "tags": [
+            "signature",
+            "popular"
+          ],
+          "note": "Per portion / 每份",
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 88
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lobster",
+      "name": {
+        "en": "Lobster",
+        "zh": "龙虾"
+      },
+      "defaultOpen": false,
+      "specialType": "lobster",
+      "items": [
+        {
+          "id": "local-lobster",
+          "name": {
+            "en": "Local Lobster",
+            "zh": "本地龙虾"
+          },
+          "image": "https://via.placeholder.com/300?text=Local+Lobster",
+          "marketPrice": false,
+          "tags": [
+            "bestvalue",
+            "popular"
+          ],
+          "note": "RM280/kg · Select package, cooking style and quantity / RM280/kg · 选择规格、做法和数量",
+          "variants": [
+            {
+              "label": "500g (2 pcs)",
+              "price": 140
+            },
+            {
+              "label": "800g (3-4 pcs)",
+              "price": 224
+            },
+            {
+              "label": "1kg (5-6 pcs)",
+              "price": 280
+            }
+          ],
+          "cookingStyles": [
+            "Golden Pumpkin Cream",
+            "Salted Egg Yolk",
+            "Superior Broth",
+            "Typhoon Shelter",
+            "Garlic Steam"
+          ]
+        },
+        {
+          "id": "australian-lobster",
+          "name": {
+            "en": "Australian Lobster",
+            "zh": "澳洲龙虾"
+          },
+          "image": "https://via.placeholder.com/300?text=Australian+Lobster",
+          "marketPrice": false,
+          "tags": [
+            "signature",
+            "popular"
+          ],
+          "note": "1 pc / 1只",
+          "variants": [
+            {
+              "label": "1 pc",
+              "price": 198
+            }
+          ],
+          "cookingStyles": [
+            "Golden Pumpkin Cream",
+            "Salted Egg Yolk",
+            "Superior Broth",
+            "Typhoon Shelter",
+            "Garlic Steam"
+          ]
+        },
+        {
+          "id": "australian-flower-lobster",
+          "name": {
+            "en": "Australian Flower Lobster",
+            "zh": "澳洲花龙"
+          },
+          "image": "https://via.placeholder.com/300?text=Australian+Flower+Lobster",
+          "marketPrice": false,
+          "tags": [
+            "signature"
+          ],
+          "note": "RM398/kg · Premium selection / RM398/kg · 高级款",
+          "variants": [
+            {
+              "label": "900g (1 pc)",
+              "price": 358
+            },
+            {
+              "label": "1.1kg (1 pc)",
+              "price": 438
+            }
+          ],
+          "cookingStyles": [
+            "Golden Pumpkin Cream",
+            "Salted Egg Yolk",
+            "Superior Broth",
+            "Typhoon Shelter",
+            "Garlic Steam"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crab",
+      "name": {
+        "en": "Crab",
+        "zh": "螃蟹"
+      },
+      "defaultOpen": false,
+      "specialType": "crab",
+      "items": [
+        {
+          "id": "crab",
+          "name": {
+            "en": "Crab",
+            "zh": "螃蟹"
+          },
+          "image": "https://via.placeholder.com/300?text=Crab",
+          "marketPrice": false,
+          "tags": [
+            "popular"
+          ],
+          "note": "Approx. 650g per crab · RM20 per 100g · Minimum 1 crab",
+          "variants": [
+            {
+              "label": "1 crab",
+              "price": 130
+            },
+            {
+              "label": "2 crabs",
+              "price": 260
+            },
+            {
+              "label": "3 crabs",
+              "price": 390
+            },
+            {
+              "label": "4 crabs",
+              "price": 520
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fish",
+      "name": {
+        "en": "Fish",
+        "zh": "鱼"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "hong-kong-style-premium-steamed-fish",
+          "name": {
+            "en": "Hong Kong Style Premium Steamed Fish",
+            "zh": "港式清蒸鲜鱼"
+          },
+          "image": "https://via.placeholder.com/300?text=Hong+Kong+Premium+Steamed+Fish",
+          "marketPrice": true,
+          "tags": [
+            "market"
+          ]
+        },
+        {
+          "id": "nyonya-style-spicy-sour-fish",
+          "name": {
+            "en": "Nyonya Style Spicy & Sour Fish",
+            "zh": "娘惹风味蒸鱼"
+          },
+          "image": "https://via.placeholder.com/300?text=Nyonya+Style+Fish",
+          "marketPrice": true,
+          "tags": [
+            "market"
+          ]
+        },
+        {
+          "id": "teochew-style-steamed-fish",
+          "name": {
+            "en": "Teochew Style Steamed Fish",
+            "zh": "潮州风味蒸鱼"
+          },
+          "image": "https://via.placeholder.com/300?text=Teochew+Style+Steamed+Fish",
+          "marketPrice": true,
+          "tags": [
+            "market"
+          ]
+        },
+        {
+          "id": "banana-leaf-spicy-sour-fish",
+          "name": {
+            "en": "Banana Leaf Spicy & Sour Fish",
+            "zh": "香蕉叶酸辣鱼"
+          },
+          "image": "https://via.placeholder.com/300?text=Banana+Leaf+Fish",
+          "marketPrice": true,
+          "tags": [
+            "market"
+          ]
+        },
+        {
+          "id": "crispy-golden-fried-fish",
+          "name": {
+            "en": "Crispy Golden Fried Fish",
+            "zh": "香脆油炸鱼"
+          },
+          "image": "https://via.placeholder.com/300?text=Crispy+Golden+Fried+Fish",
+          "marketPrice": true,
+          "tags": [
+            "market"
+          ]
+        },
+        {
+          "id": "flaming-pomegranate-sweet-sour-fish",
+          "name": {
+            "en": "Flaming Pomegranate Sweet & Sour Fish",
+            "zh": "火焰石榴酸甜鱼"
+          },
+          "image": "https://via.placeholder.com/300?text=Flaming+Pomegranate+Fish",
+          "marketPrice": true,
+          "tags": [
+            "market",
+            "signature"
+          ]
+        },
+        {
+          "id": "classic-sweet-sour-fish",
+          "name": {
+            "en": "Classic Sweet & Sour Fish",
+            "zh": "酸甜开胃鱼"
+          },
+          "image": "https://via.placeholder.com/300?text=Classic+Sweet+Sour+Fish",
+          "marketPrice": true,
+          "tags": [
+            "market"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fish-head",
+      "name": {
+        "en": "Fish Head",
+        "zh": "鱼头"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "signature-curry-fish-head-pot",
+          "name": {
+            "en": "Signature Curry Fish Head Pot",
+            "zh": "招牌咖喱鱼头煲"
+          },
+          "image": "https://via.placeholder.com/300?text=Signature+Curry+Fish+Head+Pot",
+          "marketPrice": false,
+          "tags": [
+            "signature",
+            "popular"
+          ],
+          "note": "Per portion / 每份",
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 88
+            }
+          ]
+        },
+        {
+          "id": "bitter-gourd-black-bean-fish-head",
+          "name": {
+            "en": "Bitter Gourd Black Bean Fish Head",
+            "zh": "苦瓜豆豉鱼头"
+          },
+          "image": "https://via.placeholder.com/300?text=Bitter+Gourd+Black+Bean+Fish+Head",
+          "marketPrice": false,
+          "tags": [],
+          "note": "Per portion / 每份",
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 88
+            }
+          ]
+        },
+        {
+          "id": "curry-leaf-fried-fish-head",
+          "name": {
+            "en": "Curry Leaf Fried Fish Head",
+            "zh": "干香咖喱叶鱼头"
+          },
+          "image": "https://via.placeholder.com/300?text=Curry+Leaf+Fish+Head",
+          "marketPrice": false,
+          "tags": [],
+          "note": "Per portion / 每份",
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 88
+            }
+          ]
+        },
+        {
+          "id": "claypot-fish-head-chef-style",
+          "name": {
+            "en": "Claypot Fish Head (Chef Style)",
+            "zh": "砂锅风味鱼头"
+          },
+          "image": "https://via.placeholder.com/300?text=Claypot+Fish+Head",
+          "marketPrice": false,
+          "tags": [],
+          "note": "Per portion / 每份",
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 88
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seafood-specialties",
+      "name": {
+        "en": "Seafood Specialties",
+        "zh": "海味"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "braised-shark-s-fin-soup-with-crab-meat",
+          "name": {
+            "en": "Braised Shark’s Fin Soup with Crab Meat",
+            "zh": "蟹肉鱼翅羹"
+          },
+          "image": "https://via.placeholder.com/300?text=Braised+Sharks+Fin+Soup+Crab+Meat",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 82
+            },
+            {
+              "label": "M",
+              "price": 116
+            },
+            {
+              "label": "L",
+              "price": 150
+            }
+          ]
+        },
+        {
+          "id": "signature-seafood-treasure-pot",
+          "name": {
+            "en": "Signature Seafood Treasure Pot",
+            "zh": "招牌海味一品锅"
+          },
+          "image": "https://via.placeholder.com/300?text=Signature+Seafood+Treasure+Pot",
+          "marketPrice": false,
+          "tags": [
+            "signature"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 88
+            },
+            {
+              "label": "M",
+              "price": 118
+            },
+            {
+              "label": "L",
+              "price": 168
+            }
+          ]
+        },
+        {
+          "id": "premium-goose-web-with-abalone-delight",
+          "name": {
+            "en": "Premium Goose Web with Abalone Delight",
+            "zh": "鲍鱼掌上明珠"
+          },
+          "image": "https://via.placeholder.com/300?text=Premium+Goose+Web+Abalone",
+          "marketPrice": false,
+          "tags": [
+            "signature"
+          ],
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 468
+            }
+          ]
+        },
+        {
+          "id": "braised-mushroom-with-sea-cucumber",
+          "name": {
+            "en": "Braised Mushroom with Sea Cucumber",
+            "zh": "冬菇海参"
+          },
+          "image": "https://via.placeholder.com/300?text=Braised+Mushroom+Sea+Cucumber",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 60
+            },
+            {
+              "label": "L",
+              "price": 98
+            }
+          ]
+        },
+        {
+          "id": "braised-mushroom-with-fish-maw-sea-cucumber",
+          "name": {
+            "en": "Braised Mushroom with Fish Maw & Sea Cucumber",
+            "zh": "冬菇海参鱼鳔"
+          },
+          "image": "https://via.placeholder.com/300?text=Braised+Mushroom+Fish+Maw+Sea+Cucumber",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 85
+            },
+            {
+              "label": "L",
+              "price": 138
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shellfish",
+      "name": {
+        "en": "Shellfish",
+        "zh": "贝壳类"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "garlic-steamed-scallop",
+          "name": {
+            "en": "Garlic Steamed Scallop",
+            "zh": "蒜蓉蒸带子"
+          },
+          "image": "https://via.placeholder.com/300?text=Garlic+Steamed+Scallop",
+          "marketPrice": false,
+          "tags": [
+            "popular"
+          ],
+          "note": "Minimum 4 pcs / 最少4粒",
+          "variants": [
+            {
+              "label": "4 pcs",
+              "price": 30
+            },
+            {
+              "label": "6 pcs",
+              "price": 45
+            },
+            {
+              "label": "8 pcs",
+              "price": 60
+            }
+          ]
+        },
+        {
+          "id": "oyster-raw-or-garlic",
+          "name": {
+            "en": "Oyster Raw / Garlic Steam",
+            "zh": "生蚝 / 蒜蓉蒸生蚝"
+          },
+          "image": "https://via.placeholder.com/300?text=Oyster+Raw+Garlic+Steam",
+          "marketPrice": false,
+          "tags": [
+            "signature"
+          ],
+          "note": "RM12/pc · Minimum 2 pcs / RM12/粒 · 最少2粒",
+          "variants": [
+            {
+              "label": "2 pcs",
+              "price": 24
+            },
+            {
+              "label": "4 pcs",
+              "price": 48
+            },
+            {
+              "label": "6 pcs",
+              "price": 72
+            }
+          ],
+          "cookingStyles": [
+            "Raw",
+            "Garlic Steam"
+          ]
+        },
+        {
+          "id": "oyster-cheese",
+          "name": {
+            "en": "Oyster Cheese",
+            "zh": "芝士焗生蚝"
+          },
+          "image": "https://via.placeholder.com/300?text=Oyster+Cheese",
+          "marketPrice": false,
+          "tags": [
+            "signature",
+            "popular"
+          ],
+          "note": "RM14/pc · Minimum 2 pcs / RM14/粒 · 最少2粒",
+          "variants": [
+            {
+              "label": "2 pcs",
+              "price": 28
+            },
+            {
+              "label": "4 pcs",
+              "price": 56
+            },
+            {
+              "label": "6 pcs",
+              "price": 84
+            }
+          ]
+        },
+        {
+          "id": "lala",
+          "name": {
+            "en": "Lala",
+            "zh": "啦啦"
+          },
+          "image": "https://via.placeholder.com/300?text=Lala",
+          "marketPrice": false,
+          "tags": [
+            "bestvalue"
+          ],
+          "note": "Select size and cooking style / 选择大小和做法",
+          "variants": [
+            {
+              "label": "S",
+              "price": 35
+            },
+            {
+              "label": "L",
+              "price": 68
+            }
+          ],
+          "cookingStyles": [
+            "Dry Style",
+            "Superior Broth",
+            "Sambal",
+            "Ginger Onion"
+          ]
+        },
+        {
+          "id": "kepah",
+          "name": {
+            "en": "Kepah",
+            "zh": "沙白"
+          },
+          "image": "https://via.placeholder.com/300?text=Kepah",
+          "marketPrice": false,
+          "tags": [
+            "signature",
+            "popular"
+          ],
+          "note": "Select size and cooking style / 选择大小和做法",
+          "variants": [
+            {
+              "label": "S",
+              "price": 60
+            },
+            {
+              "label": "L",
+              "price": 100
+            }
+          ],
+          "cookingStyles": [
+            "Superior Broth",
+            "Ginger Onion",
+            "Dry Style",
+            "Sambal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prawn",
+      "name": {
+        "en": "Prawn",
+        "zh": "虾"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "golden-dry-fried-prawns",
+          "name": {
+            "en": "Golden Dry Fried Prawns",
+            "zh": "干煎香虾"
+          },
+          "image": "https://via.placeholder.com/300?text=Golden+Dry+Fried+Prawns",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 48
+            },
+            {
+              "label": "M",
+              "price": 78
+            },
+            {
+              "label": "L",
+              "price": 108
+            }
+          ]
+        },
+        {
+          "id": "classic-boiled-fresh-prawns",
+          "name": {
+            "en": "Classic Boiled Fresh Prawns",
+            "zh": "白灼鲜虾"
+          },
+          "image": "https://via.placeholder.com/300?text=Classic+Boiled+Fresh+Prawns",
+          "marketPrice": false,
+          "tags": [
+            "bestvalue"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 48
+            },
+            {
+              "label": "M",
+              "price": 78
+            },
+            {
+              "label": "L",
+              "price": 108
+            }
+          ]
+        },
+        {
+          "id": "indonesia-style-spicy-prawns",
+          "name": {
+            "en": "Indonesia Style Spicy Prawns",
+            "zh": "印尼风味虾"
+          },
+          "image": "https://via.placeholder.com/300?text=Indonesia+Style+Spicy+Prawns",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 48
+            },
+            {
+              "label": "M",
+              "price": 78
+            },
+            {
+              "label": "L",
+              "price": 108
+            }
+          ]
+        },
+        {
+          "id": "cereal-butter-crispy-prawns",
+          "name": {
+            "en": "Cereal Butter Crispy Prawns",
+            "zh": "麦片牛油香脆虾"
+          },
+          "image": "https://via.placeholder.com/300?text=Cereal+Butter+Crispy+Prawns",
+          "marketPrice": false,
+          "tags": [
+            "popular"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 48
+            },
+            {
+              "label": "M",
+              "price": 78
+            },
+            {
+              "label": "L",
+              "price": 108
+            }
+          ]
+        },
+        {
+          "id": "pineapple-sweet-prawns",
+          "name": {
+            "en": "Pineapple Sweet Prawns",
+            "zh": "黄梨开胃虾"
+          },
+          "image": "https://via.placeholder.com/300?text=Pineapple+Sweet+Prawns",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 48
+            },
+            {
+              "label": "M",
+              "price": 78
+            },
+            {
+              "label": "L",
+              "price": 108
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "squid-cuttlefish",
+      "name": {
+        "en": "Squid / Cuttlefish",
+        "zh": "苏东"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "curry-leaf-crispy-squid",
+          "name": {
+            "en": "Curry Leaf Crispy Squid",
+            "zh": "干香咖喱叶苏东"
+          },
+          "image": "https://via.placeholder.com/300?text=Curry+Leaf+Crispy+Squid",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 48
+            },
+            {
+              "label": "M",
+              "price": 78
+            },
+            {
+              "label": "L",
+              "price": 108
+            }
+          ]
+        },
+        {
+          "id": "butter-fried-squid",
+          "name": {
+            "en": "Butter Fried Squid",
+            "zh": "牛油香炸苏东"
+          },
+          "image": "https://via.placeholder.com/300?text=Butter+Fried+Squid",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 48
+            },
+            {
+              "label": "M",
+              "price": 78
+            },
+            {
+              "label": "L",
+              "price": 108
+            }
+          ]
+        },
+        {
+          "id": "crispy-baby-squid",
+          "name": {
+            "en": "Crispy Baby Squid",
+            "zh": "香脆苏东仔"
+          },
+          "image": "https://via.placeholder.com/300?text=Crispy+Baby+Squid",
+          "marketPrice": false,
+          "tags": [
+            "bestvalue"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 48
+            },
+            {
+              "label": "M",
+              "price": 78
+            },
+            {
+              "label": "L",
+              "price": 108
+            }
+          ]
+        },
+        {
+          "id": "sambal-belacan-squid",
+          "name": {
+            "en": "Sambal Belacan Squid",
+            "zh": "参峇马来苏东"
+          },
+          "image": "https://via.placeholder.com/300?text=Sambal+Belacan+Squid",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 48
+            },
+            {
+              "label": "M",
+              "price": 78
+            },
+            {
+              "label": "L",
+              "price": 108
+            }
+          ]
+        },
+        {
+          "id": "salted-egg-yolk-squid-supreme",
+          "name": {
+            "en": "Salted Egg Yolk Squid Supreme",
+            "zh": "至尊咸蛋黄苏东"
+          },
+          "image": "https://via.placeholder.com/300?text=Salted+Egg+Yolk+Squid+Supreme",
+          "marketPrice": false,
+          "tags": [
+            "popular"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 48
+            },
+            {
+              "label": "M",
+              "price": 78
+            },
+            {
+              "label": "L",
+              "price": 108
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chicken",
+      "name": {
+        "en": "Chicken",
+        "zh": "鸡肉"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "signature-garden-style-chicken",
+          "name": {
+            "en": "Signature Garden Style Chicken",
+            "zh": "招牌菜园鸡"
+          },
+          "image": "https://via.placeholder.com/300?text=Signature+Garden+Style+Chicken",
+          "marketPrice": false,
+          "tags": [
+            "signature"
+          ],
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 88
+            }
+          ]
+        },
+        {
+          "id": "crispy-boxing-chicken",
+          "name": {
+            "en": "Crispy Boxing Chicken",
+            "zh": "香脆拳头鸡"
+          },
+          "image": "https://via.placeholder.com/300?text=Crispy+Boxing+Chicken",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 38
+            }
+          ]
+        },
+        {
+          "id": "traditional-salt-baked-chicken",
+          "name": {
+            "en": "Traditional Salt-Baked Chicken",
+            "zh": "古法盐焗鸡"
+          },
+          "image": "https://via.placeholder.com/300?text=Traditional+Salt+Baked+Chicken",
+          "marketPrice": false,
+          "tags": [
+            "popular"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 35
+            },
+            {
+              "label": "L",
+              "price": 68
+            }
+          ]
+        },
+        {
+          "id": "sweet-sour-chicken-bites",
+          "name": {
+            "en": "Sweet & Sour Chicken Bites",
+            "zh": "酸甜鸡丁"
+          },
+          "image": "https://via.placeholder.com/300?text=Sweet+Sour+Chicken+Bites",
+          "marketPrice": false,
+          "tags": [
+            "bestvalue"
+          ],
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 35
+            }
+          ]
+        },
+        {
+          "id": "garlic-fragrant-chicken",
+          "name": {
+            "en": "Garlic Fragrant Chicken",
+            "zh": "蒜香鸡"
+          },
+          "image": "https://via.placeholder.com/300?text=Garlic+Fragrant+Chicken",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 35
+            }
+          ]
+        },
+        {
+          "id": "ginger-onion-chicken",
+          "name": {
+            "en": "Ginger & Onion Chicken",
+            "zh": "姜葱鸡"
+          },
+          "image": "https://via.placeholder.com/300?text=Ginger+Onion+Chicken",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fish-fillet",
+      "name": {
+        "en": "Fish Fillet",
+        "zh": "鱼片"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "black-pepper-fish-fillet",
+          "name": {
+            "en": "Black Pepper Fish Fillet",
+            "zh": "黑胡椒鱼片"
+          },
+          "image": "https://via.placeholder.com/300?text=Black+Pepper+Fish+Fillet",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 35
+            },
+            {
+              "label": "L",
+              "price": 68
+            }
+          ]
+        },
+        {
+          "id": "ginger-onion-fish-fillet",
+          "name": {
+            "en": "Ginger Onion Fish Fillet",
+            "zh": "姜葱鱼片"
+          },
+          "image": "https://via.placeholder.com/300?text=Ginger+Onion+Fish+Fillet",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 35
+            },
+            {
+              "label": "L",
+              "price": 68
+            }
+          ]
+        },
+        {
+          "id": "sweet-sour-fish-fillet",
+          "name": {
+            "en": "Sweet & Sour Fish Fillet",
+            "zh": "酸甜鱼片"
+          },
+          "image": "https://via.placeholder.com/300?text=Sweet+Sour+Fish+Fillet",
+          "marketPrice": false,
+          "tags": [
+            "bestvalue"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 35
+            },
+            {
+              "label": "L",
+              "price": 68
+            }
+          ]
+        },
+        {
+          "id": "curry-fish-fillet",
+          "name": {
+            "en": "Curry Fish Fillet",
+            "zh": "咖喱鱼片"
+          },
+          "image": "https://via.placeholder.com/300?text=Curry+Fish+Fillet",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 35
+            },
+            {
+              "label": "L",
+              "price": 68
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meat",
+      "name": {
+        "en": "Meat",
+        "zh": "肉类"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "premium-ostrich-meat-chef-style",
+          "name": {
+            "en": "Premium Ostrich Meat (Chef Style)",
+            "zh": "主厨鸵鸟肉"
+          },
+          "image": "https://via.placeholder.com/300?text=Premium+Ostrich+Meat",
+          "marketPrice": false,
+          "tags": [],
+          "note": "Cooking style may vary",
+          "variants": [
+            {
+              "label": "S",
+              "price": 45
+            },
+            {
+              "label": "L",
+              "price": 85
+            }
+          ]
+        },
+        {
+          "id": "venison-delight-chef-style",
+          "name": {
+            "en": "Venison Delight (Chef Style)",
+            "zh": "主厨鹿肉"
+          },
+          "image": "https://via.placeholder.com/300?text=Venison+Delight",
+          "marketPrice": false,
+          "tags": [],
+          "note": "Cooking style may vary",
+          "variants": [
+            {
+              "label": "S",
+              "price": 45
+            },
+            {
+              "label": "L",
+              "price": 85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tofu",
+      "name": {
+        "en": "Tofu",
+        "zh": "豆腐"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "signature-mushroom-beancurd",
+          "name": {
+            "en": "Signature Mushroom Beancurd",
+            "zh": "招牌野菇豆腐"
+          },
+          "image": "https://via.placeholder.com/300?text=Signature+Mushroom+Beancurd",
+          "marketPrice": false,
+          "tags": [
+            "signature"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 20
+            },
+            {
+              "label": "L",
+              "price": 36
+            }
+          ]
+        },
+        {
+          "id": "braised-beancurd-with-crab-meat",
+          "name": {
+            "en": "Braised Beancurd with Crab Meat",
+            "zh": "蟹肉豆腐"
+          },
+          "image": "https://via.placeholder.com/300?text=Braised+Beancurd+Crab+Meat",
+          "marketPrice": false,
+          "tags": [
+            "popular"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 26
+            },
+            {
+              "label": "L",
+              "price": 50
+            }
+          ]
+        },
+        {
+          "id": "homestyle-chicken-minced-beancurd",
+          "name": {
+            "en": "Homestyle Chicken Minced Beancurd",
+            "zh": "家乡豆腐"
+          },
+          "image": "https://via.placeholder.com/300?text=Homestyle+Chicken+Minced+Beancurd",
+          "marketPrice": false,
+          "tags": [
+            "bestvalue"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 26
+            },
+            {
+              "label": "L",
+              "price": 50
+            }
+          ]
+        },
+        {
+          "id": "crispy-seafood-beancurd",
+          "name": {
+            "en": "Crispy Seafood Beancurd",
+            "zh": "香脆海鲜豆腐"
+          },
+          "image": "https://via.placeholder.com/300?text=Crispy+Seafood+Beancurd",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 20
+            },
+            {
+              "label": "L",
+              "price": 36
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "egg",
+      "name": {
+        "en": "Egg",
+        "zh": "蛋"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "classic-onion-omelette",
+          "name": {
+            "en": "Classic Onion Omelette",
+            "zh": "大葱蛋"
+          },
+          "image": "https://via.placeholder.com/300?text=Classic+Onion+Omelette",
+          "marketPrice": false,
+          "tags": [
+            "bestvalue"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 12
+            },
+            {
+              "label": "L",
+              "price": 20
+            }
+          ]
+        },
+        {
+          "id": "prawn-omelette",
+          "name": {
+            "en": "Prawn Omelette",
+            "zh": "虾仁蛋"
+          },
+          "image": "https://via.placeholder.com/300?text=Prawn+Omelette",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 18
+            },
+            {
+              "label": "L",
+              "price": 30
+            }
+          ]
+        },
+        {
+          "id": "oyster-omelette-deluxe",
+          "name": {
+            "en": "Oyster Omelette Deluxe",
+            "zh": "蚝煎蛋"
+          },
+          "image": "https://via.placeholder.com/300?text=Oyster+Omelette+Deluxe",
+          "marketPrice": false,
+          "tags": [
+            "popular"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 18
+            },
+            {
+              "label": "L",
+              "price": 30
+            }
+          ]
+        },
+        {
+          "id": "furong-omelette",
+          "name": {
+            "en": "Furong Omelette",
+            "zh": "芙蓉蛋"
+          },
+          "image": "https://via.placeholder.com/300?text=Furong+Omelette",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 18
+            },
+            {
+              "label": "L",
+              "price": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vegetables",
+      "name": {
+        "en": "Vegetables",
+        "zh": "蔬菜"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "sambal-kangkong",
+          "name": {
+            "en": "Sambal Kangkong",
+            "zh": "参峇蕹菜"
+          },
+          "image": "https://via.placeholder.com/300?text=Sambal+Kangkong",
+          "marketPrice": false,
+          "tags": [
+            "bestvalue"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 15
+            },
+            {
+              "label": "L",
+              "price": 24
+            }
+          ]
+        },
+        {
+          "id": "baby-kailan-with-garlic",
+          "name": {
+            "en": "Baby Kailan with Garlic",
+            "zh": "蒜蓉菜胆"
+          },
+          "image": "https://via.placeholder.com/300?text=Baby+Kailan+with+Garlic",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 18
+            },
+            {
+              "label": "L",
+              "price": 30
+            }
+          ]
+        },
+        {
+          "id": "spinach-with-superior-broth",
+          "name": {
+            "en": "Spinach with Superior Broth",
+            "zh": "上汤菠菜"
+          },
+          "image": "https://via.placeholder.com/300?text=Spinach+with+Superior+Broth",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 18
+            },
+            {
+              "label": "L",
+              "price": 30
+            }
+          ]
+        },
+        {
+          "id": "mixed-vegetables-delight",
+          "name": {
+            "en": "Mixed Vegetables Delight",
+            "zh": "什锦蔬菜"
+          },
+          "image": "https://via.placeholder.com/300?text=Mixed+Vegetables+Delight",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 24
+            },
+            {
+              "label": "L",
+              "price": 36
+            }
+          ]
+        },
+        {
+          "id": "broccoli-with-premium-seafood",
+          "name": {
+            "en": "Broccoli with Premium Seafood",
+            "zh": "海鲜西兰花"
+          },
+          "image": "https://via.placeholder.com/300?text=Broccoli+with+Premium+Seafood",
+          "marketPrice": false,
+          "tags": [
+            "signature"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 22
+            },
+            {
+              "label": "L",
+              "price": 34
+            }
+          ]
+        },
+        {
+          "id": "golden-yam-ring-basket",
+          "name": {
+            "en": "Golden Yam Ring Basket",
+            "zh": "佛本飘香"
+          },
+          "image": "https://via.placeholder.com/300?text=Golden+Yam+Ring+Basket",
+          "marketPrice": false,
+          "tags": [
+            "signature"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 36
+            },
+            {
+              "label": "L",
+              "price": 58
+            }
+          ]
+        },
+        {
+          "id": "scallop-with-broccoli",
+          "name": {
+            "en": "Scallop with Broccoli",
+            "zh": "带子西兰花"
+          },
+          "image": "https://via.placeholder.com/300?text=Scallop+with+Broccoli",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 40
+            },
+            {
+              "label": "L",
+              "price": 75
+            }
+          ]
+        },
+        {
+          "id": "prawn-with-broccoli",
+          "name": {
+            "en": "Prawn with Broccoli",
+            "zh": "虾球西兰花"
+          },
+          "image": "https://via.placeholder.com/300?text=Prawn+with+Broccoli",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 40
+            },
+            {
+              "label": "L",
+              "price": 75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "soup",
+      "name": {
+        "en": "Soup",
+        "zh": "汤"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "tom-yam-seafood-soup",
+          "name": {
+            "en": "Tom Yam Seafood Soup",
+            "zh": "东炎海鲜汤"
+          },
+          "image": "https://via.placeholder.com/300?text=Tom+Yam+Seafood+Soup",
+          "marketPrice": false,
+          "tags": [
+            "popular",
+            "signature"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 28
+            },
+            {
+              "label": "L",
+              "price": 50
+            }
+          ]
+        },
+        {
+          "id": "sweet-corn-crab-meat-soup",
+          "name": {
+            "en": "Sweet Corn Crab Meat Soup",
+            "zh": "粟米蟹肉羹"
+          },
+          "image": "https://via.placeholder.com/300?text=Sweet+Corn+Crab+Meat+Soup",
+          "marketPrice": false,
+          "tags": [
+            "signature"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 35
+            },
+            {
+              "label": "L",
+              "price": 60
+            }
+          ]
+        },
+        {
+          "id": "mixed-vegetable-soup",
+          "name": {
+            "en": "Mixed Vegetable Soup",
+            "zh": "什菜汤"
+          },
+          "image": "https://via.placeholder.com/300?text=Mixed+Vegetable+Soup",
+          "marketPrice": false,
+          "tags": [
+            "bestvalue"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 24
+            },
+            {
+              "label": "L",
+              "price": 46
+            }
+          ]
+        },
+        {
+          "id": "seaweed-egg-soup",
+          "name": {
+            "en": "Seaweed Egg Soup",
+            "zh": "紫菜蛋花汤"
+          },
+          "image": "https://via.placeholder.com/300?text=Seaweed+Egg+Soup",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 24
+            },
+            {
+              "label": "L",
+              "price": 46
+            }
+          ]
+        },
+        {
+          "id": "salted-vegetable-beancurd-soup",
+          "name": {
+            "en": "Salted Vegetable Beancurd Soup",
+            "zh": "咸菜豆腐汤"
+          },
+          "image": "https://via.placeholder.com/300?text=Salted+Vegetable+Beancurd+Soup",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 24
+            },
+            {
+              "label": "L",
+              "price": 46
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fried-noodles-rice",
+      "name": {
+        "en": "Fried Noodles / Rice",
+        "zh": "炒粉 / 饭"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "signature-seafood-fried-rice-noodles",
+          "name": {
+            "en": "Signature Seafood Fried Rice / Noodles",
+            "zh": "招牌海鲜炒"
+          },
+          "image": "https://via.placeholder.com/300?text=Signature+Seafood+Fried",
+          "marketPrice": false,
+          "tags": [
+            "signature",
+            "popular"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 12
+            },
+            {
+              "label": "M",
+              "price": 24
+            },
+            {
+              "label": "L",
+              "price": 38
+            }
+          ]
+        },
+        {
+          "id": "kampung-style-fried-rice-noodles",
+          "name": {
+            "en": "Kampung Style Fried Rice / Noodles",
+            "zh": "甘榜炒"
+          },
+          "image": "https://via.placeholder.com/300?text=Kampung+Style+Fried",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 12
+            },
+            {
+              "label": "M",
+              "price": 24
+            },
+            {
+              "label": "L",
+              "price": 38
+            }
+          ]
+        },
+        {
+          "id": "sambal-fried-rice-noodles",
+          "name": {
+            "en": "Sambal Fried Rice / Noodles",
+            "zh": "参峇炒"
+          },
+          "image": "https://via.placeholder.com/300?text=Sambal+Fried",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 12
+            },
+            {
+              "label": "M",
+              "price": 24
+            },
+            {
+              "label": "L",
+              "price": 38
+            }
+          ]
+        },
+        {
+          "id": "hokkien-style-fried-noodles",
+          "name": {
+            "en": "Hokkien Style Fried Noodles",
+            "zh": "福建炒"
+          },
+          "image": "https://via.placeholder.com/300?text=Hokkien+Style+Fried+Noodles",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 12
+            },
+            {
+              "label": "M",
+              "price": 24
+            },
+            {
+              "label": "L",
+              "price": 38
+            }
+          ]
+        },
+        {
+          "id": "seafood-soup-noodles",
+          "name": {
+            "en": "Seafood Soup Noodles",
+            "zh": "海鲜汤面"
+          },
+          "image": "https://via.placeholder.com/300?text=Seafood+Soup+Noodles",
+          "marketPrice": false,
+          "tags": [
+            "bestvalue"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 12
+            },
+            {
+              "label": "M",
+              "price": 24
+            },
+            {
+              "label": "L",
+              "price": 38
+            }
+          ]
+        },
+        {
+          "id": "cantonese-style-fried-noodles",
+          "name": {
+            "en": "Cantonese Style Fried Noodles",
+            "zh": "广东炒"
+          },
+          "image": "https://via.placeholder.com/300?text=Cantonese+Style+Fried+Noodles",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "S",
+              "price": 12
+            },
+            {
+              "label": "M",
+              "price": 24
+            },
+            {
+              "label": "L",
+              "price": 38
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "name": {
+        "en": "Drinks",
+        "zh": "饮料"
+      },
+      "defaultOpen": false,
+      "specialType": null,
+      "items": [
+        {
+          "id": "chinese-tea-per-pax",
+          "name": {
+            "en": "Chinese Tea (Per Pax)",
+            "zh": "中国茶"
+          },
+          "image": "https://via.placeholder.com/300?text=Chinese+Tea",
+          "marketPrice": false,
+          "tags": [
+            "bestvalue"
+          ],
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 1.5
+            }
+          ]
+        },
+        {
+          "id": "premium-white-coffee",
+          "name": {
+            "en": "Premium White Coffee",
+            "zh": "白咖啡"
+          },
+          "image": "https://via.placeholder.com/300?text=Premium+White+Coffee",
+          "marketPrice": false,
+          "tags": [],
+          "variants": [
+            {
+              "label": "Standard",
+              "price": 5.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
