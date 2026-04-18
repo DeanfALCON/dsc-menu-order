@@ -1,0 +1,81 @@
+{
+  "categories": [
+    {
+      "name": "Lobster",
+      "items": [
+        {
+          "name": "Local Lobster",
+          "pricePerKg": 280,
+          "options": [
+            {"label": "500g (2 pcs)", "price": 140},
+            {"label": "800g (3-4 pcs)", "price": 224, "tag": "Most Popular"},
+            {"label": "1kg (5-6 pcs)", "price": 280, "tag": "Best Value"}
+          ],
+          "styles": ["金瓜奶香","咸蛋黄","上汤","避风塘","蒜蓉清蒸"]
+        },
+        {
+          "name": "Australian Lobster",
+          "options": [
+            {"label": "1 pcs", "price": 198}
+          ],
+          "styles": ["金瓜奶香","咸蛋黄","上汤","避风塘","蒜蓉清蒸"]
+        },
+        {
+          "name": "Flower Lobster",
+          "pricePerKg": 398,
+          "options": [
+            {"label": "900g (1 pcs)", "price": 358},
+            {"label": "1.1kg (1 pcs)", "price": 438}
+          ],
+          "styles": ["金瓜奶香","咸蛋黄","上汤","避风塘","蒜蓉清蒸"]
+        }
+      ]
+    },
+    {
+      "name": "Shellfish",
+      "items": [
+        {
+          "name": "Scallop",
+          "price": 7.5,
+          "min": 4,
+          "options": [4,6,8],
+          "style": "蒜蓉蒸"
+        },
+        {
+          "name": "Oyster Raw / Garlic Steam",
+          "price": 12,
+          "min": 2,
+          "options": [2,4,6]
+        },
+        {
+          "name": "Oyster Cheese",
+          "price": 14,
+          "min": 2,
+          "options": [2,4,6]
+        },
+        {
+          "name": "Lala",
+          "options": [
+            {"label": "S", "price": 35},
+            {"label": "L", "price": 68}
+          ],
+          "styles": ["干香","上汤","Sambal","姜葱"],
+          "defaultStyle": "上汤"
+        },
+        {
+          "name": "Kepah",
+          "options": [
+            {"label": "S", "price": 60},
+            {"label": "L", "price": 100}
+          ],
+          "styles": ["上汤","姜葱","干香","Sambal"],
+          "defaultStyle": "上汤",
+          "upsell": {
+            "name": "椰香上汤沙白",
+            "price": 68
+          }
+        }
+      ]
+    }
+  ]
+}
