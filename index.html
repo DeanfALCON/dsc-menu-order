@@ -426,7 +426,9 @@
 
     async function loadMenu(){
       try {
-        const res = await fetch(MENU_JSON_PATH, { cache:'no-store' });
+        const res = await 
+        fetch(desaru_menu_master.jdesaru_menu_master.json', 
+        { cache:'no-store' });
         if(!res.ok) throw new Error('Unable to load menu JSON');
         menuSource = await res.json();
         document.getElementById('restaurantName').textContent = menuSource.restaurant?.name || 'Desaru Seafood Corner';
