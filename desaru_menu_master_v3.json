@@ -1,0 +1,565 @@
+{
+  "restaurant": {
+    "name": "Desaru Seafood Corner",
+    "currency": "RM",
+    "whatsappNumber": "60105309267",
+    "pricingRules": {
+      "takeaway": {
+        "sstRate": 0.06,
+        "serviceChargeRate": 0.0
+      },
+      "dinein": {
+        "sstRate": 0.06,
+        "serviceChargeRate": 0.06
+      }
+    }
+  },
+  "awardWinning": [
+    {
+      "id": "golden-delight-lobster",
+      "name": {
+        "en": "Golden Delight Lobster",
+        "zh": "黄金风味龙虾"
+      },
+      "subtitle": "Award Winning Signature",
+      "description": "1kg local lobster + 6 buns. Approximately 4 lobsters per serving.",
+      "price": 280,
+      "tag": "Award Winning"
+    },
+    {
+      "id": "coconut-superior-clam",
+      "name": {
+        "en": "Coconut Superior Clam",
+        "zh": "椰香上汤沙白"
+      },
+      "subtitle": "Award Winning Signature",
+      "description": "Creamy coconut superior broth clam. One portion.",
+      "price": 68,
+      "tag": "Award Winning"
+    }
+  ],
+  "chefRecommended": [
+    {
+      "id": "golden-pumpkin-lobster",
+      "name": {
+        "en": "Golden Pumpkin Lobster",
+        "zh": "金瓜龙虾"
+      },
+      "description": "Creamy signature pumpkin lobster.",
+      "priceHint": "From RM140",
+      "badge": "Must Try"
+    },
+    {
+      "id": "superior-stock-lobster",
+      "name": {
+        "en": "Superior Stock Lobster",
+        "zh": "上汤龙虾"
+      },
+      "description": "Traditional superior broth lobster. Signature style.",
+      "priceHint": "From RM140",
+      "badge": "Signature"
+    },
+    {
+      "id": "volcanic-crab",
+      "name": {
+        "en": "Volcanic Crab",
+        "zh": "火山螃蟹"
+      },
+      "description": "Spicy signature crab. Clearly marked hot.",
+      "priceHint": "From RM130",
+      "badge": "Spicy Signature"
+    },
+    {
+      "id": "golden-salted-egg-crab",
+      "name": {
+        "en": "Golden Salted Egg Crab",
+        "zh": "咸蛋螃蟹"
+      },
+      "description": "Signature crab for non-spicy lovers.",
+      "priceHint": "From RM130",
+      "badge": "Non-Spicy Favorite"
+    },
+    {
+      "id": "hong-kong-steam-grouper",
+      "name": {
+        "en": "Hong Kong Steam Grouper",
+        "zh": "港蒸石斑鱼"
+      },
+      "description": "Premium steamed grouper.",
+      "priceHint": "Market Price",
+      "badge": "Premium"
+    }
+  ],
+  "upsellRules": [
+    {
+      "triggerIds": [
+        "lala",
+        "kepah"
+      ],
+      "suggestions": [
+        {
+          "id": "coconut-superior-clam",
+          "nameEn": "Coconut Superior Clam",
+          "nameZh": "椰香上汤沙白",
+          "label": "1 portion",
+          "price": 68
+        }
+      ]
+    },
+    {
+      "triggerIds": [
+        "local-lobster",
+        "australian-lobster",
+        "flower-lobster"
+      ],
+      "suggestions": [
+        {
+          "id": "scallop",
+          "nameEn": "Garlic Steamed Scallop",
+          "nameZh": "蒜蓉蒸带子",
+          "label": "6 pcs",
+          "price": 45
+        },
+        {
+          "id": "oyster-cheese",
+          "nameEn": "Oyster Cheese",
+          "nameZh": "芝士焗生蚝",
+          "label": "4 pcs",
+          "price": 56
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "lobster",
+      "name": {
+        "en": "Lobster",
+        "zh": "龙虾"
+      },
+      "defaultOpen": true,
+      "items": [
+        {
+          "id": "golden-delight-lobster",
+          "name": {
+            "en": "Golden Delight Lobster",
+            "zh": "黄金风味龙虾"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Golden+Delight+Lobster",
+          "note": "1kg local lobster + 6 buns · approximately 4 lobsters",
+          "tags": [
+            "award",
+            "signature",
+            "popular"
+          ],
+          "variants": [
+            {
+              "label": "1 set",
+              "price": 280
+            }
+          ],
+          "fixedStyle": "Golden Delight"
+        },
+        {
+          "id": "local-lobster",
+          "name": {
+            "en": "Local Lobster",
+            "zh": "本地龙虾"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Local+Lobster",
+          "note": "RM280/kg",
+          "tags": [
+            "signature",
+            "bestvalue"
+          ],
+          "styles": [
+            "Golden Pumpkin / 金瓜奶香",
+            "Superior Stock / 上汤",
+            "Salted Egg / 咸蛋黄",
+            "Typhoon Shelter / 避风塘",
+            "Garlic Steam / 蒜蓉清蒸"
+          ],
+          "variants": [
+            {
+              "label": "500g (2 pcs)",
+              "price": 140,
+              "badge": "Starter"
+            },
+            {
+              "label": "800g (3-4 pcs)",
+              "price": 224,
+              "badge": "Most Popular"
+            },
+            {
+              "label": "1kg (5-6 pcs)",
+              "price": 280,
+              "badge": "Best Value"
+            }
+          ]
+        },
+        {
+          "id": "australian-lobster",
+          "name": {
+            "en": "Australian Lobster",
+            "zh": "澳洲龙虾"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Australian+Lobster",
+          "note": "Simple premium option",
+          "tags": [
+            "signature"
+          ],
+          "styles": [
+            "Golden Pumpkin / 金瓜奶香",
+            "Superior Stock / 上汤",
+            "Salted Egg / 咸蛋黄",
+            "Typhoon Shelter / 避风塘",
+            "Garlic Steam / 蒜蓉清蒸"
+          ],
+          "variants": [
+            {
+              "label": "1 pc",
+              "price": 198
+            }
+          ]
+        },
+        {
+          "id": "flower-lobster",
+          "name": {
+            "en": "Flower Lobster",
+            "zh": "澳洲花龙"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Flower+Lobster",
+          "note": "RM398/kg",
+          "styles": [
+            "Golden Pumpkin / 金瓜奶香",
+            "Superior Stock / 上汤",
+            "Salted Egg / 咸蛋黄",
+            "Typhoon Shelter / 避风塘",
+            "Garlic Steam / 蒜蓉清蒸"
+          ],
+          "variants": [
+            {
+              "label": "900g (1 pc)",
+              "price": 358
+            },
+            {
+              "label": "1.1kg (1 pc)",
+              "price": 438
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crab",
+      "name": {
+        "en": "Crab",
+        "zh": "螃蟹"
+      },
+      "items": [
+        {
+          "id": "volcanic-crab",
+          "name": {
+            "en": "Volcanic Crab",
+            "zh": "火山螃蟹"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Volcanic+Crab",
+          "note": "Spicy · Signature",
+          "tags": [
+            "signature",
+            "popular"
+          ],
+          "fixedStyle": "Volcanic / 火山",
+          "variants": [
+            {
+              "label": "1 crab",
+              "price": 130
+            },
+            {
+              "label": "2 crabs",
+              "price": 260
+            },
+            {
+              "label": "3 crabs",
+              "price": 390
+            }
+          ]
+        },
+        {
+          "id": "golden-salted-egg-crab",
+          "name": {
+            "en": "Golden Salted Egg Crab",
+            "zh": "咸蛋螃蟹"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Golden+Salted+Egg+Crab",
+          "note": "Non-spicy · Signature",
+          "tags": [
+            "signature"
+          ],
+          "fixedStyle": "Golden Salted Egg / 咸蛋",
+          "variants": [
+            {
+              "label": "1 crab",
+              "price": 130
+            },
+            {
+              "label": "2 crabs",
+              "price": 260
+            },
+            {
+              "label": "3 crabs",
+              "price": 390
+            }
+          ]
+        },
+        {
+          "id": "lazi-crab",
+          "name": {
+            "en": "Lazi Crab",
+            "zh": "辣子螃蟹"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Lazi+Crab",
+          "note": "Signature option",
+          "tags": [
+            "signature"
+          ],
+          "fixedStyle": "Lazi / 辣子",
+          "variants": [
+            {
+              "label": "1 crab",
+              "price": 130
+            },
+            {
+              "label": "2 crabs",
+              "price": 260
+            },
+            {
+              "label": "3 crabs",
+              "price": 390
+            }
+          ]
+        },
+        {
+          "id": "black-pepper-crab",
+          "name": {
+            "en": "Black Pepper Crab",
+            "zh": "黑胡椒螃蟹"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Black+Pepper+Crab",
+          "variants": [
+            {
+              "label": "1 crab",
+              "price": 130
+            },
+            {
+              "label": "2 crabs",
+              "price": 260
+            }
+          ]
+        },
+        {
+          "id": "dry-style-crab",
+          "name": {
+            "en": "Dry Style Crab",
+            "zh": "干香螃蟹"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Dry+Style+Crab",
+          "variants": [
+            {
+              "label": "1 crab",
+              "price": 130
+            },
+            {
+              "label": "2 crabs",
+              "price": 260
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shellfish",
+      "name": {
+        "en": "Shellfish",
+        "zh": "贝壳类"
+      },
+      "items": [
+        {
+          "id": "scallop",
+          "name": {
+            "en": "Garlic Steamed Scallop",
+            "zh": "蒜蓉蒸带子"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Garlic+Steamed+Scallop",
+          "note": "Minimum 4 pcs",
+          "tags": [
+            "popular"
+          ],
+          "fixedStyle": "Garlic Steam / 蒜蓉蒸",
+          "variants": [
+            {
+              "label": "4 pcs",
+              "price": 30
+            },
+            {
+              "label": "6 pcs",
+              "price": 45,
+              "badge": "Most Popular"
+            },
+            {
+              "label": "8 pcs",
+              "price": 60,
+              "badge": "Best Value"
+            }
+          ]
+        },
+        {
+          "id": "oyster-raw-garlic",
+          "name": {
+            "en": "Oyster Raw / Garlic Steam",
+            "zh": "生蚝 / 蒜蓉蒸生蚝"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Oyster+Raw+Garlic",
+          "note": "RM12 per pc · Minimum 2 pcs",
+          "styles": [
+            "Raw / 生",
+            "Garlic Steam / 蒜蓉蒸"
+          ],
+          "variants": [
+            {
+              "label": "2 pcs",
+              "price": 24
+            },
+            {
+              "label": "4 pcs",
+              "price": 48,
+              "badge": "Most Popular"
+            },
+            {
+              "label": "6 pcs",
+              "price": 72,
+              "badge": "Best Value"
+            }
+          ]
+        },
+        {
+          "id": "oyster-cheese",
+          "name": {
+            "en": "Oyster Cheese",
+            "zh": "芝士焗生蚝"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Oyster+Cheese",
+          "note": "RM14 per pc · Minimum 2 pcs",
+          "variants": [
+            {
+              "label": "2 pcs",
+              "price": 28
+            },
+            {
+              "label": "4 pcs",
+              "price": 56,
+              "badge": "Most Popular"
+            },
+            {
+              "label": "6 pcs",
+              "price": 84,
+              "badge": "Best Value"
+            }
+          ]
+        },
+        {
+          "id": "lala",
+          "name": {
+            "en": "Lala",
+            "zh": "啦啦"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Lala",
+          "styles": [
+            "Dry Style / 干香",
+            "Superior Stock / 上汤",
+            "Sambal / 参巴",
+            "Ginger Onion / 姜葱"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 35
+            },
+            {
+              "label": "L",
+              "price": 68
+            }
+          ]
+        },
+        {
+          "id": "kepah",
+          "name": {
+            "en": "Kepah",
+            "zh": "沙白"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Kepah",
+          "styles": [
+            "Superior Stock / 上汤",
+            "Ginger Onion / 姜葱",
+            "Dry Style / 干香",
+            "Sambal / 参巴"
+          ],
+          "variants": [
+            {
+              "label": "S",
+              "price": 60
+            },
+            {
+              "label": "L",
+              "price": 100
+            }
+          ]
+        },
+        {
+          "id": "coconut-superior-clam",
+          "name": {
+            "en": "Coconut Superior Clam",
+            "zh": "椰香上汤沙白"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Coconut+Superior+Clam",
+          "note": "Award Winning Signature",
+          "tags": [
+            "award",
+            "signature",
+            "popular"
+          ],
+          "fixedStyle": "Coconut Superior Stock / 椰香上汤",
+          "variants": [
+            {
+              "label": "1 portion",
+              "price": 68
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fish",
+      "name": {
+        "en": "Fish",
+        "zh": "鱼"
+      },
+      "items": [
+        {
+          "id": "hong-kong-steam-grouper",
+          "name": {
+            "en": "Hong Kong Steam Grouper",
+            "zh": "港蒸石斑鱼"
+          },
+          "image": "https://via.placeholder.com/600x420?text=Hong+Kong+Steam+Grouper",
+          "note": "Premium fish · market price",
+          "tags": [
+            "signature"
+          ],
+          "marketPrice": true,
+          "fixedStyle": "Hong Kong Steam / 港蒸"
+        }
+      ]
+    }
+  ]
+}
