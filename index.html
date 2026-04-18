@@ -6,14 +6,14 @@
   <title>Desaru Seafood Corner</title>
   <style>
     :root{
-      --bg:#f6f7f9;
+      --bg:#eef4ff;
       --surface:#ffffff;
-      --surface-soft:#fff8f5;
+      --surface-soft:#f3f8ff;
       --text:#1f2937;
       --muted:#6b7280;
       --line:#eceff3;
-      --primary:#d92d20;
-      --primary-soft:#fff1ee;
+      --primary:#2563eb;
+      --primary-soft:#eff6ff;
       --success:#059669;
       --dark:#111827;
       --shadow-sm:0 6px 18px rgba(15,23,42,.06);
@@ -26,7 +26,7 @@
     body{
       margin:0;
       font-family:Arial,sans-serif;
-      background:radial-gradient(circle at top left,#fff5f1 0%,transparent 30%),linear-gradient(180deg,#fbfbfc 0%,#f4f6f8 100%);
+      background:radial-gradient(circle at top left,#eff6ff 0%,transparent 30%),linear-gradient(180deg,#fbfbfc 0%,#f4f6f8 100%);
       color:var(--text);
     }
     button,input,select,textarea{font:inherit}
@@ -35,15 +35,15 @@
 
     .landing{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
     .landing-card{width:100%;max-width:820px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.8);border-radius:32px;padding:34px 24px 28px;box-shadow:var(--shadow-lg);text-align:center;position:relative;overflow:hidden}
-    .landing-card::before{content:"";position:absolute;inset:auto -120px -120px auto;width:260px;height:260px;background:radial-gradient(circle, rgba(217,45,32,.10), transparent 70%);pointer-events:none}
+    .landing-card::before{content:"";position:absolute;inset:auto -120px -120px auto;width:260px;height:260px;background:radial-gradient(circle, rgba(37,99,235,.10), transparent 70%);pointer-events:none}
     .landing-logo{width:190px;max-width:72%;margin-bottom:16px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.08))}
     .landing-card h1{margin:0 0 10px;font-size:34px;color:var(--primary)}
     .landing-card p{margin:0;color:var(--muted);line-height:1.75;font-size:15px}
     .landing-subline{display:inline-flex;align-items:center;gap:8px;background:var(--primary-soft);color:var(--primary);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:bold;margin-top:14px}
     .order-type-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
-    .order-type-card{border:none;background:linear-gradient(180deg, #ffffff 0%, #fffaf8 100%);border-radius:26px;padding:28px 20px;box-shadow:var(--shadow-md);cursor:pointer;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;border:1px solid #f4e6e1;text-align:left;position:relative;overflow:hidden}
-    .order-type-card::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;background:radial-gradient(circle, rgba(217,45,32,.10), transparent 70%)}
-    .order-type-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(15,23,42,.14);border-color:#f5c7bb}
+    .order-type-card{border:none;background:linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);border-radius:26px;padding:28px 20px;box-shadow:var(--shadow-md);cursor:pointer;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;border:1px solid #dbe7ff;text-align:left;position:relative;overflow:hidden}
+    .order-type-card::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;background:radial-gradient(circle, rgba(37,99,235,.10), transparent 70%)}
+    .order-type-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(15,23,42,.14);border-color:#b8d0ff}
     .order-icon{width:62px;height:62px;display:flex;align-items:center;justify-content:center;border-radius:18px;background:var(--primary-soft);font-size:30px;margin-bottom:16px}
     .order-type-card h2{margin:0 0 8px;font-size:26px;color:var(--text)}
     .order-type-card small{display:block;color:var(--muted);font-size:14px;margin-bottom:12px}
@@ -53,12 +53,12 @@
     .header{text-align:center;margin-bottom:14px}
     .header img{width:164px;max-width:72%;filter:drop-shadow(0 10px 18px rgba(0,0,0,.08))}
     .hero{background:linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,248,245,.98));border:1px solid rgba(255,255,255,.75);border-radius:28px;padding:28px 22px;box-shadow:var(--shadow-md);margin-bottom:18px;text-align:center;position:relative;overflow:hidden}
-    .hero::before{content:"";position:absolute;left:-80px;top:-80px;width:220px;height:220px;background:radial-gradient(circle, rgba(217,45,32,.08), transparent 70%)}
+    .hero::before{content:"";position:absolute;left:-80px;top:-80px;width:220px;height:220px;background:radial-gradient(circle, rgba(37,99,235,.08), transparent 70%)}
     .hero h1{position:relative;margin:0 0 8px;font-size:32px;color:var(--primary)}
     .hero p{position:relative;margin:0;color:var(--muted);line-height:1.7}
     .status-bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.75);border-radius:18px;padding:14px 16px;box-shadow:var(--shadow-sm);margin-bottom:18px}
     .status-text{color:#374151;font-size:14px;line-height:1.5}
-    .status-badge{display:inline-flex;align-items:center;gap:6px;background:var(--primary-soft);color:var(--primary);border:1px solid #ffd5cc;padding:7px 12px;border-radius:999px;font-weight:bold;margin-left:6px}
+    .status-badge{display:inline-flex;align-items:center;gap:6px;background:var(--primary-soft);color:var(--primary);border:1px solid #cfe0ff;padding:7px 12px;border-radius:999px;font-weight:bold;margin-left:6px}
     .change-type-btn{background:#111827;color:#fff;border:none;border-radius:12px;padding:10px 14px;box-shadow:var(--shadow-sm)}
 
     .top-tools{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:20px}
@@ -68,37 +68,30 @@
     .search-input-wrap{position:relative;margin-top:12px}
     .search-input-wrap span{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#9ca3af;font-size:16px}
     #searchInput{width:100%;padding:13px 14px 13px 42px;border:1px solid #e5e7eb;border-radius:14px;font-size:15px;background:#fff;outline:none;transition:border-color .18s ease, box-shadow .18s ease}
-    #searchInput:focus,input:focus,textarea:focus,select:focus{border-color:#f0b6a8;box-shadow:0 0 0 4px rgba(217,45,32,.08)}
+    #searchInput:focus,input:focus,textarea:focus,select:focus{border-color:#93c5fd;box-shadow:0 0 0 4px rgba(37,99,235,.08)}
     .quick-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-    .quick-nav button{background:var(--primary-soft);color:var(--primary);border:1px solid #ffd5cc;padding:8px 12px;border-radius:999px;font-size:13px;font-weight:bold}
+    .quick-nav button{background:var(--primary-soft);color:var(--primary);border:1px solid #cfe0ff;padding:8px 12px;border-radius:999px;font-size:13px;font-weight:bold}
     .qr-box{text-align:center}
     .qr-box img{width:156px;height:156px;object-fit:contain;margin-top:10px;border-radius:14px;background:#fafafa;padding:8px;border:1px solid #f0f0f0}
-
-    .ai-box{margin-bottom:18px;background:linear-gradient(135deg,#fff,#fff8f5);border:1px solid #f6ddd6;border-radius:22px;padding:18px;box-shadow:var(--shadow-sm)}
-    .ai-box h3{margin:0 0 6px;color:var(--primary);font-size:22px}
-    .ai-box p{margin:0;color:var(--muted);line-height:1.7}
-    .ai-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-    .ai-btn{background:linear-gradient(180deg, #08a55b 0%, #059669 100%);color:#fff;border:none;border-radius:12px;padding:10px 14px;font-weight:bold;box-shadow:0 10px 22px rgba(5,150,105,.22)}
-    .ai-btn.secondary{background:linear-gradient(180deg, #f04a3a 0%, #d92d20 100%);box-shadow:0 10px 22px rgba(217,45,32,.22)}
 
 
     .featured-section{margin-bottom:22px}
     .featured-title{margin-bottom:12px;font-size:22px;font-weight:bold;color:var(--primary)}
     .featured-title small{display:block;font-size:14px;margin-top:4px;font-weight:normal;color:var(--muted)}
     .featured-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .featured-card{background:linear-gradient(180deg,#fff,#fff8f5);border:1px solid #f5dfd8;border-radius:22px;padding:18px;box-shadow:var(--shadow-sm)}
+    .featured-card{background:linear-gradient(180deg,#fff,#f3f8ff);border:1px solid #dbe7ff;border-radius:22px;padding:18px;box-shadow:var(--shadow-sm)}
     .featured-card h3{margin:0 0 6px;font-size:20px}
     .featured-card h3 small{display:block;font-size:14px;color:var(--muted);margin-top:4px;font-weight:normal}
     .featured-desc{color:var(--muted);font-size:13px;line-height:1.6;margin-bottom:10px}
     .featured-list{margin:0 0 12px 18px;padding:0;color:#444;font-size:14px;line-height:1.6}
-    .featured-btn{background:linear-gradient(180deg, #f04a3a 0%, #d92d20 100%);color:#fff;width:100%}
-    .upsell-box{margin-top:14px;padding:14px;border-radius:16px;background:#fff8f5;border:1px solid #ffd9d0}
+    .featured-btn{background:linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);color:#fff;width:100%}
+    .upsell-box{margin-top:14px;padding:14px;border-radius:16px;background:#f3f8ff;border:1px solid #dbe7ff}
     .upsell-box h3{margin:0 0 8px;font-size:16px;color:var(--primary)}
     .upsell-box small{display:block;color:var(--muted);margin-bottom:10px}
     .upsell-row{display:flex;flex-wrap:wrap;gap:8px}
-    .upsell-btn{background:#fff;color:var(--primary);border:1px solid #ffd0c5;font-size:12px;padding:8px 10px;border-radius:999px}
+    .upsell-btn{background:#fff;color:var(--primary);border:1px solid #cfe0ff;font-size:12px;padding:8px 10px;border-radius:999px}
     .category-block{margin-top:18px;scroll-margin-top:20px}
-    .category-header{width:100%;border:none;background:linear-gradient(180deg, #ffffff 0%, #fff9f7 100%);border-left:6px solid var(--primary);border-radius:20px;padding:16px 18px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow-sm)}
+    .category-header{width:100%;border:none;background:linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);border-left:6px solid var(--primary);border-radius:20px;padding:16px 18px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow-sm)}
     .category-header small{display:block;color:var(--muted);font-size:14px;margin-top:4px;font-weight:normal}
     .category-main{font-size:22px;font-weight:bold;line-height:1.2}
     .category-arrow{font-size:24px;color:var(--primary);min-width:28px;text-align:right}
@@ -123,13 +116,13 @@
     .item-remark,.item-control,input,textarea{width:100%;padding:11px 12px;border:1px solid #e5e7eb;border-radius:12px;font-size:13px;margin-bottom:10px;background:#fff;outline:none}
     .btn-row{display:flex;flex-wrap:wrap;gap:8px}
     button{border:none;border-radius:12px;padding:10px 13px;cursor:pointer;font-weight:bold}
-    .btn-size{background:linear-gradient(180deg, #f04a3a 0%, #d92d20 100%);color:#fff;box-shadow:0 6px 14px rgba(217,45,32,.18)}
+    .btn-size{background:linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);color:#fff;box-shadow:0 6px 14px rgba(37,99,235,.18)}
     .btn-ask{background:#111827;color:#fff;box-shadow:0 6px 14px rgba(17,24,39,.16)}
 
-    .suggestion-box{margin-top:10px;padding:10px;border-radius:12px;background:#fff8f5;border:1px solid #ffd9d0}
+    .suggestion-box{margin-top:10px;padding:10px;border-radius:12px;background:#f3f8ff;border:1px solid #dbe7ff}
     .suggestion-title{font-size:12px;font-weight:bold;color:var(--primary);margin-bottom:8px}
     .suggestion-row{display:flex;flex-wrap:wrap;gap:6px}
-    .suggestion-btn{background:#fff;color:var(--primary);border:1px solid #ffd0c5;font-size:12px;padding:7px 10px;border-radius:999px}
+    .suggestion-btn{background:#fff;color:var(--primary);border:1px solid #cfe0ff;font-size:12px;padding:7px 10px;border-radius:999px}
 
     .floating-cart-btn{position:fixed;right:18px;bottom:18px;z-index:1000;background:linear-gradient(180deg, #08a55b 0%, #059669 100%);color:#fff;border:none;border-radius:999px;padding:14px 18px;box-shadow:0 14px 30px rgba(5,150,105,.28);font-size:15px;min-width:150px}
     .cart-drawer{position:fixed;top:0;right:-430px;width:410px;max-width:100%;height:100vh;background:rgba(255,255,255,.98);backdrop-filter:blur(10px);box-shadow:-16px 0 42px rgba(15,23,42,.18);z-index:1100;transition:right .3s ease;display:flex;flex-direction:column;border-left:1px solid rgba(255,255,255,.7)}
@@ -182,7 +175,7 @@
       <img src="logo.png" alt="Desaru Seafood Corner Logo" class="landing-logo" />
       <h1>Desaru Seafood Corner</h1>
       <p>Fresh Seafood Dining Experience<br />新鲜海鲜用餐体验</p>
-      <div class="landing-subline">AI Assisted Digital Ordering Menu</div>
+      <div class="landing-subline">Premium Digital Ordering Menu</div>
       <div class="order-type-grid">
         <button class="order-type-card" onclick="selectOrderType('dinein')">
           <div class="order-icon">🍽️</div>
@@ -218,19 +211,6 @@
           <span class="status-badge" id="selectedOrderTypeText">Dine-in / 堂食</span>
         </div>
         <button class="change-type-btn" onclick="resetOrderType()">Change Order Type / 更改用餐方式</button>
-      </div>
-
-      <div class="ai-box">
-        <h3>Desaru AI Ordering Assistant</h3>
-        <p>
-          Need recommendations? Use the quick AI buttons below. The system can suggest dishes for 2–3 pax,
-          family sharing, or signature seafood combos.
-        </p>
-        <div class="ai-actions">
-          <button class="ai-btn" onclick="sendAIMessage('Hi, recommend a signature seafood set for 2 to 3 pax.')">AI Recommend 2–3 Pax</button>
-          <button class="ai-btn" onclick="sendAIMessage('Hi, recommend a family seafood feast for 4 to 6 pax.')">AI Recommend Family Set</button>
-          <button class="ai-btn secondary" onclick="sendAIMessage('Hi, what are your signature dishes today?')">Ask Signature Dishes</button>
-        </div>
       </div>
 
       <div class="top-tools">
@@ -311,11 +291,10 @@
   <script>
     const WHATSAPP_NUMBER = '60105309267';
     const STORAGE_KEY = 'desaru_order_type';
-    const MENU_JSON_PATH = 'desaru_menu_master.json';
+    const MENU_JSON_PATH = 'desaru_menu_master_v2.json';
 
     const lobsterStyles = [
       { value:'Golden Pumpkin Cream', label:'Golden Pumpkin Cream / 金瓜奶香' },
-      { value:'Signature Golden Sand', label:'Signature Golden Sand / 金沙风味' },
       { value:'Salted Egg Yolk', label:'Salted Egg Yolk / 咸蛋黄' },
       { value:'Superior Broth', label:'Superior Broth / 上汤' },
       { value:'Typhoon Shelter', label:'Typhoon Shelter / 避风塘' },
@@ -333,61 +312,59 @@
 
     const featuredCombos = [
       {
-        titleEn:'Seafood Set for 2',
-        titleZh:'双人海鲜套餐',
-        descEn:'Fast order for 2 pax',
-        descZh:'适合2人快速点单',
+        titleEn:'Chef Lobster Set',
+        titleZh:'主厨龙虾推荐',
+        descEn:'Best for 2 to 3 pax',
+        descZh:'适合2到3人',
         items:[
-          { nameEn:'Australian Lobster (Whole)', nameZh:'澳洲龙虾（整只）', label:'Standard', price:198, style:'Golden Pumpkin Cream' },
-          { nameEn:'Cereal Butter Crispy Prawns', nameZh:'麦片牛油香脆虾', label:'S', price:48 },
-          { nameEn:'Spinach with Superior Broth', nameZh:'上汤菠菜', label:'S', price:18 },
-          { nameEn:'Tom Yam Seafood Soup', nameZh:'东炎海鲜汤', label:'S', price:28 }
+          { nameEn:'Australian Lobster', nameZh:'澳洲龙虾', label:'1 pc', price:198, style:'Golden Pumpkin Cream' },
+          { nameEn:'Garlic Steamed Scallop', nameZh:'蒜蓉蒸带子', label:'4 pcs', price:30 },
+          { nameEn:'Lala', nameZh:'啦啦', label:'S', price:35, style:'Superior Broth' }
         ]
       },
       {
-        titleEn:'Chef’s Must Try',
-        titleZh:'主厨推荐组合',
-        descEn:'Signature dishes picked for you',
-        descZh:'帮你搭配的招牌组合',
+        titleEn:'Local Lobster Best Value',
+        titleZh:'本地龙虾超值组合',
+        descEn:'Popular sharing option',
+        descZh:'多人分享热门选择',
         items:[
-          { nameEn:'Crab', nameZh:'螃蟹', label:'1 crab', price:130, style:'Signature Spicy Chilli' },
-          { nameEn:'Australian Lobster (Whole)', nameZh:'澳洲龙虾（整只）', label:'Standard', price:198, style:'Signature Golden Sand' },
-          { nameEn:'Signature Seafood Fried Rice / Noodles', nameZh:'招牌海鲜炒', label:'S', price:12 }
+          { nameEn:'Local Lobster', nameZh:'本地龙虾', label:'800g (3-4 pcs)', price:224, style:'Salted Egg Yolk' },
+          { nameEn:'Oyster Cheese', nameZh:'芝士焗生蚝', label:'4 pcs', price:56 },
+          { nameEn:'Kepah', nameZh:'沙白', label:'S', price:60, style:'Superior Broth' }
         ]
       },
       {
-        titleEn:'Family Seafood Feast',
-        titleZh:'家庭海鲜盛宴',
-        descEn:'Best for sharing',
-        descZh:'适合家庭共享',
+        titleEn:'Premium Flower Lobster Set',
+        titleZh:'花龙高级组合',
+        descEn:'Premium seafood treat',
+        descZh:'高级海鲜享受',
         items:[
-          { nameEn:'Baby Local Lobster (1kg Set)', nameZh:'本地小龙虾（1公斤套餐）', label:'Standard', price:280, style:'Salted Egg Yolk' },
-          { nameEn:'Crab', nameZh:'螃蟹', label:'2 crabs', price:260, style:'Black Pepper' },
-          { nameEn:'Cereal Butter Crispy Prawns', nameZh:'麦片牛油香脆虾', label:'M', price:78 },
-          { nameEn:'Sambal Kangkong', nameZh:'参峇蕹菜', label:'L', price:24 },
-          { nameEn:'Tom Yam Seafood Soup', nameZh:'东炎海鲜汤', label:'L', price:50 }
+          { nameEn:'Australian Flower Lobster', nameZh:'澳洲花龙', label:'900g (1 pc)', price:358, style:'Typhoon Shelter' },
+          { nameEn:'Garlic Steamed Scallop', nameZh:'蒜蓉蒸带子', label:'6 pcs', price:45 },
+          { nameEn:'Oyster Raw / Garlic Steam', nameZh:'生蚝 / 蒜蓉蒸生蚝', label:'4 pcs', price:48, style:'Garlic Steam' }
         ]
       }
     ];
 
 
     const itemSuggestions = {
-      'Australian Lobster (Whole)': [
-        { nameEn:'Garlic Steamed Scallop Premium', nameZh:'蒜蓉蒸鲜带子', label:'Per Pc', price:7.5 },
-        { nameEn:'Tom Yam Seafood Soup', nameZh:'东炎海鲜汤', label:'S', price:28 },
-        { nameEn:'Signature Seafood Fried Rice / Noodles', nameZh:'招牌海鲜炒', label:'S', price:12 }
+      'Australian Lobster': [
+        { nameEn:'Garlic Steamed Scallop', nameZh:'蒜蓉蒸带子', label:'4 pcs', price:30 },
+        { nameEn:'Oyster Cheese', nameZh:'芝士焗生蚝', label:'2 pcs', price:28 }
       ],
-      'Baby Local Lobster (1kg Set)': [
-        { nameEn:'Tom Yam Seafood Soup', nameZh:'东炎海鲜汤', label:'S', price:28 },
-        { nameEn:'Signature Seafood Fried Rice / Noodles', nameZh:'招牌海鲜炒', label:'S', price:12 }
+      'Local Lobster': [
+        { nameEn:'Lala', nameZh:'啦啦', label:'S', price:35, style:'Superior Broth' },
+        { nameEn:'Garlic Steamed Scallop', nameZh:'蒜蓉蒸带子', label:'6 pcs', price:45 }
       ],
-      'Crab': [
-        { nameEn:'Signature Seafood Fried Rice / Noodles', nameZh:'招牌海鲜炒', label:'S', price:12 },
-        { nameEn:'Baby Kailan with Garlic', nameZh:'蒜蓉菜胆', label:'S', price:18 }
+      'Australian Flower Lobster': [
+        { nameEn:'Oyster Raw / Garlic Steam', nameZh:'生蚝 / 蒜蓉蒸生蚝', label:'4 pcs', price:48, style:'Garlic Steam' },
+        { nameEn:'Kepah', nameZh:'沙白', label:'S', price:60, style:'Superior Broth' }
       ],
-      'Cereal Butter Crispy Prawns': [
-        { nameEn:'Tom Yam Seafood Soup', nameZh:'东炎海鲜汤', label:'S', price:28 },
-        { nameEn:'Signature Seafood Fried Rice / Noodles', nameZh:'招牌海鲜炒', label:'S', price:12 }
+      'Kepah': [
+        { nameEn:'Superior Coconut Clam', nameZh:'椰香上汤沙白', label:'1 portion', price:68 }
+      ],
+      'Lala': [
+        { nameEn:'Superior Coconut Clam', nameZh:'椰香上汤沙白', label:'1 portion', price:68 }
       ]
     };
 
@@ -488,19 +465,29 @@
     function getVariantSelectId(catIndex, itemIndex){ return `variant-${catIndex}-${itemIndex}`; }
 
     function getSpecialControls(category, item, catIndex, itemIndex){
-      if(category.specialType !== 'lobster' && category.specialType !== 'crab') return '';
-      const styles = category.specialType === 'lobster' ? lobsterStyles : crabStyles;
-      const styleOptions = styles.map(s => `<option value="${escapeHtml(s.value)}">${escapeHtml(s.label)}</option>`).join('');
       const variantOptions = (item.variants || []).map(v => `<option value="${escapeHtml(v.label)}">${escapeHtml(v.label)} - RM${money(v.price)}</option>`).join('');
+      const hasCookingStyles = Array.isArray(item.cookingStyles) && item.cookingStyles.length > 0;
+      let styleOptions = '';
+      if(category.specialType === 'lobster'){
+        styleOptions = lobsterStyles.map(s => `<option value="${escapeHtml(s.value)}">${escapeHtml(s.label)}</option>`).join('');
+      } else if(category.specialType === 'crab'){
+        styleOptions = crabStyles.map(s => `<option value="${escapeHtml(s.value)}">${escapeHtml(s.label)}</option>`).join('');
+      } else if(hasCookingStyles){
+        styleOptions = item.cookingStyles.map(s => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join('');
+      }
       return `
-        <select class="item-control" id="${getStyleSelectId(catIndex, itemIndex)}">
-          <option value="">Choose Cooking Style / 选择做法</option>
-          ${styleOptions}
-        </select>
-        <select class="item-control" id="${getVariantSelectId(catIndex, itemIndex)}">
-          <option value="">Choose Option / 选择规格</option>
-          ${variantOptions}
-        </select>
+        ${hasCookingStyles || category.specialType === 'lobster' || category.specialType === 'crab' ? `
+          <select class="item-control" id="${getStyleSelectId(catIndex, itemIndex)}">
+            <option value="">${category.specialType === 'lobster' || category.specialType === 'crab' ? 'Choose Cooking Style / 选择做法' : 'Choose Style / 选择做法'}</option>
+            ${styleOptions}
+          </select>
+        ` : ''}
+        ${(item.variants || []).length ? `
+          <select class="item-control" id="${getVariantSelectId(catIndex, itemIndex)}">
+            <option value="">Choose Option / 选择规格</option>
+            ${variantOptions}
+          </select>
+        ` : ''}
       `;
     }
 
@@ -512,7 +499,7 @@
           <div class="suggestion-title">Recommended Pairing / 推荐搭配</div>
           <div class="suggestion-row">
             ${suggestions.map(s => `
-              <button class="suggestion-btn" onclick="addSuggestion('${escapeHtml(s.nameEn)}','${escapeHtml(s.nameZh)}','${escapeHtml(s.label)}',${Number(s.price)})">
+              <button class="suggestion-btn" onclick="addSuggestion('${escapeHtml(s.nameEn)}','${escapeHtml(s.nameZh)}','${escapeHtml(s.label)}',${Number(s.price)},'${escapeHtml(s.style || '')}')">
                 ${escapeHtml(s.nameZh)} ${escapeHtml(s.label)} - RM${money(s.price)}
               </button>
             `).join('')}
@@ -579,8 +566,8 @@
       if(item.marketPrice){
         return `<button class="btn-ask" onclick="askPrice('${escapeHtml(item.name.en)}','${escapeHtml(item.name.zh)}', ${catIndex}, ${itemIndex})">Ask Price</button>`;
       }
-      if(category.specialType === 'lobster' || category.specialType === 'crab'){
-        return `<button class="btn-size" onclick="addSpecialItem(${catIndex}, ${itemIndex})">Add to Cart / 加入购物车</button>`;
+      if(category.specialType === 'lobster' || category.specialType === 'crab' || (Array.isArray(item.cookingStyles) && item.cookingStyles.length)){
+        return `<button class="btn-size" onclick="addConfiguredItem(${catIndex}, ${itemIndex})">Add to Cart / 加入购物车</button>`;
       }
       return (item.variants || []).map(v => `
         <button class="btn-size" onclick="addItem('${escapeHtml(item.name.en)}','${escapeHtml(item.name.zh)}','${escapeHtml(v.label)}',${Number(v.price)},${catIndex},${itemIndex})">
@@ -675,7 +662,7 @@
           <small>加单推荐 / 一键加入购物车</small>
           <div class="upsell-row">
             ${suggestions.map(s => `
-              <button class="upsell-btn" onclick="addSuggestion('${escJsSingle(s.nameEn)}','${escJsSingle(s.nameZh)}','${escJsSingle(s.label)}',${Number(s.price)})">
+              <button class="upsell-btn" onclick="addSuggestion('${escJsSingle(s.nameEn)}','${escJsSingle(s.nameZh)}','${escJsSingle(s.label)}',${Number(s.price)},'${escJsSingle(s.style || '')}')">
                 ${escapeHtml(s.nameZh)} ${escapeHtml(s.label)} - RM ${money(s.price)}
               </button>
             `).join('')}
@@ -698,18 +685,20 @@
       clearRemark(catIndex, itemIndex);
     }
 
-    function addSuggestion(nameEn, nameZh, label, price){
-      addOrIncreaseCartItem({ nameEn, nameZh, label, price:Number(price), remark:'', style:'', marketPrice:false });
+    function addSuggestion(nameEn, nameZh, label, price, style=''){
+      addOrIncreaseCartItem({ nameEn, nameZh, label, price:Number(price), remark:'', style, marketPrice:false });
     }
 
-    function addSpecialItem(catIndex, itemIndex){
+    function addConfiguredItem(catIndex, itemIndex){
       const category = menuSource.categories[catIndex];
       const item = category.items[itemIndex];
-      const style = document.getElementById(getStyleSelectId(catIndex, itemIndex))?.value || '';
       const selectedLabel = document.getElementById(getVariantSelectId(catIndex, itemIndex))?.value || '';
-      if(!style){ alert('Please choose cooking style / 请选择做法'); return; }
-      if(!selectedLabel){ alert('Please choose option / 请选择规格'); return; }
-      const variant = (item.variants || []).find(v => v.label === selectedLabel);
+      const style = document.getElementById(getStyleSelectId(catIndex, itemIndex))?.value || '';
+      if((item.variants || []).length && !selectedLabel){ alert('Please choose option / 请选择规格'); return; }
+      if((Array.isArray(item.cookingStyles) && item.cookingStyles.length) || category.specialType === 'lobster' || category.specialType === 'crab'){
+        if(!style){ alert('Please choose cooking style / 请选择做法'); return; }
+      }
+      const variant = (item.variants || []).find(v => v.label === selectedLabel) || (item.variants || [])[0];
       if(!variant){ alert('Invalid option'); return; }
       const remark = getRemark(catIndex, itemIndex);
       addOrIncreaseCartItem({ nameEn:item.name.en, nameZh:item.name.zh, label:variant.label, price:Number(variant.price), remark, style, marketPrice:false });
@@ -767,10 +756,6 @@
     }
 
     function clearCart(){ cart = []; showCart(); }
-
-    function sendAIMessage(message){
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
-    }
 
     function sendOrder(){
       if(!cart.length){ alert('Cart is empty / 购物车还是空的'); return; }
