@@ -473,7 +473,7 @@
             "en": "Lala",
             "zh": "啦啦"
           },
-          "image": "https://via.placeholder.com/600x420?text=Lala",
+          "image": "image/lala.jpg",
           "styles": [
             "Dry Style / 干香",
             "Superior Stock / 上汤",
@@ -497,7 +497,7 @@
             "en": "Kepah",
             "zh": "沙白"
           },
-          "image": "image/lala.jpg",
+          "image": "image/kepah.jpg",
           "styles": [
             "Superior Stock / 上汤",
             "Ginger Onion / 姜葱",
